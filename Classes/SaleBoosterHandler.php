@@ -27,11 +27,11 @@ class SaleBoosterHandler {
             display: none;
         }
 
-      ._expaire_date_layout ul{
-            display: flex;
+      ._Sale_booster_expaire_date_layout_field > ul{
+            display: flex !important;
         }
-        ._expaire_date_layout_field li {
-            margin-right: 10px;
+        ._Sale_booster_expaire_date_layout_field li {
+            margin-right: 10px !important;
         }
 
         </style>';
@@ -39,8 +39,8 @@ class SaleBoosterHandler {
     // create Data Fields 
     public static function createDataFields(){
          global $post;
-       
-        ?> 
+         $layoutSelected = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
+    ?> 
             <div id='sale_booster_product_data' class='panel woocommerce_options_panel'>
             <div class='options_group'> 
         <?php
@@ -113,17 +113,17 @@ class SaleBoosterHandler {
             'description' => __( 'ex: 07/15/2019 12:30 PM (m/d/yyyy 00:00 PM)', 'sale_booster' )
             )
         );
-
+       
         woocommerce_wp_radio(
             array(
                //'name' => '_price_per_word_character', 
                'label' => __('Expaire Date Layout', 'woocommerce-price-per-word'),
-                'value' => 'bottom',
-                'id' => '_expaire_date_layout', 
+                'id' => '_Sale_booster_expaire_date_layout', 
+                'value' => !empty($layoutSelected) ? $layoutSelected : "both",
                 'options' => array(
-                    "top" => "Top", 
-                    "bottom" => "Bottom",
-                    'both' => 'Both'
+                    'top'    => __("Top", 'sale_booster'), 
+                    'bottom' => __("Bottom", 'sale_booster'),
+                    'both'   => __("Both", 'sale_booster')
                 ),
             )
         );
@@ -178,6 +178,11 @@ class SaleBoosterHandler {
         if (isset($expire_datetime)) {
             update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_datetime));
         }
+
+        $_expaire_datelayout = $_POST['_Sale_booster_expaire_date_layout'];
+            if(!empty($_expaire_datelayout)){
+                update_post_meta($post_id, '_Sale_booster_expaire_date_layout', esc_html($_expaire_datelayout) );
+            }
        
         // expire_date_time
         // $expire_date_time = $_POST['_sale_booster_expire_date_time'];
