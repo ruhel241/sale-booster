@@ -40,6 +40,10 @@ class NINJASaleBooster
         add_action('admin_head', array('SaleBooster\Classes\SaleBoosterHandler', 'customStyles') );
         add_action('woocommerce_product_data_panels', array('SaleBooster\Classes\SaleBoosterHandler', 'createDataFields') );
         add_action( 'woocommerce_process_product_meta', array('SaleBooster\Classes\SaleBoosterHandler','saveDataFields') );
+        
+        add_action( 'woocommerce_before_single_product', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
+
+       
         add_action('admin_enqueue_scripts', array($this, 'adminEnqueueScripts') );
     }
 
@@ -54,11 +58,24 @@ class NINJASaleBooster
         add_action( 'woocommerce_simple_add_to_cart', array('SaleBooster\Classes\SaleBoosterHandler', 'addCustomButton'), 30 ); 
         // hide price
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'hidePrice'), 2 );
+    
+    
+        // Discound timer
+        add_action('woocommerce_share', array('SaleBooster\Classes\SaleBoosterHandler', 'discoundTimer') );
+
+        // enqueue script 
+        add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
+    
     }
 
 
     public function adminEnqueueScripts(){
         wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'),'1.0.0',true);
+    }
+
+    public function enqueueScripts(){
+        wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'),'1.0.0',true);
+        wp_enqueue_style("sale-booster-css", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/css/sale-booster.css", false);
     }
 
 

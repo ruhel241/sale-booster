@@ -1,0 +1,25 @@
+._alert-text{
+    margin-bottom: 10px;
+    color: #9C9C9C;
+}
+
+#_sale-booster-countdown-bottom {
+    font-size: 18px;
+}
+
+#_sale-booster-countdown-top{
+    display: block;
+    padding: 15px;
+    margin-bottom: 15px;
+    font-size: 20px;
+    background: #B751CC;
+    color: #fff;
+    font-weight: normal;
+}
+
+
+._sale-booster-hits {
+    color: #9C9C99;
+    font-weight: 500;
+    margin-top: 2px;
+}

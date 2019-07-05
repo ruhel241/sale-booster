@@ -20,12 +20,20 @@ class SaleBoosterHandler {
         font-family: Dashicons;
         content: "\f182";
         }
-        input#_sale_booster_expire_date,#_sale_booster_expire_date_time {
+        input#_sale_booster_expire_date_time {
             width: 200px;
         }
         ._sale_booster_inquire {
             display: none;
         }
+
+      ._expaire_date_layout ul{
+            display: flex;
+        }
+        ._expaire_date_layout_field li {
+            margin-right: 10px;
+        }
+
         </style>';
     }
     // create Data Fields 
@@ -36,7 +44,6 @@ class SaleBoosterHandler {
             <div id='sale_booster_product_data' class='panel woocommerce_options_panel'>
             <div class='options_group'> 
         <?php
-
          // Select
          woocommerce_wp_select(
             array(
@@ -98,25 +105,38 @@ class SaleBoosterHandler {
 
         woocommerce_wp_text_input(
             array(
-            'id' => '_sale_booster_expire_date',
+            'id' => '_sale_booster_expire_date_time',
             'label' => __( 'Coupon Expire Date', 'sale_booster' ),
-            'placeholder' => '07/15/2015',
+            'placeholder' => '07/15/2015 12:30 PM',
             // 'desc_tip' => 'true',
           
-            'description' => __( 'Coupon Expire Date: 07/15/2019 (m/d/yyyy)', 'sale_booster' )
+            'description' => __( 'ex: 07/15/2019 12:30 PM (m/d/yyyy 00:00 PM)', 'sale_booster' )
             )
         );
 
-        woocommerce_wp_text_input(
+        woocommerce_wp_radio(
             array(
-            'id' => '_sale_booster_expire_date_time',
-            'label' => __( 'Coupon Expire Time', 'sale_booster' ),
-            'placeholder' => '2:50',
-            // 'desc_tip' => 'true',
-           
-            'description' => __( 'Coupon Expire Time: 2:30', 'sale_booster' )
+               //'name' => '_price_per_word_character', 
+               'label' => __('Expaire Date Layout', 'woocommerce-price-per-word'),
+                'value' => 'bottom',
+                'id' => '_expaire_date_layout', 
+                'options' => array(
+                    "top" => "Top", 
+                    "bottom" => "Bottom",
+                    'both' => 'Both'
+                ),
             )
         );
+        // woocommerce_wp_text_input(
+        //     array(
+        //     'id' => '_sale_booster_expire_date_time',
+        //     'label' => __( 'Coupon Expire Time', 'sale_booster' ),
+        //     'placeholder' => '2:50',
+        //     // 'desc_tip' => 'true',
+           
+        //     'description' => __( 'Coupon Expire Time: 2:30', 'sale_booster' )
+        //     )
+        // );
 
         ?> </div>
         </div>
@@ -139,7 +159,7 @@ class SaleBoosterHandler {
 
         // inquire link
         $inquire_us_link = $_POST['_sale_booster_inquire_link'];
-        if(!empty($inquire_us_link)){
+        if(isset($inquire_us_link)){
             update_post_meta($post_id, '_sale_booster_inquire_link', esc_attr($inquire_us_link) );
         }
  
@@ -149,21 +169,21 @@ class SaleBoosterHandler {
 
         // Save Alert Text Field
         $alert_text = $_POST['_sale_booster_alert_text'];
-        if (!empty($alert_text)) {
+        if (isset($alert_text)) {
             update_post_meta($post_id, '_sale_booster_alert_text', esc_attr($alert_text));
         }
 
         // Save expire date
-        $expire_date = $_POST['_sale_booster_expire_date'];
-        if (!empty($expire_date)) {
-            update_post_meta($post_id, '_sale_booster_expire_date', esc_html($expire_date));
+        $expire_datetime = $_POST['_sale_booster_expire_date_time'];
+        if (isset($expire_datetime)) {
+            update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_datetime));
         }
        
         // expire_date_time
-        $expire_date_time = $_POST['_sale_booster_expire_date_time'];
-        if(!empty($expire_date_time)){
-            update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_date_time));
-        }
+        // $expire_date_time = $_POST['_sale_booster_expire_date_time'];
+        // if(!empty($expire_date_time)){
+        //     update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_date_time));
+        // }
 
         // Save Hidden field
         $hidden = $_POST['_hidden_field'];
@@ -203,6 +223,46 @@ class SaleBoosterHandler {
 
 
 
+    public static function discoundTimer(){
+        $_alert_text = get_post_meta( get_the_ID(), '_sale_booster_alert_text', true);
+        "exDate:".  $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true) ."<br/>";
+        "current:".$curr_timestamp = date('m/d/Y H:i A');
+         if($curr_timestamp  <= $_expireDateTime) { 
+    ?>
+            <div class="_sale-booster-discoun-timer" style="margin-top:20px"> 
+                <div class="_alert-text"> <?php  echo $_alert_text;?></div> 
+               <?php if(!empty($_expireDateTime)) : ?> 
+                    <div id="_sale-booster-countdown-bottom"></div>
+                    <div class="_sale-booster-hits"> Prices go up when the timer hits zero. </div>
+               <?php endif; ?>
+            </div>
+        <?php }
+    }
 
- }
+
+    public static function discoundTimerTop(){
+        $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
+        // $_expire_time = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
+        wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
+            'dateTime'    => $_expireDateTime,
+            // 'time'    =>  $_expire_time 
+        ));
+        $curr_timestamp = date('m/d/Y H:i:s A');
+        if($_expireDateTime >= $curr_timestamp) {
+            if(!empty($_expireDateTime)){
+                echo "<div id='_sale-booster-countdown-top'></div>";
+            }
+        }
+    }
+
+
+
+
+    
+    
+   
+
+
+
+}
 
