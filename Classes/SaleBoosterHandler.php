@@ -230,23 +230,27 @@ class SaleBoosterHandler {
 
     public static function discoundTimer(){
         $_alert_text = get_post_meta( get_the_ID(), '_sale_booster_alert_text', true);
-        "exDate:".  $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true) ."<br/>";
-        "current:".$curr_timestamp = date('m/d/Y H:i A');
+        $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
+       
+        $_expire_date_layout = get_post_meta( get_the_ID(), '_Sale_booster_expaire_date_layout', true);
+
+        var_dump($_expire_date_layout);
+
+        $curr_timestamp = date('m/d/Y H:i A');
          if($curr_timestamp  <= $_expireDateTime) { 
+             if($_expire_date_layout == "bottom" || $_expire_date_layout == "both"){
     ?>
             <div class="_sale-booster-discoun-timer" style="margin-top:20px"> 
                 <div class="_alert-text"> <?php  echo $_alert_text;?></div> 
-               <?php if(!empty($_expireDateTime)) : ?> 
-                    <div id="_sale-booster-countdown-bottom"></div>
-                    <div class="_sale-booster-hits"> Prices go up when the timer hits zero. </div>
-               <?php endif; ?>
+                <div id='_sale-booster-countdown-bottom'></div>
             </div>
-        <?php }
+        <?php } }
     }
 
 
     public static function discoundTimerTop(){
         $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
+        $_expire_date_layout = get_post_meta( get_the_ID(), '_Sale_booster_expaire_date_layout', true);
         // $_expire_time = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
         wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
             'dateTime'    => $_expireDateTime,
@@ -254,9 +258,11 @@ class SaleBoosterHandler {
         ));
         $curr_timestamp = date('m/d/Y H:i:s A');
         if($_expireDateTime >= $curr_timestamp) {
-            if(!empty($_expireDateTime)){
+            if($_expire_date_layout == "top" || $_expire_date_layout == "both"){
                 echo "<div id='_sale-booster-countdown-top'></div>";
-            }
+             }
+                
+            
         }
     }
 

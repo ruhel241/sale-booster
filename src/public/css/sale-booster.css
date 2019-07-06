@@ -4,7 +4,7 @@
 }
 
 #_sale-booster-countdown-bottom {
-    font-size: 18px;
+    font-size: 20px;
 }
 
 #_sale-booster-countdown-top{
@@ -20,6 +20,7 @@
 
 ._sale-booster-hits {
     color: #9C9C99;
-    font-weight: 500;
-    margin-top: 2px;
+    font-weight: 300;
+    margin-top: 4px;
+    font-size: 16px;
 }

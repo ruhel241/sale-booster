@@ -8,7 +8,7 @@ function CountDownTimer(date, countdown_top, countdown_bottom ) {
      var _day = _hour * 24;
      var timer;
 
-     function showRemaining() {
+     function showRemaining(date) {
          var now = new Date();
          var distance = end - now;
          if (distance < 0) {
@@ -23,11 +23,16 @@ function CountDownTimer(date, countdown_top, countdown_bottom ) {
 
          var  countdownTop = document.getElementById(countdown_top);
          var  countdownBottom    = document.getElementById(countdown_bottom);
+
+         if(sale_booster_countdown_vars.dateTime !== ''){
             //  bootom
             countdownBottom.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs";
-           // Top
+            countdownBottom.innerHTML += "<div class='_sale-booster-hits'> Prices go up when the timer hits zero.</div>";
+            // Top
             countdownTop.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs";
            
+         }
+
      }
 
      timer = setInterval(showRemaining, 1000);
