@@ -21,7 +21,7 @@ class SaleBoosterHandler {
         content: "\f182";
         }
         input#_sale_booster_expire_date_time {
-            width: 200px;
+            width: 230px;
         }
         ._sale_booster_inquire {
             display: none;
@@ -104,11 +104,12 @@ class SaleBoosterHandler {
         woocommerce_wp_text_input(
             array(
             'id' => '_sale_booster_expire_date_time',
+            'type' => 'datetime-local',
             'label' => __( 'Coupon Expire Date', 'sale_booster' ),
             'placeholder' => '07/15/2015 12:30 PM',
             // 'desc_tip' => 'true',
           
-            'description' => __( 'ex: 07/15/2019 12:30 PM (m/d/yyyy 00:00 PM)', 'sale_booster' )
+            'description' => __( 'ex: (m/d/yyyy 00:00 PM)', 'sale_booster' )
             )
         );
        
