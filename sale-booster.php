@@ -40,30 +40,21 @@ class NINJASaleBooster
         add_action('admin_head', array('SaleBooster\Classes\SaleBoosterHandler', 'customStyles') );
         add_action('woocommerce_product_data_panels', array('SaleBooster\Classes\SaleBoosterHandler', 'createDataFields') );
         add_action( 'woocommerce_process_product_meta', array('SaleBooster\Classes\SaleBoosterHandler','saveDataFields') );
-        
         add_action( 'woocommerce_before_single_product', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
-
-       
         add_action('admin_enqueue_scripts', array($this, 'adminEnqueueScripts') );
     }
 
 
     public function publicHooks(){
-        // add_filter('woocommerce_product_single_add_to_cart_text', array('SaleBooster\Classes\SaleBoosterHandler', 'cart_button_text') );
-        // add_filter('woocommerce_is_purchasable',  array('SaleBooster\Classes\SaleBoosterHandler', 'removeCartButton'));
-        
         // remove cart button
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'removeCartButton'), 1);
         // custom button add
         add_action( 'woocommerce_simple_add_to_cart', array('SaleBooster\Classes\SaleBoosterHandler', 'addCustomButton'), 30 ); 
         // hide price
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'hidePrice'), 2 );
-    
-    
         // Discound timer
         add_action('woocommerce_share', array('SaleBooster\Classes\SaleBoosterHandler', 'discoundTimer') );
-
-        // enqueue script 
+         // enqueue script 
         add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
     
     }
@@ -83,12 +74,9 @@ class NINJASaleBooster
 
     }
 
-
 }
-
 
 add_action('plugins_loaded', function(){
     $ninjaSaleBooster = new NINJASaleBooster();
     $ninjaSaleBooster->boot();
 }); 
-

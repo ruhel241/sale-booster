@@ -1,5 +1,5 @@
-CountDownTimer(sale_booster_countdown_vars.dateTime, "_sale-booster-countdown-top", "_sale-booster-countdown-bottom");
-function CountDownTimer(date, countdown_top, countdown_bottom ) {
+CountDownTimer(sale_booster_countdown_vars.dateTime, "._sale-booster-countdown");
+function CountDownTimer(date, countdown) {
      var end = new Date(date);
 
      var _second = 1000;
@@ -8,12 +8,15 @@ function CountDownTimer(date, countdown_top, countdown_bottom ) {
      var _day = _hour * 24;
      var timer;
 
-     function showRemaining(date) {
+     function showRemaining() {
          var now = new Date();
          var distance = end - now;
          if (distance < 0) {
-            //  clearInterval(timer);
-            //  document.getElementById(id).innerHTML = "EXPIRED!";
+            clearInterval(timer);
+             let countDownExpires = document.querySelectorAll(countdown);
+               countDownExpires.forEach(countDownExpire => {
+                  countDownExpire.innerHTML = '';
+               });  
             return;
          }
          var days = Math.floor(distance / _day);
@@ -21,19 +24,14 @@ function CountDownTimer(date, countdown_top, countdown_bottom ) {
          var minutes = Math.floor((distance % _hour) / _minute);
          var seconds = Math.floor((distance % _minute) / _second);
 
-         var  countdownTop = document.getElementById(countdown_top);
-         var  countdownBottom    = document.getElementById(countdown_bottom);
 
-         if(sale_booster_countdown_vars.dateTime !== ''){
-            //  bootom
-            countdownBottom.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs";
-            countdownBottom.innerHTML += "<div class='_sale-booster-hits'> Prices go up when the timer hits zero.</div>";
-            // Top
-            countdownTop.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs";
-           
-         }
+         let countDownViews = document.querySelectorAll(countdown);
+            countDownViews.forEach(countDownView => {
+            console.log(countDownView);
+            countDownView.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs";
+         });
 
-     }
+      }
 
      timer = setInterval(showRemaining, 1000);
  }

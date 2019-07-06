@@ -26,15 +26,13 @@ class SaleBoosterHandler {
         ._sale_booster_inquire {
             display: none;
         }
-
-      ._Sale_booster_expaire_date_layout_field > ul{
+        ._Sale_booster_expaire_date_layout_field > ul{
             display: flex !important;
         }
         ._Sale_booster_expaire_date_layout_field li {
             margin-right: 10px !important;
         }
-
-        </style>';
+     </style>';
     }
     // create Data Fields 
     public static function createDataFields(){
@@ -127,17 +125,6 @@ class SaleBoosterHandler {
                 ),
             )
         );
-        // woocommerce_wp_text_input(
-        //     array(
-        //     'id' => '_sale_booster_expire_date_time',
-        //     'label' => __( 'Coupon Expire Time', 'sale_booster' ),
-        //     'placeholder' => '2:50',
-        //     // 'desc_tip' => 'true',
-           
-        //     'description' => __( 'Coupon Expire Time: 2:30', 'sale_booster' )
-        //     )
-        // );
-
         ?> </div>
         </div>
         <?php
@@ -184,12 +171,6 @@ class SaleBoosterHandler {
                 update_post_meta($post_id, '_Sale_booster_expaire_date_layout', esc_html($_expaire_datelayout) );
             }
        
-        // expire_date_time
-        // $expire_date_time = $_POST['_sale_booster_expire_date_time'];
-        // if(!empty($expire_date_time)){
-        //     update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_date_time));
-        // }
-
         // Save Hidden field
         $hidden = $_POST['_hidden_field'];
         if (!empty($hidden)) {
@@ -217,7 +198,6 @@ class SaleBoosterHandler {
         }
    }   
    
-
     //hide price
     public static function hidePrice(){
         $hidePrice = get_post_meta( get_the_ID(), '_sale_booster_hide_price', true );
@@ -226,23 +206,18 @@ class SaleBoosterHandler {
          } 
     }
 
-
-
     public static function discoundTimer(){
         $_alert_text = get_post_meta( get_the_ID(), '_sale_booster_alert_text', true);
         $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
-       
         $_expire_date_layout = get_post_meta( get_the_ID(), '_Sale_booster_expaire_date_layout', true);
-
-        var_dump($_expire_date_layout);
-
-        $curr_timestamp = date('m/d/Y H:i A');
-         if($curr_timestamp  <= $_expireDateTime) { 
-             if($_expire_date_layout == "bottom" || $_expire_date_layout == "both"){
+         $curr_timestamp = date('m/d/Y H:i A');
+         if($curr_timestamp <= $_expireDateTime) { 
+         if($_expire_date_layout == "bottom" || $_expire_date_layout == "both"){
     ?>
             <div class="_sale-booster-discoun-timer" style="margin-top:20px"> 
                 <div class="_alert-text"> <?php  echo $_alert_text;?></div> 
-                <div id='_sale-booster-countdown-bottom'></div>
+                <div id="_sale-booster-countdown-bottom" class="_sale-booster-countdown"></div>
+                <div class="_sale-booster-hits"> Prices go up when the timer hits zero.</div>
             </div>
         <?php } }
     }
@@ -251,28 +226,16 @@ class SaleBoosterHandler {
     public static function discoundTimerTop(){
         $_expireDateTime = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
         $_expire_date_layout = get_post_meta( get_the_ID(), '_Sale_booster_expaire_date_layout', true);
-        // $_expire_time = get_post_meta( get_the_ID(), '_sale_booster_expire_date_time', true);
         wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
             'dateTime'    => $_expireDateTime,
-            // 'time'    =>  $_expire_time 
         ));
         $curr_timestamp = date('m/d/Y H:i:s A');
-        if($_expireDateTime >= $curr_timestamp) {
+        if($curr_timestamp <= $_expireDateTime) {
             if($_expire_date_layout == "top" || $_expire_date_layout == "both"){
-                echo "<div id='_sale-booster-countdown-top'></div>";
-             }
-                
-            
+                echo "<div id='_sale-booster-countdown-top' class='_sale-booster-countdown'></div>";
+            }
         }
     }
-
-
-
-
-    
-    
-   
-
 
 
 }
