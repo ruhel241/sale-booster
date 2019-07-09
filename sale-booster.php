@@ -14,12 +14,11 @@ Text Domain: sale_booster
 Domain Path: /languages
 */
 
-include "load.php";
 define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
 define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
 define("SALE_BOOSTER_PLUGIN_DIR_VERSION", plugin_dir_path(__FILE__));
 
-
+include "load.php";
 
 class NINJASaleBooster 
 {
@@ -40,12 +39,11 @@ class NINJASaleBooster
         add_action('admin_head', array('SaleBooster\Classes\SaleBoosterHandler', 'customStyles') );
         add_action('woocommerce_product_data_panels', array('SaleBooster\Classes\SaleBoosterHandler', 'createDataFields') );
         add_action( 'woocommerce_process_product_meta', array('SaleBooster\Classes\SaleBoosterHandler','saveDataFields') );
-        add_action( 'woocommerce_before_single_product', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
-        add_action('admin_enqueue_scripts', array($this, 'adminEnqueueScripts') );
     }
 
-
     public function publicHooks(){
+
+        add_action( 'woocommerce_before_single_product', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
         // remove cart button
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'removeCartButton'), 1);
         // custom button add
@@ -59,14 +57,11 @@ class NINJASaleBooster
     
     }
 
-
-    public function adminEnqueueScripts(){
-        wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'),'1.0.0',true);
-    }
-
     public function enqueueScripts(){
-        wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'),'1.0.0',true);
-        wp_enqueue_style("sale-booster-css", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/css/sale-booster.css", false);
+        if(is_singular('product')) {
+            wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'),'1.0.0',true);
+            wp_enqueue_style("sale-booster-css", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/css/sale-booster.css", false);
+        }
     }
 
 
