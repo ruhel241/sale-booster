@@ -229,7 +229,7 @@ class SaleBoosterHandler {
         $date = date_create($_expire_datetime);
         $expire_datetime =  date_format($date, 'm/d/Y h:i A');
         
-        if($curreent_time < $expire_datetime) { 
+        if($curreent_time <= $expire_datetime) { 
             if($_expire_date_layout == "bottom" || $_expire_date_layout == "both"){
             echo "<div class='_sale-booster-discoun-timer' style='margin-top:20px'> 
                     <div class='_alert-text'> ".$_alert_text."</div> 
@@ -253,7 +253,7 @@ class SaleBoosterHandler {
             'dateTime'    => $expire_datetime,
         ));
        
-        if($curreent_time < $expire_datetime) {
+        if($curreent_time <= $expire_datetime) {
             if($_expire_date_layout == "top" || $_expire_date_layout == "both"){
                 echo "<div id='_sale-booster-countdown-top' class='_sale-booster-countdown'></div>";
             }
