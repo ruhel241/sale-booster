@@ -36,14 +36,11 @@ class NINJASaleBooster
 
     public function adminHooks(){
         add_filter( 'woocommerce_product_data_tabs', array('SaleBooster\Classes\SaleBoosterHandler', 'registerProductDataTab') );
-        add_action('admin_head', array('SaleBooster\Classes\SaleBoosterHandler', 'customStyles') );
         add_action('woocommerce_product_data_panels', array('SaleBooster\Classes\SaleBoosterHandler', 'createDataFields') );
         add_action( 'woocommerce_process_product_meta', array('SaleBooster\Classes\SaleBoosterHandler','saveDataFields') );
     }
 
     public function publicHooks(){
-
-        add_action( 'woocommerce_before_single_product', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
         // remove cart button
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'removeCartButton'), 1);
         // custom button add
@@ -52,9 +49,9 @@ class NINJASaleBooster
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'hidePrice'), 2 );
         // Discound timer
         add_action('woocommerce_share', array('SaleBooster\Classes\SaleBoosterHandler', 'discoundTimer') );
+        add_action( 'woocommerce_before_single_product', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
          // enqueue script 
         add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
-    
     }
 
     public function enqueueScripts(){

@@ -9,7 +9,14 @@ class SaleBoosterHandler
     public static function registerProductDataTab($product_data_tabs)
     {
 
-        wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL . "src/admin/js/admin-sale-booster.js", array('jquery'), '1.0.0', true);
+        wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'), '1.0.0', true);
+        wp_enqueue_style("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/css/admin-sale-booster.css", false);
+
+       //wp_enqueue_style("admin-sale-booster-datepicker", "https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css", false);
+       // wp_enqueue_script("admin-sale-booster-datepicker", "https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js", array('jquery'), '1.0.0', true);
+
+
+       
 
         $product_data_tabs['_sale_booster'] = array(
             'label'  => esc_html__('Sale Booster', 'sale_booster'),
@@ -19,42 +26,20 @@ class SaleBoosterHandler
         return $product_data_tabs;
     }
 
-    // Custom icon Css 
-    public static function customStyles()
-    {
-        ?>
-        <style>#woocommerce-product-data ul.wc-tabs li._sale_booster_options a::before {
-                font-family: Dashicons;
-                content: '\f182';
-            }
-            input#_sale_booster_expire_date_time {
-                width: 230px;
-            }
-
-            ._sale_booster_inquire {
-                display: none;
-            }
-
-            ._Sale_booster_expaire_date_layout_field > ul {
-                display: flex !important;
-            }
-
-            ._Sale_booster_expaire_date_layout_field li {
-                margin-right: 10px !important;
-            }
-        </style>
-        <?php
-    }
-
     // create Data Fields
     public static function createDataFields()
     {
         $layoutSelected = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
+        $discound_timer = get_post_meta(get_the_ID(), '_sale_booster_discound_timer', true);
 
-        echo "<div id='sale_booster_product_data' class='panel woocommerce_options_panel'>
-            <div class='options_group'>";
-
-        // Select
+        wp_localize_script('admin-sale-booster', 'sale_booster_discound_timer_vars', array(
+            'discound_timer' => $discound_timer,
+        ));
+    ?>
+        <div id="sale_booster_product_data" class="panel woocommerce_options_panel">
+            <div class="options_group">
+    <?php
+         // Select
         woocommerce_wp_select(
             array(
                 'id'       => '_sale_booster_alter_cart_button',
@@ -67,8 +52,10 @@ class SaleBoosterHandler
                 )
 
             )
-        );
-        echo "<div class = '_sale_booster_inquire'>";
+        ); 
+    ?>
+     <div class="_sale_booster_inquire">
+    <?php
         // Text Field
         woocommerce_wp_text_input(
             array(
@@ -79,7 +66,6 @@ class SaleBoosterHandler
                 'description' => __('Inquire Us Text.', 'sale_booster')
             )
         );
-
         // Inquire Us link Field
         woocommerce_wp_text_input(
             array(
@@ -90,8 +76,9 @@ class SaleBoosterHandler
                 'description' => __('Enter the URL to Inquire Us button.', 'sale_booster'),
             )
         );
-        echo "</div>";
-        // Checkbox
+    ?> 
+      </div> 
+    <?php        // Checkbox
         woocommerce_wp_checkbox(
             array(
                 'id'          => '_sale_booster_hide_price',
@@ -99,54 +86,67 @@ class SaleBoosterHandler
                 'description' => __('Check me!', 'sale_booster')
             )
         );
-
-        echo "</div> <div class='options_group'> ";
-        echo "<p><b style='margin-left: 3px'>Discound Timer</b></p>";
-        woocommerce_wp_text_input(
+    ?> 
+        </div> <div class="options_group">
+    <?php
+        woocommerce_wp_checkbox(
             array(
-                'id'          => '_sale_booster_alert_text',
-                'label'       => __('Alert Text', 'sale_booster'),
-                'placeholder' => 'Hurry up! just 8 items left in stock',
-                'desc_tip'    => 'true',
-                'description' => __('Hurry up! just 8 items left in stock.', 'sale_booster')
+                'id'          => '_sale_booster_discound_timer',
+                'label'       => __('Discound Timer', 'sale_booster'),
+                'description' => __('Show / Hide', 'sale_booster'),
             )
         );
+    ?> 
+       <div id="_sale_booster_discoundtimer_showhide">
+    <?php
+            woocommerce_wp_text_input(
+                array(
+                    'id'          => '_sale_booster_alert_text',
+                    'label'       => __('Alert Text', 'sale_booster'),
+                    'placeholder' => 'Hurry up! just 8 items left in stock',
+                    'desc_tip'    => 'true',
+                    'description' => __('Hurry up! just 8 items left in stock.', 'sale_booster')
+                )
+            );
 
-        woocommerce_wp_text_input(
-            array(
-                'id'          => '_sale_booster_subtitle',
-                'label'       => __('Sub Title', 'sale_booster'),
-                'placeholder' => 'Prices Go Up When The Timer Hits Zero.',
-                'desc_tip'    => 'true',
-                'description' => "Prices Go Up When The Timer Hits Zero."
-            )
-        );
+            woocommerce_wp_text_input(
+                array(
+                    'id'          => '_sale_booster_subtitle',
+                    'label'       => __('Sub Title', 'sale_booster'),
+                    'placeholder' => 'Prices Go Up When The Timer Hits Zero.',
+                    'desc_tip'    => 'true',
+                    'description' => "Prices Go Up When The Timer Hits Zero."
+                )
+            );
 
-        woocommerce_wp_text_input(
-            array(
-                'id'          => '_sale_booster_expire_date_time',
-                'type'        => 'datetime-local',
-                'label'       => __('Coupon Expire Date', 'sale_booster'),
-                'placeholder' => '07/15/2015 12:30 PM',
-                'description' => __('ex: (m/d/yyyy 00:00 PM)', 'sale_booster')
-            )
-        );
+            woocommerce_wp_text_input(
+                array(
+                    'id'          => '_sale_booster_expire_date_time',
+                    //'type'        => 'datetime-local',
+                    'label'       => __('Coupon Expire Date', 'sale_booster'),
+                    //'placeholder' => '07/15/2015 12:30 PM',
+                    'description' => __('ex: (m/d/yyyy 00:00 PM)', 'sale_booster')
+                )
+            );
 
-        woocommerce_wp_radio(
-            array(
-                //'name' => '_price_per_word_character',
-                'label'   => __('Expaire Date Layout', 'woocommerce-price-per-word'),
-                'id'      => '_Sale_booster_expaire_date_layout',
-                'value'   => !empty($layoutSelected) ? $layoutSelected : "both",
-                'options' => array(
-                    'top'    => __("Top", 'sale_booster'),
-                    'bottom' => __("Bottom", 'sale_booster'),
-                    'both'   => __("Both", 'sale_booster')
-                ),
-            )
-        );
-        echo "</div></div>";
-
+            woocommerce_wp_radio(
+                array(
+                    //'name' => '_price_per_word_character',
+                    'label'   => __('Expaire Date Layout', 'woocommerce-price-per-word'),
+                    'id'      => '_Sale_booster_expaire_date_layout',
+                    'value'   => !empty($layoutSelected) ? $layoutSelected : "both",
+                    'options' => array(
+                        'top'    => __("Top", 'sale_booster'),
+                        'bottom' => __("Bottom", 'sale_booster'),
+                        'both'   => __("Both", 'sale_booster')
+                    ),
+                )
+            );
+    ?> 
+            </div>
+            </div>
+        </div>
+     <?php
     }
 
     //save Data Fields
@@ -173,6 +173,10 @@ class SaleBoosterHandler
         // Save hide price
         $hide_price = isset($_POST['_sale_booster_hide_price']) ? 'yes' : 'no';
         update_post_meta($post_id, '_sale_booster_hide_price', $hide_price);
+        
+        // save Discound Timer 
+        $discound_timer = isset($_POST['_sale_booster_discound_timer']) ? 'yes' : 'no';
+        update_post_meta($post_id, '_sale_booster_discound_timer', $discound_timer);
 
         // Save Alert Text Field
         $alert_text = $_POST['_sale_booster_alert_text'];
@@ -207,7 +211,6 @@ class SaleBoosterHandler
     public static function removeCartButton()
     {
         $remove_cart_button = get_post_meta(get_the_ID(), '_sale_booster_alter_cart_button', true);
-
         if ($remove_cart_button == 'remove_button' || $remove_cart_button == 'inquire_us') {
             remove_action('woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30);
         }

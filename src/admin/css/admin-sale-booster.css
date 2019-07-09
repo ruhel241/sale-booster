@@ -1,0 +1,13 @@
+#woocommerce-product-data ul.wc-tabs li._sale_booster_options a::before {
+    font-family: Dashicons;
+    content: '\f182';
+}
+input#_sale_booster_expire_date_time {
+    width: 230px;
+}
+._Sale_booster_expaire_date_layout_field > ul {
+    display: flex !important;
+}
+._Sale_booster_expaire_date_layout_field li {
+    margin-right: 10px !important;
+}
