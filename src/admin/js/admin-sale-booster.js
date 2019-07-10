@@ -34,7 +34,11 @@
 
 
 //   date picker
-    $('#_sale_booster_expire_date_time').datetimepicker();
+    $('#_sale_booster_expire_date_time').datetimepicker({
+        format:'m/d/Y H:i',
+        // inline:true,
+        // lang:'ru'
+    });
   
 
 

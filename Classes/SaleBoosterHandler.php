@@ -9,12 +9,11 @@ class SaleBoosterHandler
     public static function registerProductDataTab($product_data_tabs)
     {
 
-        wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'), '1.0.0', true);
+        wp_enqueue_style("admin-sale-booster-datepicker", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/css/admin-sale-booster-datepicker.css", false);
         wp_enqueue_style("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/css/admin-sale-booster.css", false);
 
-       //wp_enqueue_style("admin-sale-booster-datepicker", "https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css", false);
-       // wp_enqueue_script("admin-sale-booster-datepicker", "https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js", array('jquery'), '1.0.0', true);
-
+        wp_enqueue_script("admin-sale-booster-datepicker", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster-datepicker.full.min.js", array('jquery'), '1.0.0', true);
+        wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'), '1.0.0', true);
 
        
 
@@ -125,7 +124,7 @@ class SaleBoosterHandler
                     //'type'        => 'datetime-local',
                     'label'       => __('Coupon Expire Date', 'sale_booster'),
                     //'placeholder' => '07/15/2015 12:30 PM',
-                    'description' => __('ex: (m/d/yyyy 00:00 PM)', 'sale_booster')
+                    'description' => __('ex: (m/d/yyyy 00:00)', 'sale_booster')
                 )
             );
 
@@ -209,12 +208,44 @@ class SaleBoosterHandler
 
     // remove cart button
     public static function removeCartButton()
-    {
-        $remove_cart_button = get_post_meta(get_the_ID(), '_sale_booster_alter_cart_button', true);
+    {   global $product;
+
+        $remove_cart_button = get_post_meta($product->id, '_sale_booster_alter_cart_button', true);
         if ($remove_cart_button == 'remove_button' || $remove_cart_button == 'inquire_us') {
-            remove_action('woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30);
+            if(is_product()){
+                var_dump($product->id);
+                remove_action('woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30);
+            }
+
+
+
+            if(is_shop()){
+               
+                // if($product->id == 12){
+                //     echo "ruhel"; 
+                //     // var_dump($product->id);
+                //     remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
+                //     //remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart',30);
+                // }
+                
+            }
+
+
+
+            
+           
         }
     }
+
+
+   
+
+    
+    // function wpblog_specific_product($purchaseable_product_wpblog, $product) {
+    // return ($product->id == specific_product_id (512) ? false : $purchaseable_product_wpblog);
+    // }
+    
+
 
     // Added custom button
     public static function addCustomButton()
@@ -244,12 +275,9 @@ class SaleBoosterHandler
 
         $_expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
         $_expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
-        date_default_timezone_set('Asia/Dhaka');
-        $curreent_time = date('m/d/Y h:i A') . "<br/>";
-        $date = date_create($_expire_datetime);
-        $expire_datetime = date_format($date, 'm/d/Y h:i A');
-
-        if ($curreent_time <= $expire_datetime) {
+        $curreent_time =  date('m/d/Y H:i', current_time('timestamp', 0));
+       
+        if ($curreent_time <= $_expire_datetime) {
             if ($_expire_date_layout == "bottom" || $_expire_date_layout == "both") {
                 echo "<div class='_sale-booster-discoun-timer' style='margin-top:20px'> 
                     <div class='_alert-text'> " . $_alert_text . "</div> 
@@ -264,16 +292,13 @@ class SaleBoosterHandler
     {
         $_expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
         $_expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
-        date_default_timezone_set('Asia/Dhaka');
-        $curreent_time = date('m/d/Y h:i A');
-        $date = date_create($_expire_datetime);
-        $expire_datetime = date_format($date, 'm/d/Y h:i A');
-
+        $curreent_time = date('m/d/Y H:i', current_time('timestamp', 0));
+         
         wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
-            'dateTime' => $expire_datetime,
+            'dateTime' => $_expire_datetime,
         ));
 
-        if ($curreent_time <= $expire_datetime) {
+        if ($curreent_time <= $_expire_datetime) {
             if ($_expire_date_layout == "top" || $_expire_date_layout == "both") {
                 echo "<div id='_sale-booster-countdown-top' class='_sale-booster-countdown'></div>";
             }
