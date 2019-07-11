@@ -16,8 +16,11 @@ function CountDownTimer(date, countdown) {
                countDownExpires.forEach(countDownExpire => {
                countDownExpire.style.display = "none"
             });  
-            document.getElementsByClassName('_sale-booster-discoun-timer')[0].style.display = 'none';
-          return;
+            var discountTimerHitsClass = document.getElementsByClassName('_sale-booster-discount-timer')[0];
+            if( discountTimerHitsClass){
+               discountTimerHitsClass.style.display = 'none';
+            }
+           return;
          }
          var days = Math.floor(distance / _day);
          var hours = Math.floor((distance % _day) / _hour);
@@ -26,7 +29,10 @@ function CountDownTimer(date, countdown) {
 
          let countDownViews = document.querySelectorAll(countdown);
             countDownViews.forEach(countDownView => {
-            countDownView.innerHTML = days + "days " + hours + "hrs " + minutes + "mins " + seconds + "secs";
+            countDownView.innerHTML = "<span class='_sale-discount-time'> " +days+ " </span><span class='_sale-discount-units'>days : </span> " + 
+            "<span class='_sale-discount-time'> " +hours+" </span><span class='_sale-discount-units'>hrs : </span> " + 
+            "<span class='_sale-discount-time'> " +minutes+ " </span><span class='_sale-discount-units'>mins : </span> " +
+            "<span class='_sale-discount-time'> " +seconds + " </span><span class='_sale-discount-units'>secs</span>";
          });
       }
 

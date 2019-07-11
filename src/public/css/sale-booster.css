@@ -3,19 +3,45 @@
     color: #9C9C9C;
 }
 
-#_sale-booster-countdown-bottom {
+/* #_sale-booster-countdown-bottom {
     font-size: 20px;
-}
+} */
 
 #_sale-booster-countdown-top{
     display: block;
-    padding: 15px;
-    margin-bottom: 15px;
-    font-size: 20px;
+    padding: 10px;
     background: #B751CC;
     color: #fff;
     font-weight: normal;
+    top: 0;
+    position: fixed;
+    /* bottom: 0; */
+    right: 0;
+    left: 0;
+    z-index: 99999999;
 }
+
+/* ._sale-booster-countdown-top-container{
+    width: 950px;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.text{
+  width: 66.666666666667%;
+    font-size: 24px;
+}
+
+
+._sale-booster-countdown {
+    width: 33.333333333333%;
+} */
+
+/* #_sale-booster-countdown-top {
+    
+} */
 
 
 ._sale-booster-hits {
@@ -24,3 +50,14 @@
     margin-top: 4px;
     font-size: 16px;
 }
+
+._sale-discount-time{
+    font-size: 25px;
+}
+
+._sale-discount-units{
+    font-size: 18px;
+    text-transform: lowercase;
+}
+
+

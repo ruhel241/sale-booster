@@ -206,67 +206,70 @@ class SaleBoosterHandler
         }
     }
 
-    // remove cart button
-    public static function removeCartButton()
+    // remove single cart button
+    public static function removeSingleCartButton()
     {   global $product;
-
         $remove_cart_button = get_post_meta($product->id, '_sale_booster_alter_cart_button', true);
         if ($remove_cart_button == 'remove_button' || $remove_cart_button == 'inquire_us') {
             if(is_product()){
-                var_dump($product->id);
-                remove_action('woocommerce_simple_add_to_cart', 'woocommerce_simple_add_to_cart', 30);
+                remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
             }
-
-
-
-            if(is_shop()){
-               
-                // if($product->id == 12){
-                //     echo "ruhel"; 
-                //     // var_dump($product->id);
-                //     remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10 );
-                //     //remove_action( 'woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart',30);
-                // }
-                
-            }
-
-
-
-            
-           
         }
+        
+    }
+
+    public static function alterShopCartButton( $button, $product ) {
+        if ( is_shop() || is_product_category() ) {
+            $alter_cart_button = get_post_meta($product->id, '_sale_booster_alter_cart_button', true);
+            $cart_ButtonText = get_post_meta(get_the_ID(), '_sale_booster_inquire_text', true);
+            $cart_ButtonTextLink = get_post_meta(get_the_ID(), '_sale_booster_inquire_link', true);
+           
+            if($alter_cart_button == 'remove_button'){
+                    $button = "";
+            } else if($alter_cart_button == 'inquire_us'){
+                    $button = "<a href='" . $cart_ButtonTextLink . "' class='button' target='_blank'>" . $cart_ButtonText . "</a>";
+            } else {
+                "";
+            }
+          return $button;
+        }
+        
+        return $button;
     }
 
 
-   
-
-    
-    // function wpblog_specific_product($purchaseable_product_wpblog, $product) {
-    // return ($product->id == specific_product_id (512) ? false : $purchaseable_product_wpblog);
-    // }
-    
-
-
     // Added custom button
-    public static function addCustomButton()
-    {
+    public static function addSingleCustomButton()
+    {   
+        $alter_cart_button = get_post_meta(get_the_ID(), '_sale_booster_alter_cart_button', true);
         $cart_ButtonText = get_post_meta(get_the_ID(), '_sale_booster_inquire_text', true);
         $cart_ButtonTextLink = get_post_meta(get_the_ID(), '_sale_booster_inquire_link', true);
-        $alter_cart_button = get_post_meta(get_the_ID(), '_sale_booster_alter_cart_button', true);
-
+       
         if ($alter_cart_button == 'inquire_us') {
             echo "<a href='" . $cart_ButtonTextLink . "' class='single_add_to_cart_button button alt' target='_blank'>" . $cart_ButtonText . "</a>";
         }
     }
 
     //hide price
-    public static function hidePrice()
+    public static function hideSinglePrice()
     {
         $hidePrice = get_post_meta(get_the_ID(), '_sale_booster_hide_price', true);
         if ($hidePrice == "yes") {
             remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
         }
     }
+
+    // Shop Price Hide 
+    public static function hideShopPrice( $price, $product ) {
+        if ( is_shop() || is_product_category() ) {
+            $hidePrice = get_post_meta($product->id, '_sale_booster_hide_price', true);
+            if($hidePrice == 'yes'){
+                return '';
+            }
+        }
+        return $price;
+    }
+    
 
     public static function discoundTimer()
     {
@@ -277,9 +280,9 @@ class SaleBoosterHandler
         $_expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
         $curreent_time =  date('m/d/Y H:i', current_time('timestamp', 0));
        
-        if ($curreent_time <= $_expire_datetime) {
+        if ($curreent_time < $_expire_datetime) {
             if ($_expire_date_layout == "bottom" || $_expire_date_layout == "both") {
-                echo "<div class='_sale-booster-discoun-timer' style='margin-top:20px'> 
+                echo "<div class='_sale-booster-discount-timer' style='margin-top:20px'> 
                     <div class='_alert-text'> " . $_alert_text . "</div> 
                     <div id='_sale-booster-countdown-bottom' class='_sale-booster-countdown'></div>
                     <div class='_sale-booster-hits'> " . $subtitle . " </div>
@@ -292,15 +295,18 @@ class SaleBoosterHandler
     {
         $_expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
         $_expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
-        $curreent_time = date('m/d/Y H:i', current_time('timestamp', 0));
+         $curreent_time = date('m/d/Y H:i', current_time('timestamp', 0));
          
         wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
             'dateTime' => $_expire_datetime,
         ));
 
-        if ($curreent_time <= $_expire_datetime) {
+        if ($curreent_time < $_expire_datetime) {
             if ($_expire_date_layout == "top" || $_expire_date_layout == "both") {
-                echo "<div id='_sale-booster-countdown-top' class='_sale-booster-countdown'></div>";
+             
+                   
+                          echo"<div class='_sale-booster-countdown' id='_sale-booster-countdown-top'></div>";
+                      
             }
         }
     }
