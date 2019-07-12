@@ -1,40 +1,42 @@
-CountDownTimer(sale_booster_countdown_vars.dateTime, "._sale-booster-countdown");
-function CountDownTimer(date, countdown) {
-     var end = new Date(date);
-     var _second = 1000;
-     var _minute = _second * 60;
-     var _hour = _minute * 60;
-     var _day = _hour * 24;
-     var timer;
+(function($) {
+   CountDownTimer(sale_booster_countdown_vars.dateTime, "._sale-booster-countdown");
+   function CountDownTimer(date, countdown) {
+      var end = new Date(date);
+      var _second = 1000;
+      var _minute = _second * 60;
+      var _hour = _minute * 60;
+      var _day = _hour * 24;
+      var timer;
 
-     function showRemaining() {
-         var now = new Date();
-         var distance = end - now;
-         if (distance < 0) {
-            clearInterval(timer);
-            let countDownExpires = document.querySelectorAll(countdown);
-               countDownExpires.forEach(countDownExpire => {
-               countDownExpire.style.display = "none"
-            });  
-            var discountTimerHitsClass = document.getElementsByClassName('_sale-booster-discount-timer')[0];
-            if( discountTimerHitsClass){
-               discountTimerHitsClass.style.display = 'none';
+      function showRemaining() {
+            var now = new Date();
+            var distance = end - now;
+            if (distance < 0) {
+               clearInterval(timer);
+               var countDownTopClass = $('._sale-booster-countdown-top');
+               var countDownBottomHitsClass = $('._sale-booster-countdown-bottom');
+               if( countDownTopClass || countDownBottomHitsClass ){
+                  countDownTopClass.hide();
+                  countDownBottomHitsClass.hide();
+               }
+               return;
             }
-           return;
-         }
          var days = Math.floor(distance / _day);
          var hours = Math.floor((distance % _day) / _hour);
          var minutes = Math.floor((distance % _hour) / _minute);
          var seconds = Math.floor((distance % _minute) / _second);
 
-         let countDownViews = document.querySelectorAll(countdown);
-            countDownViews.forEach(countDownView => {
-            countDownView.innerHTML = "<span class='_sale-discount-time'> " +days+ " </span><span class='_sale-discount-units'>days : </span> " + 
+         var countDownViews = $(countdown);
+          countDownViews.html("<span class='_sale-discount-time'> " +days+ " </span><span class='_sale-discount-units'>days : </span> " + 
             "<span class='_sale-discount-time'> " +hours+" </span><span class='_sale-discount-units'>hrs : </span> " + 
             "<span class='_sale-discount-time'> " +minutes+ " </span><span class='_sale-discount-units'>mins : </span> " +
-            "<span class='_sale-discount-time'> " +seconds + " </span><span class='_sale-discount-units'>secs</span>";
-         });
-      }
+            "<span class='_sale-discount-time'> " +seconds + " </span><span class='_sale-discount-units'>secs</span>");
+         }
+         timer = setInterval(showRemaining, 1000);
+         $('body').prepend( $('._sale-booster-countdown-top') );
 
-     timer = setInterval(showRemaining, 1000);
- }
+
+     
+   }
+})( jQuery );
+

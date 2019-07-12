@@ -282,11 +282,11 @@ class SaleBoosterHandler
        
         if ($curreent_time < $_expire_datetime) {
             if ($_expire_date_layout == "bottom" || $_expire_date_layout == "both") {
-                echo "<div class='_sale-booster-discount-timer' style='margin-top:20px'> 
-                    <div class='_alert-text'> " . $_alert_text . "</div> 
-                    <div id='_sale-booster-countdown-bottom' class='_sale-booster-countdown'></div>
-                    <div class='_sale-booster-hits'> " . $subtitle . " </div>
-                </div>";
+                echo "<div class='_sale-booster-countdown-bottom' style='margin-top:20px'> 
+                        <div class='_alert-text'> " . $_alert_text . "</div> 
+                        <div id='_sale-booster-countdown-bottom' class='_sale-booster-countdown'></div>
+                        <div class='_sale-booster-hits'> " . $subtitle . " </div>
+                    </div>";
             }
         }
     }
@@ -303,10 +303,12 @@ class SaleBoosterHandler
 
         if ($curreent_time < $_expire_datetime) {
             if ($_expire_date_layout == "top" || $_expire_date_layout == "both") {
-             
-                   
-                          echo"<div class='_sale-booster-countdown' id='_sale-booster-countdown-top'></div>";
-                      
+             echo "<div class='_sale-booster-countdown-top'>
+                        <div class='_sale-booster-countdown-row'>
+                            <div class='title'>Prices Go Up When The Timer Hits Zero.</div>
+                            <div class='_sale-booster-countdown' id=''></div>
+                        </div>
+                    </div>";
             }
         }
     }

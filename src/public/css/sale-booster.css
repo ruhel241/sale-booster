@@ -7,7 +7,7 @@
     font-size: 20px;
 } */
 
-#_sale-booster-countdown-top{
+._sale-booster-countdown-top{
     display: block;
     padding: 10px;
     background: #B751CC;
@@ -21,28 +21,18 @@
     z-index: 99999999;
 }
 
-/* ._sale-booster-countdown-top-container{
+._sale-booster-countdown-row{
     width: 950px;
-    margin-right: auto;
-    margin-left: auto;
     display: flex;
     justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
 }
 
-.text{
-  width: 66.666666666667%;
-    font-size: 24px;
+._sale-booster-countdown-row > .title {
+    font-size: 20px;
 }
-
-
-._sale-booster-countdown {
-    width: 33.333333333333%;
-} */
-
-/* #_sale-booster-countdown-top {
-    
-} */
-
 
 ._sale-booster-hits {
     color: #9C9C99;
