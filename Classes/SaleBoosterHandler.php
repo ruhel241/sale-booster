@@ -15,8 +15,6 @@ class SaleBoosterHandler
         wp_enqueue_script("admin-sale-booster-datepicker", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster-datepicker.full.min.js", array('jquery'), '1.0.0', true);
         wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'), '1.0.0', true);
 
-       
-
         $product_data_tabs['_sale_booster'] = array(
             'label'  => esc_html__('Sale Booster', 'sale_booster'),
             'target' => 'sale_booster_product_data',
@@ -121,9 +119,7 @@ class SaleBoosterHandler
             woocommerce_wp_text_input(
                 array(
                     'id'          => '_sale_booster_expire_date_time',
-                    //'type'        => 'datetime-local',
                     'label'       => __('Coupon Expire Date', 'sale_booster'),
-                    //'placeholder' => '07/15/2015 12:30 PM',
                     'description' => __('ex: (m/d/yyyy 00:00)', 'sale_booster')
                 )
             );
@@ -194,9 +190,9 @@ class SaleBoosterHandler
             update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_datetime));
         }
 
-        $_expaire_datelayout = $_POST['_Sale_booster_expaire_date_layout'];
-        if (!empty($_expaire_datelayout)) {
-            update_post_meta($post_id, '_Sale_booster_expaire_date_layout', esc_html($_expaire_datelayout));
+        $expaire_datelayout = $_POST['_Sale_booster_expaire_date_layout'];
+        if (!empty($expaire_datelayout)) {
+            update_post_meta($post_id, '_Sale_booster_expaire_date_layout', esc_html($expaire_datelayout));
         }
 
         // Save Hidden field
@@ -210,6 +206,7 @@ class SaleBoosterHandler
     public static function removeSingleCartButton()
     {   global $product;
         $remove_cart_button = get_post_meta($product->id, '_sale_booster_alter_cart_button', true);
+       
         if ($remove_cart_button == 'remove_button' || $remove_cart_button == 'inquire_us') {
             if(is_product()){
                 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
@@ -225,15 +222,12 @@ class SaleBoosterHandler
             $cart_ButtonTextLink = get_post_meta(get_the_ID(), '_sale_booster_inquire_link', true);
            
             if($alter_cart_button == 'remove_button'){
-                    $button = "";
-            } else if($alter_cart_button == 'inquire_us'){
-                    $button = "<a href='" . $cart_ButtonTextLink . "' class='button' target='_blank'>" . $cart_ButtonText . "</a>";
-            } else {
-                "";
-            }
-          return $button;
+                $button = "";
+            } 
+            if($alter_cart_button == 'inquire_us'){
+                $button = "<a href='" . $cart_ButtonTextLink . "' class='button' target='_blank'>" . $cart_ButtonText . "</a>";
+            } 
         }
-        
         return $button;
     }
 
@@ -270,47 +264,51 @@ class SaleBoosterHandler
         return $price;
     }
     
-
+    // Bottom discound timer
     public static function discoundTimer()
     {
-        $_alert_text = get_post_meta(get_the_ID(), '_sale_booster_alert_text', true);
+        $alert_text = get_post_meta(get_the_ID(), '_sale_booster_alert_text', true);
         $subtitle = get_post_meta(get_the_ID(), '_sale_booster_subtitle', true);
 
-        $_expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
-        $_expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
+        $expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
+        $expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
         $curreent_time =  date('m/d/Y H:i', current_time('timestamp', 0));
        
-        if ($curreent_time < $_expire_datetime) {
-            if ($_expire_date_layout == "bottom" || $_expire_date_layout == "both") {
-                echo "<div class='_sale-booster-countdown-bottom' style='margin-top:20px'> 
-                        <div class='_alert-text'> " . $_alert_text . "</div> 
-                        <div id='_sale-booster-countdown-bottom' class='_sale-booster-countdown'></div>
-                        <div class='_sale-booster-hits'> " . $subtitle . " </div>
-                    </div>";
-            }
-        }
+        if ($curreent_time < $expire_datetime) :
+            if ($expire_date_layout == "bottom" || $expire_date_layout == "both") :
+                ?>
+                    <div class="_sale-booster-countdown-bottom" style="margin-top:20px"> 
+                        <div class="_alert-text"> <?php echo $alert_text; ?> </div> 
+                        <div class="_sale-booster-countdown"></div>
+                        <div class="_sale-booster-hits"> <?php echo $subtitle; ?> </div>
+                    </div>
+                <?php
+            endif;
+        endif;
     }
-
+    // Top Discound Timer 
     public static function discoundTimerTop()
     {
-        $_expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
-        $_expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
-         $curreent_time = date('m/d/Y H:i', current_time('timestamp', 0));
+        $expire_datetime = get_post_meta(get_the_ID(), '_sale_booster_expire_date_time', true);
+        $expire_date_layout = get_post_meta(get_the_ID(), '_Sale_booster_expaire_date_layout', true);
+        $curreent_time = date('m/d/Y H:i', current_time('timestamp', 0));
          
         wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
-            'dateTime' => $_expire_datetime,
+            'dateTime' => $expire_datetime,
         ));
 
-        if ($curreent_time < $_expire_datetime) {
-            if ($_expire_date_layout == "top" || $_expire_date_layout == "both") {
-             echo "<div class='_sale-booster-countdown-top' id='_sale-booster-countdown-top'>
-                        <div class='_sale-booster-countdown-row'>
-                            <div class='title'>Prices Go Up When The Timer Hits Zero.</div>
-                            <div class='_sale-booster-countdown' id=''></div>
+        if ($curreent_time < $expire_datetime) :
+            if ($expire_date_layout == "top" || $expire_date_layout == "both") :
+                ?>
+                    <div class="_sale-booster-countdown-top">
+                        <div class="_sale-booster-countdown-row">
+                            <div class="title">Prices Go Up When The Timer Hits Zero.</div>
+                            <div class="_sale-booster-countdown"></div>
                         </div>
-                    </div>";
-            }
-        }
+                    </div>
+                <?php
+            endif;
+        endif;
     }
 
 }
