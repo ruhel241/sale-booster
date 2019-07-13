@@ -3,9 +3,6 @@
     color: #9C9C9C;
 }
 
-/* #_sale-booster-countdown-bottom {
-    font-size: 20px;
-} */
 
 ._sale-booster-countdown-top{
     display: block;
@@ -13,12 +10,11 @@
     background: #B751CC;
     color: #fff;
     font-weight: normal;
-    top: 0;
-    position: fixed;
-    /* bottom: 0; */
-    right: 0;
+    /* top: 0;
+    position: fixed; */
+    /* right: 0;
     left: 0;
-    z-index: 99999999;
+    z-index: 99999999; */
 }
 
 ._sale-booster-countdown-row{

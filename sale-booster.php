@@ -59,7 +59,6 @@ class NINJASaleBooster
         //woocommerce_before_single_product
         add_action( 'wp_footer', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
        
-       
         // enqueue script 
         add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
     }
@@ -82,28 +81,3 @@ add_action('plugins_loaded', function(){
     $ninjaSaleBooster = new NINJASaleBooster();
     $ninjaSaleBooster->boot();
 }); 
-
-
-
-// Replacing the single product button add to cart by a custom button for a specific product category
-
-function replace_single_add_to_cart_button() {
-    global $product;
-
-    // Only for product category ID 64
-    if( has_term( '20', 'product_cat', $product->get_id() ) ){
-
-        // For variable product types (keeping attribute select fields)
-        if( $product->is_type( 'variable' ) ) {
-            remove_action( 'woocommerce_single_variation', 'woocommerce_single_variation_add_to_cart_button', 20 );
-            add_action( 'woocommerce_single_variation', 'custom_product_button', 20 );
-        }
-        // For all other product types
-        else {
-            remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
-            //add_action( 'woocommerce_single_product_summary', 'custom_product_button', 30 );
-        }
-    }
-}
-
-add_action( 'woocommerce_single_product_summary', 'replace_single_add_to_cart_button', 1 );
