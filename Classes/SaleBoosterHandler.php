@@ -303,7 +303,7 @@ class SaleBoosterHandler
 
         if ($curreent_time < $_expire_datetime) {
             if ($_expire_date_layout == "top" || $_expire_date_layout == "both") {
-             echo "<div class='_sale-booster-countdown-top'>
+             echo "<div class='_sale-booster-countdown-top' id='_sale-booster-countdown-top'>
                         <div class='_sale-booster-countdown-row'>
                             <div class='title'>Prices Go Up When The Timer Hits Zero.</div>
                             <div class='_sale-booster-countdown' id=''></div>

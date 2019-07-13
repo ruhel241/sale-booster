@@ -65,7 +65,7 @@ class NINJASaleBooster
 
     public function enqueueScripts(){
         if(is_singular('product')) {
-            wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'),'1.0.0',true);
+            wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'),'1.0.0', true);
             wp_enqueue_style("sale-booster-css", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/css/sale-booster.css", false);
         }
     }

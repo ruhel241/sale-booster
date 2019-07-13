@@ -32,11 +32,29 @@
             "<span class='_sale-discount-time'> " +minutes+ " </span><span class='_sale-discount-units'>mins : </span> " +
             "<span class='_sale-discount-time'> " +seconds + " </span><span class='_sale-discount-units'>secs</span>");
          }
+         
          timer = setInterval(showRemaining, 1000);
-         $('body').prepend( $('._sale-booster-countdown-top') );
-
-
-     
+        
+         var topClass = $('._sale-booster-countdown-top');
+         countdownTopDivClass(topClass);
    }
+
+   function countdownTopDivClass(topClass){
+      if(topClass){
+         $('body').prepend( $(topClass) );
+         $(window).scroll(function () {
+            if ($(window).scrollTop() > 0) {
+               topClass.addClass('fixed');
+            }
+            if ($(window).scrollTop() < 1) {
+               topClass.removeClass('fixed');
+            }
+         });
+      }
+   }
+      
+   
 })( jQuery );
+
+
 
