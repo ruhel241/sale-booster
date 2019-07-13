@@ -223,8 +223,7 @@ class SaleBoosterHandler
            
             if($alter_cart_button == 'remove_button'){
                 $button = "";
-            } 
-            if($alter_cart_button == 'inquire_us'){
+            } else if($alter_cart_button == 'inquire_us'){
                 $button = "<a href='" . $cart_ButtonTextLink . "' class='button' target='_blank'>" . $cart_ButtonText . "</a>";
             } 
         }

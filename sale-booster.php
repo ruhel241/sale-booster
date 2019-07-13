@@ -23,8 +23,10 @@ include "load.php";
 class NINJASaleBooster 
 {
     public function boot()
-    {
-        $this->adminHooks();
+    {   
+        if (is_admin()) {
+            $this->adminHooks();
+        }
         $this->loadTextDomain();
         $this->publicHooks();
        
