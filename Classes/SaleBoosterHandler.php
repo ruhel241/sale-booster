@@ -149,18 +149,18 @@ class SaleBoosterHandler
     {
 
         // Save Select
-        $alter_cart_button = $_POST['_sale_booster_alter_cart_button'];
-        if (!empty($alter_cart_button)) {
+        $alter_cart_button = sanitize_text_field($_POST['_sale_booster_alter_cart_button']);
+        if (isset($alter_cart_button)) {
             update_post_meta($post_id, '_sale_booster_alter_cart_button', esc_attr($alter_cart_button));
         }
         // Save inquire Text Field
-        $inquire_text = $_POST['_sale_booster_inquire_text'];
+        $inquire_text = sanitize_text_field($_POST['_sale_booster_inquire_text']);
         if (!add_post_meta($post_id, '_sale_booster_inquire_text', 'Buy Now', true)) {
             update_post_meta($post_id, '_sale_booster_inquire_text', esc_attr($inquire_text));
         }
 
         // inquire link
-        $inquire_us_link = $_POST['_sale_booster_inquire_link'];
+        $inquire_us_link = sanitize_text_field($_POST['_sale_booster_inquire_link']);
         if (isset($inquire_us_link)) {
             update_post_meta($post_id, '_sale_booster_inquire_link', esc_attr($inquire_us_link));
         }
@@ -174,24 +174,24 @@ class SaleBoosterHandler
         update_post_meta($post_id, '_sale_booster_discound_timer', $discound_timer);
 
         // Save Alert Text Field
-        $alert_text = $_POST['_sale_booster_alert_text'];
+        $alert_text = sanitize_text_field($_POST['_sale_booster_alert_text']);
         if (isset($alert_text)) {
             update_post_meta($post_id, '_sale_booster_alert_text', esc_attr($alert_text));
         }
 
-        $subtitle = $_POST['_sale_booster_subtitle'];
+        $subtitle = sanitize_text_field($_POST['_sale_booster_subtitle']);
         if (isset($subtitle)) {
             update_post_meta($post_id, '_sale_booster_subtitle', esc_attr($subtitle));
         }
 
         // Save expire date
-        $expire_datetime = $_POST['_sale_booster_expire_date_time'];
+        $expire_datetime = sanitize_text_field($_POST['_sale_booster_expire_date_time']);
         if (isset($expire_datetime)) {
             update_post_meta($post_id, '_sale_booster_expire_date_time', esc_html($expire_datetime));
         }
 
-        $expaire_datelayout = $_POST['_Sale_booster_expaire_date_layout'];
-        if (!empty($expaire_datelayout)) {
+        $expaire_datelayout = sanitize_text_field($_POST['_Sale_booster_expaire_date_layout']);
+        if (isset($expaire_datelayout)) {
             update_post_meta($post_id, '_Sale_booster_expaire_date_layout', esc_html($expaire_datelayout));
         }
 
