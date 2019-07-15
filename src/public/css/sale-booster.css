@@ -10,15 +10,10 @@
     background: #B751CC;
     color: #fff;
     font-weight: normal;
-    /* top: 0;
-    position: fixed; */
-    /* right: 0;
-    left: 0;
-    z-index: 99999999; */
 }
 
 ._sale-booster-countdown-row{
-    width: 950px;
+    width: 50%;
     display: flex;
     justify-content: space-between;
     margin-left: auto;
@@ -53,3 +48,7 @@
     width: 100%;
     z-index: 999999999;
 }
+
+
+
+
