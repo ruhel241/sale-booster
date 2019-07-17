@@ -16,7 +16,7 @@ Domain Path: /languages
 
 define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
 define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
-define("SALE_BOOSTER_PLUGIN_DIR_VERSION", plugin_dir_path(__FILE__));
+define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '1.0.0');
 
 include "load.php";
 
@@ -67,7 +67,7 @@ class NINJASaleBooster
 
     public function enqueueScripts(){
         if(is_singular('product')) {
-            wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'),'1.0.0', true);
+            wp_enqueue_script("sale-booster-js", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/js/sale-booster.js", array('jquery'), SALE_BOOSTER_PLUGIN_DIR_VERSION, true);
             wp_enqueue_style("sale-booster-css", SALE_BOOSTER_PLUGIN_DIR_URL."src/public/css/sale-booster.css", false);
         }
     }
