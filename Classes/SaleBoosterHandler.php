@@ -126,7 +126,6 @@ class SaleBoosterHandler
 
             woocommerce_wp_radio(
                 array(
-                    //'name' => '_price_per_word_character',
                     'label'   => __('Expaire Date Layout', 'woocommerce-price-per-word'),
                     'id'      => '_Sale_booster_expaire_date_layout',
                     'value'   => !empty($layoutSelected) ? $layoutSelected : "both",

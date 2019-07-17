@@ -58,7 +58,7 @@ class NINJASaleBooster
         // Discound timer
         add_action('woocommerce_share', array('SaleBooster\Classes\SaleBoosterHandler', 'discoundTimer') );
       
-        //woocommerce_before_single_product
+        // Discound Timer Topbar
         add_action( 'wp_footer', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
        
         // enqueue script 
