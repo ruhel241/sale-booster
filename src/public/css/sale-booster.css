@@ -21,8 +21,9 @@
     align-items: center;
 }
 
-._sale-booster-countdown-row > .title {
+._sale-booster-countdown-row > .countdown-top-title {
     font-size: 20px;
+    margin: 0;
 }
 
 ._sale-booster-hits {
@@ -30,6 +31,7 @@
     font-weight: 300;
     margin-top: 4px;
     font-size: 16px;
+    margin-bottom: 0; 
 }
 
 ._sale-discount-time{

@@ -48,8 +48,6 @@ class NINJASaleBooster
         // remove cart button single page
         add_action( 'woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'removeSingleCartButton'), 1 );
         // custom button add
-        add_action( 'woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'addSingleCustomButton'), 30 ); 
-        
         // shop Hide Price
         add_filter( 'woocommerce_get_price_html', array('SaleBooster\Classes\SaleBoosterHandler', 'hideShopPrice'), 10, 2 );
         // Single hide price

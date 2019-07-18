@@ -5,9 +5,9 @@
 input#_sale_booster_expire_date_time {
     width: 200px;
 }
-._Sale_booster_expaire_date_layout_field > ul {
+._sale_booster_expaire_date_layout_field > ul {
     display: flex !important;
 }
-._Sale_booster_expaire_date_layout_field li {
+._sale_booster_expaire_date_layout_field li {
     margin-right: 10px !important;
 }
