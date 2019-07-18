@@ -43,10 +43,10 @@
       if(topClass){
          $('body').prepend( $(topClass) );
          $(window).scroll(function () {
-            if ($(window).scrollTop() > 30) {
+            if ($(window).scrollTop() > 0) {
                topClass.addClass('fixed');
             }
-            if ($(window).scrollTop() < 31) {
+            if ($(window).scrollTop() < 1) {
                topClass.removeClass('fixed');
             }
          });
