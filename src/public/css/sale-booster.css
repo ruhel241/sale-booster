@@ -4,52 +4,84 @@
 }
 
 
+
+/* countdown top */
 ._sale-booster-countdown-top{
-    display: block;
-    padding: 10px;
-    background: #B751CC;
+    display: flex;
+    height: 50px;
+    width: 100%;
+    background: linear-gradient(to right, #7901ff, #ff185f);
     color: #fff;
     font-weight: normal;
 }
-
-._sale-booster-countdown-row{
-    width: 50%;
+._sale-booster-countdown-top > ._sale-booster-countdown-row{
+    width: 1140px;
     display: flex;
     justify-content: space-between;
     margin-left: auto;
     margin-right: auto;
     align-items: center;
 }
-
-._sale-booster-countdown-row > .countdown-top-title {
-    font-size: 20px;
+._sale-booster-countdown-top ._sale-discount-countdown-timer {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 20px;
+    margin-right: 3px; 
+}
+._sale-booster-countdown-top ._sale-booster-countdown-row > .countdown-top-title {
+    font-size: 18px;
     margin: 0;
 }
+._sale-booster-countdown-top ._sale-discount-time{
+    font-size: 18px;
+}
+._sale-booster-countdown-top ._sale-discount-units{
+    font-size: 18px;
+    text-transform: lowercase;
+} 
+._sale-booster-countdown-top.fixed {
+	position: fixed;
+	top: 0;
+    width: 100%;
+    z-index: 999999999;
+}
 
-._sale-booster-hits {
-    color: #9C9C99;
+
+
+/* countdown bottom */
+._sale-booster-countdown-bottom{
+    display: inline-block;
+}
+._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer {
+    text-align: center;
+    width: 70px;
+    background: #9B4DCA;
+    color: #ffff;
+    display: inline-block;
+    margin-right: 10px;
+    padding: 10px;
+    
+}
+
+._sale-booster-countdown-bottom ._sale-discount-time {
+   font-size: 25px;
+   display: block;
+   line-height: 1;
+   font-weight: 500;
+}
+
+
+._sale-booster-countdown-bottom ._sale-discount-units{
+    font-weight: 400;
+}
+
+._sale-booster-countdown-bottom ._sale-booster-hits {
+    color: #9a07d7;
     font-weight: 300;
     margin-top: 4px;
     font-size: 16px;
     margin-bottom: 0; 
 }
 
-._sale-discount-time{
-    font-size: 25px;
-}
-
-._sale-discount-units{
-    font-size: 18px;
-    text-transform: lowercase;
-}
-
-
-.fixed {
-	position: fixed;
-	top: 0;
-    width: 100%;
-    z-index: 999999999;
-}
 
 
 

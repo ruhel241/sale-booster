@@ -27,10 +27,23 @@
          var seconds = Math.floor((distance % _minute) / _second);
 
          var countDownViews = $(countdown);
-          countDownViews.html("<span class='_sale-discount-time'> " +days+ " </span><span class='_sale-discount-units'>days : </span> " + 
-            "<span class='_sale-discount-time'> " +hours+" </span><span class='_sale-discount-units'>hrs : </span> " + 
-            "<span class='_sale-discount-time'> " +minutes+ " </span><span class='_sale-discount-units'>mins : </span> " +
-            "<span class='_sale-discount-time'> " +seconds + " </span><span class='_sale-discount-units'>secs</span>");
+          countDownViews.html(
+            `<span class='_sale-discount-countdown-timer'>
+               <span class='_sale-discount-time'>${days}</span>
+               <span class='_sale-discount-units'>days</span>
+            </span>
+            <span class='_sale-discount-countdown-timer'>
+               <span class='_sale-discount-time'>${hours}</span>
+               <span class='_sale-discount-units'>hrs</span>
+            </span>
+            <span class='_sale-discount-countdown-timer'>
+               <span class='_sale-discount-time'>${minutes}</span>
+               <span class='_sale-discount-units'>mins</span>
+            </span>
+            <span class='_sale-discount-countdown-timer'>
+               <span class='_sale-discount-time'>${seconds}</span>
+               <span class='_sale-discount-units'>secs</span>
+            </span>`);
          }
          
          timer = setInterval(showRemaining, 1000);
