@@ -1,10 +1,3 @@
-._alert-text{
-    margin-bottom: 10px;
-    color: #9C9C9C;
-}
-
-
-
 /* countdown top */
 ._sale-booster-countdown-top{
     display: flex;
@@ -25,6 +18,7 @@
 ._sale-booster-countdown-top ._sale-booster-countdown-row > .countdown-top-title {
     font-size: 18px;
     margin: 10px 0 10px 0;
+    font-family: Open Sans;
 }
 ._sale-booster-countdown-top ._sale-booster-countdown {
     display: flex;
@@ -36,9 +30,11 @@
 }
 ._sale-booster-countdown-top ._sale-discount-time{
     font-size: 20px;
+    font-family: Open Sans;
 }
 ._sale-booster-countdown-top ._sale-discount-units{
     font-size: 18px;
+    font-family: Open Sans;
     text-transform: lowercase;
 } 
 ._sale-booster-countdown-top.fixed {
@@ -48,14 +44,27 @@
     z-index: 999999999;
 }
 
-
+@media (max-width: 1024px){
+    ._sale-booster-countdown-top > ._sale-booster-countdown-row{
+        justify-content: space-between;
+        margin-left: 20px;
+        margin-right: 20px;
+    } 
+}
+@media (max-width: 767px) {
+    ._sale-booster-countdown-top > ._sale-booster-countdown-row{
+        justify-content: center;
+        margin: 0;
+        text-align: center;
+    }
+}
 
 /* countdown bottom */
 ._sale-booster-countdown-bottom{
     display: flex;
     flex-direction: column;
 }
-._sale-booster-countdown-bottom ._sale-booster-countdown{
+._sale-booster-countdown-bottom ._sale-booster-countdown {
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: 10px;
@@ -70,30 +79,31 @@
     align-items: center;
     padding: 10px 15px 5px 15px;
     min-width: 61px;
+    font-family: Open Sans;
 }
 
 ._sale-booster-countdown-bottom ._sale-discount-time {
     font-size: 25px;
+    font-family: Open Sans;
     display: block;
     line-height: 1;
-    font-weight: 500;
+    font-weight: 600;
 }
 
 
 ._sale-booster-countdown-bottom ._sale-discount-units{
-    /* font-weight: 400; */
     margin-top: -4px;
+    font-family: Open Sans;
 }
 
 ._sale-booster-countdown-bottom ._sale-booster-hits {
     color: #9a07d7;
-    font-weight: 300;
+    font-weight: 600;
     margin-top: 4px;
     font-size: 16px;
     margin-bottom: 0; 
+    font-family: Open Sans;
 }
-
-
 
 
 
