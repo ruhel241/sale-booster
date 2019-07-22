@@ -27,10 +27,10 @@ class SaleBoosterHandler
     public static function createDataFields()
     {   
         $layoutSelected = get_post_meta(get_the_ID(), '_sale_booster_expaire_date_layout', true);
-        $discound_timer = get_post_meta(get_the_ID(), '_sale_booster_discound_timer', true);
+        $discount_timer = get_post_meta(get_the_ID(), '_sale_booster_discount_timer', true);
 
-        wp_localize_script('admin-sale-booster', 'sale_booster_discound_timer_vars', array(
-            'discound_timer' => $discound_timer,
+        wp_localize_script('admin-sale-booster', 'sale_booster_discount_timer_vars', array(
+            'discount_timer' => $discount_timer,
         ));
         ?>
             <div id="sale_booster_product_data" class="panel woocommerce_options_panel">
@@ -64,13 +64,13 @@ class SaleBoosterHandler
                     <?php
                         woocommerce_wp_checkbox(
                             array(
-                                'id'          => '_sale_booster_discound_timer',
-                                'label'       => __('Discound Timer', 'sale_booster'),
+                                'id'          => '_sale_booster_discount_timer',
+                                'label'       => __('Discount Timer', 'sale_booster'),
                                 'description' => __('Show / Hide', 'sale_booster'),
                             )
                         );
                     ?> 
-                    <div id="_sale_booster_discoundtimer_showhide">
+                    <div id="_sale_booster_discounttimer_showhide">
                         <?php
                             
                             woocommerce_wp_textarea_input(
@@ -124,9 +124,9 @@ class SaleBoosterHandler
         $hide_price = isset($_POST['_sale_booster_hide_price']) ? 'yes' : 'no';
         update_post_meta($post_id, '_sale_booster_hide_price', $hide_price);
         
-        // save Discound Timer 
-        $discound_timer = isset($_POST['_sale_booster_discound_timer']) ? 'yes' : 'no';
-        update_post_meta($post_id, '_sale_booster_discound_timer', $discound_timer);
+        // save discount Timer 
+        $discount_timer = isset($_POST['_sale_booster_discount_timer']) ? 'yes' : 'no';
+        update_post_meta($post_id, '_sale_booster_discount_timer', $discount_timer);
 
         $note = sanitize_text_field($_POST['_sale_booster_note']);
         if (isset($note)) {
@@ -193,8 +193,8 @@ class SaleBoosterHandler
         return $price;
     }
     
-    // Bottom discound timer
-    public static function discoundTimer()
+    // Bottom discount timer
+    public static function discountTimerBottom()
     {  
         global $product;
         $note = get_post_meta($product->id, '_sale_booster_note', true);
@@ -213,8 +213,8 @@ class SaleBoosterHandler
             endif;
         endif;
     }
-    // Top Discound Timer 
-    public static function discoundTimerTop()
+    // Top discount Timer 
+    public static function discountTimerTop()
     {   
         global $product;
         $note = get_post_meta($product->id, '_sale_booster_note', true);

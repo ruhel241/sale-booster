@@ -1,17 +1,17 @@
 (function($) {
-    // Discound Timer
-    var discoundTimerVars = sale_booster_discound_timer_vars.discound_timer;
-    if(discoundTimerVars === 'yes'){
-        $("#_sale_booster_discoundtimer_showhide").show();
+    // discount Timer
+    var discountTimerVars = sale_booster_discount_timer_vars.discount_timer;
+    if(discountTimerVars === 'yes'){
+        $("#_sale_booster_discounttimer_showhide").show();
     } else {
-        $("#_sale_booster_discoundtimer_showhide").hide();
+        $("#_sale_booster_discounttimer_showhide").hide();
     }
-    $("#_sale_booster_discound_timer").change(function(e){
+    $("#_sale_booster_discount_timer").change(function(e){
         var value = e.target.checked;
         if(value === true){
-            $("#_sale_booster_discoundtimer_showhide").show();
+            $("#_sale_booster_discounttimer_showhide").show();
         } else {
-            $("#_sale_booster_discoundtimer_showhide").hide();
+            $("#_sale_booster_discounttimer_showhide").hide();
         }
     }) 
    

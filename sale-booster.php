@@ -49,11 +49,11 @@ class NINJASaleBooster
         // Single hide price
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'hideSinglePrice'), 1 );
         
-        // Discound timer
-        add_action('woocommerce_share', array('SaleBooster\Classes\SaleBoosterHandler', 'discoundTimer') );
+        // discount timer
+        add_action('woocommerce_share', array('SaleBooster\Classes\SaleBoosterHandler', 'discountTimerBottom') );
       
-        // Discound Timer Topbar
-        add_action( 'wp_footer', array('SaleBooster\Classes\SaleBoosterHandler','discoundTimerTop') );
+        // discount Timer Topbar
+        add_action( 'wp_footer', array('SaleBooster\Classes\SaleBoosterHandler','discountTimerTop') );
        
         // enqueue script 
         add_action('wp_enqueue_scripts', array($this, 'enqueueScripts'));
