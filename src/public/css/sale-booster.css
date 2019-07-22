@@ -8,7 +8,6 @@
 /* countdown top */
 ._sale-booster-countdown-top{
     display: flex;
-    height: 50px;
     width: 100%;
     background: linear-gradient(to right, #7901ff, #ff185f);
     color: #fff;
@@ -21,18 +20,22 @@
     margin-left: auto;
     margin-right: auto;
     align-items: center;
-}
-._sale-booster-countdown-top ._sale-discount-countdown-timer {
-    background: rgba(255, 255, 255, 0.2);
-    padding: 20px;
-    margin-right: 3px; 
+    flex-flow: wrap;
 }
 ._sale-booster-countdown-top ._sale-booster-countdown-row > .countdown-top-title {
     font-size: 18px;
-    margin: 0;
+    margin: 10px 0 10px 0;
+}
+._sale-booster-countdown-top ._sale-booster-countdown {
+    display: flex;
+}
+._sale-booster-countdown-top ._sale-discount-countdown-timer {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 12px;
+    margin-right: 3px; 
 }
 ._sale-booster-countdown-top ._sale-discount-time{
-    font-size: 18px;
+    font-size: 20px;
 }
 ._sale-booster-countdown-top ._sale-discount-units{
     font-size: 18px;
@@ -49,29 +52,37 @@
 
 /* countdown bottom */
 ._sale-booster-countdown-bottom{
-    display: inline-block;
+    display: flex;
+    flex-direction: column;
+}
+._sale-booster-countdown-bottom ._sale-booster-countdown{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 10px;
 }
 ._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer {
-    text-align: center;
-    width: 70px;
     background: #9B4DCA;
     color: #ffff;
-    display: inline-block;
     margin-right: 10px;
-    padding: 10px;
-    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 15px 5px 15px;
+    min-width: 61px;
 }
 
 ._sale-booster-countdown-bottom ._sale-discount-time {
-   font-size: 25px;
-   display: block;
-   line-height: 1;
-   font-weight: 500;
+    font-size: 25px;
+    display: block;
+    line-height: 1;
+    font-weight: 500;
 }
 
 
 ._sale-booster-countdown-bottom ._sale-discount-units{
-    font-weight: 400;
+    /* font-weight: 400; */
+    margin-top: -4px;
 }
 
 ._sale-booster-countdown-bottom ._sale-booster-hits {

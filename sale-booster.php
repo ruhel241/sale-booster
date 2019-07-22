@@ -32,10 +32,6 @@ class NINJASaleBooster
        
     }
 
-    public function commonHooks(){
-
-    }
-
     public function adminHooks(){
         add_filter( 'woocommerce_product_data_tabs', array('SaleBooster\Classes\SaleBoosterHandler', 'registerProductDataTab') );
         add_action('woocommerce_product_data_panels', array('SaleBooster\Classes\SaleBoosterHandler', 'createDataFields') );
