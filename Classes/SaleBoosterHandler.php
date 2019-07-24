@@ -195,7 +195,7 @@ class SaleBoosterHandler
     
     // Bottom discount timer
     public static function discountTimerBottom()
-    {  
+    {
         global $product;
         $note = get_post_meta($product->id, '_sale_booster_note', true);
         $expire_datetime = get_post_meta($product->id, '_sale_booster_expire_date_time', true);
@@ -215,7 +215,12 @@ class SaleBoosterHandler
     }
     // Top discount Timer 
     public static function discountTimerTop()
-    {   
+    {
+
+        if(!is_singular('product')) {
+            return;
+        }
+
         global $product;
         $note = get_post_meta($product->id, '_sale_booster_note', true);
         $expire_datetime = get_post_meta($product->id, '_sale_booster_expire_date_time', true);

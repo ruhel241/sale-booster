@@ -1,0 +1,93 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Sale Booster\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-24 04:54+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.3.0; wp-5.2.2"
+
+#. Name of the plugin
+#: Classes/SaleBoosterHandler.php:19
+msgid "Sale Booster"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:43
+msgid "Alter Add to Cart Button"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:46
+msgid "Default"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:47
+msgid "Remove Add to Cart Button"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:57
+msgid "Hide Price"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:58
+msgid "Check me!"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:68
+msgid "Discount Timer"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:69
+msgid "Show / Hide"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:79
+msgid "Note"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:89
+msgid "Coupon Expire Date"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:90
+msgid "ex: (m/d/yyyy 00:00)"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:100
+msgid "Top"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:101
+msgid "Bottom"
+msgstr ""
+
+#: Classes/SaleBoosterHandler.php:102
+msgid "Both"
+msgstr ""
+
+#. Name of the plugin
+msgid "Sales Booster for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+msgid "The Best Sale Booster Plugin for Woocommerce."
+msgstr ""
+
+#. URI of the plugin
+msgid "https://footnote.io/downloads/sales-booster-pro-for-woocommerce/"
+msgstr ""
+
+#. Author of the plugin
+msgid "Footnote.io"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://footnote.io"
+msgstr ""

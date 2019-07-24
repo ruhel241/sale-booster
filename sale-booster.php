@@ -1,18 +1,17 @@
 <?php
-
-defined("ABSPATH") or die;
-
 /*
-Plugin Name: Sale Booster
+Plugin Name: Sales Booster for WooCommerce
 Description: The Best Sale Booster Plugin for Woocommerce.
 Version: 1.0.0
-Author: WPManageNinja
-Author URI: https://wpmanageninja.com
-Plugin URI: https://wpmanageninja.com/products/sale-booster-plugin
+Author: Footnote.io
+Author URI: https://footnote.io
+Plugin URI: https://footnote.io/downloads/sales-booster-pro-for-woocommerce/
 License: GPLv2 or later
 Text Domain: sale_booster
 Domain Path: /languages
 */
+
+defined("ABSPATH") or die;
 
 define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
 define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
@@ -67,8 +66,9 @@ class NINJASaleBooster
     }
 
 
-    public function loadTextDomain(){
-
+    public function loadTextDomain()
+    {
+        load_plugin_textdomain('sale_booster', false, basename(dirname(__FILE__)) . '/languages');
     }
 
 }
