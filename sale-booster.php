@@ -49,7 +49,7 @@ class NINJASaleBooster
         add_action('woocommerce_single_product_summary', array('SaleBooster\Classes\SaleBoosterHandler', 'hideSinglePrice'), 1 );
         
         // discount timer
-        add_action('woocommerce_before_add_to_cart_form', array('SaleBooster\Classes\SaleBoosterHandler', 'discountTimerBottom') );
+        add_action('woocommerce_after_add_to_cart_form', array('SaleBooster\Classes\SaleBoosterHandler', 'discountTimerBottom') );
       
         // discount Timer Topbar
         add_action( 'wp_footer', array('SaleBooster\Classes\SaleBoosterHandler','discountTimerTop') );
