@@ -1,6 +1,6 @@
 #woocommerce-product-data ul.wc-tabs li._sale_booster_options a::before {
     font-family: Dashicons;
-    content: '\f182';
+    content: '\f488';
 }
 input#_sale_booster_expire_date_time {
     width: 200px;

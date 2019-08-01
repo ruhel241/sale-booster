@@ -18,7 +18,7 @@
 
 //   date picker
     $('#_sale_booster_expire_date_time').datetimepicker({
-        format:'m/d/Y H:i',
+        format:'Y/m/d H:i:s',
         minDate: 0
     });
   

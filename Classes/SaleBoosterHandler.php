@@ -16,7 +16,7 @@ class SaleBoosterHandler
         wp_enqueue_script("admin-sale-booster", SALE_BOOSTER_PLUGIN_DIR_URL."src/admin/js/admin-sale-booster.js", array('jquery'), SALE_BOOSTER_PLUGIN_DIR_VERSION, true);
 
         $product_data_tabs['_sale_booster'] = array(
-            'label'  => esc_html__('Sale Booster', 'sale_booster'),
+            'label'  => esc_html__('Sales Booster', 'sale_booster'),
             'target' => 'sale_booster_product_data',
             'class'  => array('show_if_sale_booster_product_data'),
         );
@@ -25,17 +25,21 @@ class SaleBoosterHandler
 
     // create Data Fields
     public static function createDataFields()
-    {   
-        $layoutSelected = get_post_meta(get_the_ID(), '_sale_booster_expaire_date_layout', true);
-        $discount_timer = get_post_meta(get_the_ID(), '_sale_booster_discount_timer', true);
-
+    {
+        global $post;
+        $discount_timer = get_post_meta($post->ID, '_sale_booster_discount_timer', true);
         wp_localize_script('admin-sale-booster', 'sale_booster_discount_timer_vars', array(
             'discount_timer' => $discount_timer,
         ));
         ?>
             <div id="sale_booster_product_data" class="panel woocommerce_options_panel">
+                <input type="hidden" name="_sales_booster_have_values" value="1" />
                 <div class="options_group">
                     <?php
+                    woocommerce_wp_hidden_input([
+                        'id' => '_sales_booster_have_values',
+                        'value' => 1
+                    ]);
                         // Select alter cart button
                         woocommerce_wp_select(
                             array(
@@ -47,7 +51,7 @@ class SaleBoosterHandler
                                     'remove_button' => __('Remove Add to Cart Button', 'sale_booster'),
                                 )
                             )
-                        ); 
+                        );
 
                         woocommerce_wp_checkbox(
                             array(
@@ -56,8 +60,8 @@ class SaleBoosterHandler
                                 'description' => __('Check me!', 'sale_booster')
                             )
                         );
-                    ?> 
-                </div> 
+                    ?>
+                </div>
                 <div class="options_group">
                     <?php
                         woocommerce_wp_checkbox(
@@ -67,10 +71,10 @@ class SaleBoosterHandler
                                 'description' => __('Show / Hide', 'sale_booster'),
                             )
                         );
-                    ?> 
+                    ?>
                     <div id="_sale_booster_discounttimer_showhide">
                         <?php
-                            
+
                             woocommerce_wp_textarea_input(
                                 array(
                                     'id'          => '_sale_booster_note',
@@ -85,7 +89,7 @@ class SaleBoosterHandler
                                 array(
                                     'id'          => '_sale_booster_expire_date_time',
                                     'label'       => __('Coupon Expire Date', 'sale_booster'),
-                                    'description' => __('ex: (m/d/yyyy 00:00)', 'sale_booster')
+                                    'description' => __('ex: (yyyy/mm/dd 00:00:00)', 'sale_booster')
                                 )
                             );
 
@@ -93,7 +97,6 @@ class SaleBoosterHandler
                                 array(
                                     'label'   => __('Expaire Date Layout', 'woocommerce-price-per-word'),
                                     'id'      => '_sale_booster_expaire_date_layout',
-                                    'value'   => !empty($layoutSelected) ? $layoutSelected : "both",
                                     'options' => array(
                                         'top'    => __("Top", 'sale_booster'),
                                         'bottom' => __("Bottom", 'sale_booster'),
@@ -101,7 +104,7 @@ class SaleBoosterHandler
                                     ),
                                 )
                             );
-                        ?> 
+                        ?>
                     </div>
                 </div>
             </div>
@@ -111,41 +114,41 @@ class SaleBoosterHandler
     //save Data Fields
     public static function saveDataFields($post_id)
     {
-
-        // Save Select
-        $alter_cart_button = sanitize_text_field($_POST['_sale_booster_alter_cart_button']);
-        if (isset($alter_cart_button)) {
-            update_post_meta($post_id, '_sale_booster_alter_cart_button', $alter_cart_button);
+        if(!isset($_REQUEST['_sales_booster_have_values'])) {
+            return;
         }
-       
-        // Save hide price
-        $hide_price = isset($_POST['_sale_booster_hide_price']) ? 'yes' : 'no';
-        update_post_meta($post_id, '_sale_booster_hide_price', $hide_price);
-        
-        // save discount Timer 
-        $discount_timer = isset($_POST['_sale_booster_discount_timer']) ? 'yes' : 'no';
-        update_post_meta($post_id, '_sale_booster_discount_timer', $discount_timer);
 
-        $note = sanitize_text_field($_POST['_sale_booster_note']);
-        if (isset($note)) {
-            update_post_meta($post_id, '_sale_booster_note', $note);
+       // print_r($_REQUEST);
+        //die();
+        // Save Select
+        if (isset($_REQUEST['_sale_booster_alter_cart_button'])) {
+            update_post_meta($post_id, '_sale_booster_alter_cart_button', sanitize_text_field($_REQUEST['_sale_booster_alter_cart_button']));
+        }
+
+        // Save hide price
+        if(isset($_REQUEST['_sale_booster_hide_price'])) {
+            update_post_meta($post_id, '_sale_booster_hide_price', 'yes');
+        } else {
+            update_post_meta($post_id, '_sale_booster_hide_price', 'no');
+        }
+
+        // save discount Timer 
+        update_post_meta($post_id, '_sale_booster_discount_timer', sanitize_text_field($_REQUEST['_sale_booster_discount_timer']));
+
+        if (isset($_REQUEST['_sale_booster_note'])) {
+            update_post_meta($post_id, '_sale_booster_note', wp_unslash($_REQUEST['_sale_booster_note']));
         }
 
         // Save expire date
-        $expire_datetime = sanitize_text_field($_POST['_sale_booster_expire_date_time']);
-        if (isset($expire_datetime)) {
-            update_post_meta($post_id, '_sale_booster_expire_date_time', $expire_datetime);
+        if (isset($_REQUEST['_sale_booster_expire_date_time'])) {
+            update_post_meta($post_id, '_sale_booster_expire_date_time', sanitize_text_field($_REQUEST['_sale_booster_expire_date_time']));
         }
 
-        $expaire_datelayout = sanitize_text_field($_POST['_sale_booster_expaire_date_layout']);
-        if (isset($expaire_datelayout)) {
-            update_post_meta($post_id, '_sale_booster_expaire_date_layout', $expaire_datelayout);
+        if (isset($_REQUEST['_sale_booster_expaire_date_layout'])) {
+            update_post_meta($post_id, '_sale_booster_expaire_date_layout', sanitize_text_field($_REQUEST['_sale_booster_expaire_date_layout']));
         }
 
-        // Save Hidden field
-        if (!empty($_POST['_hidden_field'])) {
-            update_post_meta($post_id, '_hidden_field', sanitize_text_field($_POST['_hidden_field']));
-        }
+
     }
 
     // remove single cart button
@@ -157,7 +160,7 @@ class SaleBoosterHandler
                 remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 );
             }
         }
-        
+
     }
 
     public static function alterShopCartButton( $button, $product ) {
@@ -165,7 +168,7 @@ class SaleBoosterHandler
             $alter_cart_button = get_post_meta($product->id, '_sale_booster_alter_cart_button', true);
             if($alter_cart_button == 'remove_button'){
                 $button = "";
-            } 
+            }
         }
         return $button;
     }
@@ -189,20 +192,21 @@ class SaleBoosterHandler
         }
         return $price;
     }
-    
+
     // Bottom discount timer
     public static function discountTimerBottom()
     {
-        global $product;
-        $note = get_post_meta($product->id, '_sale_booster_note', true);
-        $expire_datetime = get_post_meta($product->id, '_sale_booster_expire_date_time', true);
-        $expire_date_layout = get_post_meta($product->id, '_sale_booster_expaire_date_layout', true);
-        $curreent_time =  date('m/d/Y H:i', current_time('timestamp', 0));
-       
-        if ($curreent_time < $expire_datetime) :
+        $productId = get_the_ID();
+        $note = get_post_meta($productId, '_sale_booster_note', true);
+        $expire_datetime = get_post_meta($productId, '_sale_booster_expire_date_time', true);
+        $expire_date_layout = get_post_meta($productId, '_sale_booster_expaire_date_layout', true);
+        $expire_timeStamp = strtotime($expire_datetime);
+        $curreent_time =  time();
+
+        if ($curreent_time < $expire_timeStamp) :
             if ($expire_date_layout == "bottom" || $expire_date_layout == "both") :
                 ?>
-                    <div class="_sale-booster-countdown-bottom" style="margin-top:20px"> 
+                    <div class="_sale-booster-countdown-bottom" style="margin-top:20px">
                         <div class="_sale-booster-countdown"></div>
                         <p class="_sale-booster-hits"> <?php echo wp_kses_post($note); ?> </p>
                     </div>
@@ -210,7 +214,7 @@ class SaleBoosterHandler
             endif;
         endif;
     }
-    // Top discount Timer 
+    // Top discount Timer
     public static function discountTimerTop()
     {
         if(!is_singular('product')) {
@@ -222,7 +226,7 @@ class SaleBoosterHandler
         $expire_datetime = get_post_meta($product->id, '_sale_booster_expire_date_time', true);
         $expire_date_layout = get_post_meta($product->id, '_sale_booster_expaire_date_layout', true);
         $curreent_time = date('m/d/Y H:i', current_time('timestamp', 0));
-         
+
         wp_localize_script('sale-booster-js', 'sale_booster_countdown_vars', array(
             'dateTime' => $expire_datetime,
         ));
