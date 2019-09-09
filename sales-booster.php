@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sales Booster for WooCommerce
 Description: The Best Sale Booster Plugin for Woocommerce.
-Version: 1.0.0
+Version: 1.0.1
 Author: Footnote.io
 Author URI: https://footnote.io
 Plugin URI: https://footnote.io/downloads/sales-booster-pro-for-woocommerce/
@@ -13,22 +13,25 @@ Domain Path: /languages
 
 defined("ABSPATH") or die;
 
-define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
-define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
-define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '1.0.0');
-
-include "load.php";
-
 class NINJASaleBooster 
 {
     public function boot()
-    {   
+    {
+        if(defined('SALE_BOOSTER_PLUGIN_DIR_URL')) {
+            return;
+        }
+
+        define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
+        define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
+        define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '1.0.0');
+
+        include "Classes/SaleBoosterHandler.php";
+
         if (is_admin()) {
             $this->adminHooks();
         }
         $this->loadTextDomain();
         $this->publicHooks();
-       
     }
 
     public function adminHooks(){
@@ -65,7 +68,6 @@ class NINJASaleBooster
         }
     }
 
-
     public function loadTextDomain()
     {
         load_plugin_textdomain('sale_booster', false, basename(dirname(__FILE__)) . '/languages');
@@ -73,7 +75,7 @@ class NINJASaleBooster
 
 }
 
-add_action('plugins_loaded', function(){
+add_action('plugins_loaded', function() {
     $ninjaSaleBooster = new NINJASaleBooster();
     $ninjaSaleBooster->boot();
 }); 
