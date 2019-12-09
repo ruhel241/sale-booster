@@ -1,10 +1,7 @@
 /* countdown top */
 ._sale-booster-countdown-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  width: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(#7901ff), to(#ff185f));
+  width: 100%; 
   background: linear-gradient(to right, #7901ff, #ff185f);
   color: #fff;
   font-weight: normal;
@@ -12,19 +9,12 @@
 
 ._sale-booster-countdown-top > ._sale-booster-countdown-row {
   width: 1140px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
+  align-items: center;
+  flex-flow: wrap;
 }
 
 ._sale-booster-countdown-top ._sale-booster-countdown-row > .countdown-top-title {
@@ -34,8 +24,6 @@
 }
 
 ._sale-booster-countdown-top ._sale-booster-countdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -65,15 +53,14 @@
 
 body._sale_top_clock_loaded {
   padding-top: 50px;
-}
-
-body._sale_top_clock_loaded ._sale-booster-countdown-top {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  width: 100%;
-  z-index: 99999999999;
+  ._sale-booster-countdown-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 99999999999;
+  }
 }
 
 ._sale_booster_countdown_wrap._sale-booster-countdown-top._sale-booster-countdown-footer {
@@ -84,9 +71,7 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 
 @media (max-width: 1024px) {
   ._sale-booster-countdown-top > ._sale-booster-countdown-row {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     margin-left: 20px;
     margin-right: 20px;
   }
@@ -94,9 +79,7 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 
 @media (max-width: 767px) {
   ._sale-booster-countdown-top > ._sale-booster-countdown-row {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     margin: 0;
     text-align: center;
   }
@@ -104,21 +87,13 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 
 /* countdown bottom */
 ._sale-booster-countdown-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 ._sale-booster-countdown-bottom ._sale-booster-countdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-wrap: nowrap;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -127,19 +102,10 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   background: #9B4DCA;
   color: #ffff;
   margin-right: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 10px 15px 5px 15px;
   /* min-width: 61px; */
   font-family: Open Sans;
@@ -172,45 +138,45 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   color: #ff0400;
 }
 
-._sale_booster_below_title {
+._sale_booster_below_title{
   margin-top: 20px !important;
   margin-bottom: 20px !important;
 }
 
-._sale_booster_below_description {
+._sale_booster_below_description{
   margin-left: 0px;
   margin-top: 10px;
   margin-bottom: 30px;
 }
-
-._sale_booster_next_to_cart_button {
+._sale_booster_next_to_cart_button{
   margin-left: 10px !important;
-}
-
-._sale_booster_next_to_cart_button:nth-of-type(1) {
-  margin-left: 0 !important;
-  margin-bottom: 20px !important;
+  &:nth-of-type(1){
+    margin-left: 0 !important;
+    margin-bottom: 20px !important;
+  }
 }
 
 /* The Modal (background) */
 #_sale_booster_inquire_us_modal {
   display: none;
-  position: fixed;
-  z-index: 9999999;
-  padding-top: 100px;
+  position: fixed; 
+  z-index: 9999999; 
+  padding-top: 100px; 
   left: 0;
   top: 0;
-  width: 100%;
+  width: 100%; 
   height: 100%;
-  overflow: auto;
-  background-color: black;
-  background-color: rgba(0, 0, 0, 0.4);
+  overflow: auto; 
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
 }
 
 /* Modal Content */
 ._sale_booster_inquire_us_modal_content {
+  // background-color: #fefefe;
   margin: auto;
   padding: 20px;
+  // border: 1px solid #888;
   width: 30%;
   border-radius: 10px;
 }
@@ -221,6 +187,7 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  // margin-top: -15px;
 }
 
 ._sale_booster_inquire_us_close:hover,
@@ -230,13 +197,13 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   cursor: pointer;
 }
 
+// exit pop
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ._sale_booster_popup__wrapper {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, .75);
   position: fixed;
   top: 0;
   left: 0;
@@ -246,6 +213,7 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 }
 
 ._sale_booster_popup__container {
+ // background: #fff;
   font-family: Helvetica, Arial, sans-serif;
   font-size: 18px;
   margin: 100px auto;
@@ -260,10 +228,10 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   margin-bottom: 15px;
 }
 
-#_sale_booster_popup_close {
-  font-size: 30px;
-  cursor: pointer;
-  float: right;
-  margin-bottom: 10px;
+#_sale_booster_popup_close{
+	  font-size: 30px;
+    cursor: pointer;
+    float: right;
+    margin-bottom: 10px;
 }
-/*# sourceMappingURL=sale-booster.css.map */
+

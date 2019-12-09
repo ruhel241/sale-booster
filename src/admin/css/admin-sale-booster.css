@@ -5,9 +5,36 @@
 input#_sale_booster_expire_date_time {
     width: 200px;
 }
+
+input#_sale_booster_user_based_expire_time {
+    width: 200px; 
+}
+._sale_booster_discount_timer_field > ul {
+    display: flex !important;
+    width: 100% !important;
+    flex-flow: wrap !important;
+}
+._sale_booster_discount_timer_field li {
+    margin-right: 10px !important;
+}
+
 ._sale_booster_expaire_date_layout_field > ul {
     display: flex !important;
 }
 ._sale_booster_expaire_date_layout_field li {
+    margin-right: 10px !important;
+}
+
+fieldset.form-field._sale_booster_expaire_date_layout_field .wc-radios {
+    width: 100%;
+}
+
+/* Inquire Us Button */
+._sale_booster_inquire_us_button_field > ul {
+    display: flex !important;
+    width: 100% !important;
+    flex-flow: wrap !important;
+}
+._sale_booster_inquire_us_button_field li {
     margin-right: 10px !important;
 }
