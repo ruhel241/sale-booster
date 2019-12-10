@@ -1,10 +1,10 @@
-=== WooCommerce Countdown Timer, Remove Add to Cart, Hide Price - WP Sales Booster ===
+=== WooCommerce Countdown Timer,Enquiry Form , Exit Popup – WP Sales Booster ===
 Contributors: footnoteio, ruhel241
 Tags:  Remove add to cart button woocommerce, woocommerce disable cart and checkout, woocommerce hide price, countdown timer
 Requires at least: 4.5
 Requires PHP: 5.4 or greater
-Tested up to: 5.2.3
-Stable tag: 1.5.0
+Tested up to: 5.3.0
+Stable tag: 1.6.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,36 +12,61 @@ Supercharge your WordPress WooCommerce site with showing countdown timer for dis
 
 == Description ==
 
-WP Sales Booster is an woocommerce ungency creating plugin that allow countdown timer which creates urgency and scarcity to your website customers . This psychological trigger generates more sales than you have ever been before.
+WP Sales Booster is  with most amazing salas increasing plugin with WooCommerce Countdown Timer [Which creates scarcity to visitor and influence to purchase  ] .Exit Popup [ WooCommerce  administrator can collect potential customer leads [email address and phone number  ] and also can re-target the customer using auto responder  [ different email marketing tools ]. Another great feature is Enquiry Form [Webmaster can set custom Enquiry Form for each product  to make instant email communication with potential customer ] . This plugin is focused on WooCommerce and we are a team of people added many proven  features to boost your WooCommerce sales and conversion with this plugin.
 
-[youtube https://www.youtube.com/watch?v=vWny0QUnlwc]
+[youtube https://www.youtube.com/watch?v=z5LngNnhGLA]
 
 ### Remove Add to Cart Button Woocommerce
-Sometimes Woocommerce website owner needs to remove the add to cart button for any specific product . This plugin allow this option to user .any one can easily remove add to cart button even without having any coding skill.
+Sometimes Woocommerce website owner needs to remove the add to cart button for any specific product . This plugin allow this option to user .any one can easily remove add to cart button even without having any coding skills.
 
 ### Woocommerce Hide Price
-WooCommerce website owner  can hide price for any specific product . This plugin allow users to hide price for any specific product.
+WooCommerce website owner a hide price for any specific product . This plugin allow users to hide price for any specific product.
 
 ### Sticky Header Note WooCommerce
 This features allow to grab the attention of your user by releasing special note with the countdown timer . As an example, a special note can be Next Day Delivery, Free Shipping, Discount Code etc. which will be displayed to your product page header.
 
-### Woocommerce order notes
+### Woocommerce Order Notes
 Woocommerce website owner can release special note for individual products below cart option here you can place your discount coupon for any specific promotion offer  with timer.
 
-### User Based Countdown Timer (Coming Soon)
+### User Based Countdown Timer
 Website owner can set  unique timer for individual user. This is the most advanced feature and it's a proven method of increasing sales. By this feature you can set special note to any customer for a specific timer for 0 to 120 minutes. If audience not grab the offer note or discountcount code. Note will be vanish for the user for the user for a specific minutes. This is really a great trigger to increase your sales.
 
-### Countdown Until Date Plugin
+### Fixed Date Countdown Timer
 WP Sales Booster allows clear deadline to your shoppers. So  a website owner can  create a campaign targeting a specific deadline .Any one can set a campaign with coupon or special note with this plugin for a special occasion. Such as Black friday, Critsmash, cyber monday
 
-### Change add to cart text woocommerce
-Sometimes people ask for this option "change add to cart text woocommerce". This plugin allows to change add to cart text for  woocommerce and also user can set custom url to woocommerce button.
-
-### WooCommerce show stock quantity
+### WooCommerce Show Stock Quantity
 WooCommerce website owner also can give extra kick with this feature to their customers. you can show your inventory status to your customer by showing this  you can also create scarcity to your customer.
 
-### Woocommerce product enquiry
-Website admin can remove add to cart button and also hide price for specific product and also can set enquiry form to grab specific leads for specific product.
+### Change Colours Of Each Features  of Countdown Timer
+Topbar Primary Background Color ,Topbar Secondary Background Color ,Top Bar Text Color ,Countdown Background Color, Countdown Timer Color ,Countdown Text Color , Stock Quantity Color to grab the attention of your audience
+
+### Set Product Enquiry Button For Particular Product
+Website admin can set custom product product enquiry form for each product  . With auto massage system and also with custom email
+
+### Drag Drop Custom Enquiry Form
+Web admin can set custom form with name phone number or other fields easily by integrating fluent form (free version ) . also can use set of awesome free templates
+
+### Enquiry Form Conversion Report
+We admin also can track the number of views of each form and also can track how the form is converting .
+
+### Custom Thank You Text , Redirect To Another Page Or Custom Page
+Web admin can set custom thank you text , custom page or custom url for user . So when any customer pressed the submit button he will be redirected to specific text or page
+
+### Custom Auto Massage Option For Each Inquiry Form
+Web admin can set individual message for each form  . So user will get individual auto massage massage for individual product for each query !
+
+### Change The Enquiry Button Text
+Webmaster can set the enquiry button text with his that he or she wants
+
+### Responsive Ready
+All forms  and timer is are responsive on electronic devices
+
+### Custom Exit Popup Form
+Collect subscriber by showing custom exit pop up form or note for individual product . User can create custom form with drag drop features and also can show third party forms by mailchimp aweber getresponse etc .
+
+### Banner and corner Ad
+Webmaster  can set banner and corner image for campaign setting and also for driving traffic to any specific product or landing page !
+
 
 == Installation ==
 
@@ -109,9 +134,14 @@ Yes, you can change woocommerce button text with this plugin
 1. Woo Sales Booster Settings
 2. Show timer on frontend
 3. Hide Price Option on Frontend
+4. Enquire Us Modal View
 
 
 == Changelog ==
+
+= 1.6.0 =
+* Improve many areas
+* Added new features
 
 = 1.5.0 =
 * Fixed few bug for timer
