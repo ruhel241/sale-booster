@@ -224,7 +224,7 @@ class ProductSettings
                         woocommerce_wp_text_input(
                             array(
                                 'id'          => '_sale_booster_stock_quantity',
-                                'label'       => __('Text Avobe Timer', 'sale_booster'),
+                                'label'       => __('Text Above Timer', 'sale_booster'),
                                 'placeholder' => __('Hurry up! just {stock} items left in stock', 'sale_booster'),
                                 'description' => __('Use {stock} placeholder to show current stock', 'sale_booster')
                             )
@@ -232,7 +232,7 @@ class ProductSettings
                     else:
                         ?>
                         <p class="form-field _sale_booster_stock_quantity_field ">
-                            <label for="_sale_booster_stock_quantity">Text Avobe Timer (Pro Only)</label>
+                            <label for="_sale_booster_stock_quantity">Text Above Timer (Pro Only)</label>
                             <span class="description">This field is only available on Pro version. 
                                 <a target="_blank" rel="noopener nofollow" href="<?php echo SALES_BOOSTER_PRO_URL; ?>">
                                     Purchase Sales Booster Pro
