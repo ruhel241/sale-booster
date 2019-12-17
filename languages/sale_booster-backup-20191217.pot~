@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sales Booster for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 09:13+0000\n"
+"POT-Creation-Date: 2019-12-10 11:42+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -27,7 +27,7 @@ msgid ""
 "upload_image\">Upload Image</button>"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:154
+#: Classes/SaleBoosterSettings.php:141
 msgid ""
 "<button id=\"upload_image_corner_ad\" class=\"button-primary upload_image\">"
 "Upload Image</button>"
@@ -43,10 +43,6 @@ msgstr ""
 
 #: Classes/ProductSettings.php:123
 msgid "Below Title"
-msgstr ""
-
-#: Classes/SaleBoosterSettings.php:145
-msgid "Both page"
 msgstr ""
 
 #: Classes/SaleBoosterSettings.php:132
@@ -73,15 +69,15 @@ msgstr ""
 msgid "Corner Ad"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:213 Classes/SaleBoosterSettings.php:215
+#: Classes/SaleBoosterSettings.php:200 Classes/SaleBoosterSettings.php:202
 msgid "Countdown Background Color"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:233 Classes/SaleBoosterSettings.php:235
+#: Classes/SaleBoosterSettings.php:220 Classes/SaleBoosterSettings.php:222
 msgid "Countdown Text Color"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:223 Classes/SaleBoosterSettings.php:225
+#: Classes/SaleBoosterSettings.php:210 Classes/SaleBoosterSettings.php:212
 msgid "Countdown Timer Color"
 msgstr ""
 
@@ -226,7 +222,7 @@ msgstr ""
 msgid "Replace Cart Button Text"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:25 Classes/SaleBoosterSettings.php:176
+#: Classes/SaleBoosterSettings.php:25 Classes/SaleBoosterSettings.php:163
 msgid "Sale Booster"
 msgstr ""
 
@@ -246,15 +242,7 @@ msgstr ""
 msgid "seconds"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:143
-msgid "Shop Page"
-msgstr ""
-
-#: Classes/SaleBoosterSettings.php:144
-msgid "Single page"
-msgstr ""
-
-#: Classes/SaleBoosterSettings.php:243 Classes/SaleBoosterSettings.php:245
+#: Classes/SaleBoosterSettings.php:230 Classes/SaleBoosterSettings.php:232
 msgid "Stock Quantity Color"
 msgstr ""
 
@@ -270,7 +258,7 @@ msgstr ""
 msgid "The Best Sale Booster Plugin for Woocommerce."
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:264
+#: Classes/SaleBoosterSettings.php:251
 msgid "This is a pro feature"
 msgstr ""
 
@@ -294,23 +282,23 @@ msgstr ""
 msgid "Top Sticky"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:183
+#: Classes/SaleBoosterSettings.php:170
 msgid "Topbar Primary Background Color"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:193
+#: Classes/SaleBoosterSettings.php:180
 msgid "Topbar Secondary Background Color"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:203 Classes/SaleBoosterSettings.php:205
+#: Classes/SaleBoosterSettings.php:190 Classes/SaleBoosterSettings.php:192
 msgid "Topbar Text Color"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:185
+#: Classes/SaleBoosterSettings.php:172
 msgid "Topbar timer first color"
 msgstr ""
 
-#: Classes/SaleBoosterSettings.php:195
+#: Classes/SaleBoosterSettings.php:182
 msgid "Topbar timer Second color"
 msgstr ""
 
