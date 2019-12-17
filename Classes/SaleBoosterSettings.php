@@ -132,6 +132,19 @@ class SaleBoosterSettings extends WC_Settings_Page {
                         'bottom_left'  => __( 'Bottom Left', 'sale_booster' ),
                     ),
 				),
+
+				array(
+                    'title'    => "",
+                    'id'       => 'corner_page_select',
+                    'default'  => 'both_page',
+                    'type'     => 'radio',
+                    'class' => '_sale_booster_corner_ad_position',
+                    'options'  => array(
+                        'shop_page'    => __( 'Shop Page', 'sale_booster' ),
+						'single_page'  => __( 'Single page', 'sale_booster' ),
+						'both_page'    => __( 'Both page', 'sale_booster' ),
+                    ),
+				),
 				
 				array(
 					'name'     => "",

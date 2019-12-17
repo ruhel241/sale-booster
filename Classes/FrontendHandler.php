@@ -542,9 +542,23 @@ class FrontendHandler
     */
     public static function shopPageCornerAd()
     {    
-        if(!is_shop()){
-            return;
+
+        $corner_page = get_option("corner_page_select");
+
+        if($corner_page == 'shop_page'){
+            if(!is_shop()){
+                return;
+            }
+        } else if($corner_page == 'single_page'){
+            if(!is_single()){
+                return;
+            }
+        } else {
+            if( !is_shop() && !is_single() ){
+                return;
+            }
         }
+
         $cornerAd = get_option("home_page_corner_ad");
         $cornerAdLink = get_option("home_page_corner_ad_link");
         $cornerAdClass = get_option("home_corner_ad_position");
@@ -588,6 +602,4 @@ class FrontendHandler
             </style>
         <?php
     }
-
-
 }
