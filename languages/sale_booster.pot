@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Sales Booster for WooCommerce\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-12-17 09:13+0000\n"
+"POT-Creation-Date: 2019-12-17 09:55+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -259,7 +259,7 @@ msgid "Stock Quantity Color"
 msgstr ""
 
 #: Classes/ProductSettings.php:227
-msgid "Text Avobe Timer"
+msgid "Text Above Timer"
 msgstr ""
 
 #: Classes/ProductSettings.php:248
