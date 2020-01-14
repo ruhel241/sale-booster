@@ -17,13 +17,16 @@ class FrontendHandler
         }
 
         $productId = get_the_ID();
-
+        
+        if( defined('FLUENTFORM')){
+            self::singlePageExitPopup($productId); // single page Exit popup modal
+        }
+        
         //Pro feature 
         if (defined('SALES_BOOTER_PRO_INSTALLED')) {
             $inquireUsConfig =  self::getInquireUsSettings($productId);  // inquire us
             self::$inquireUsConfig = $inquireUsConfig;
             self::inquireUsButtonPostion(); // inquire us button position set
-            self::singlePageExitPopup($productId); // single page Exit popup modal
         }
         
         $timerConfig = self::getTimerSettings($productId);
@@ -462,7 +465,7 @@ class FrontendHandler
 
     public static function shopPageExitPopup()
     {      
-        if(!is_shop()){
+        if( !is_shop() || !defined('FLUENTFORM') ){
             return;
         }
         

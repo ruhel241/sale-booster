@@ -67,18 +67,29 @@ class ProductSettings
                             'desc_tip'    => 'true'
                         )
                     );
-                ?>
                 
-                <?php if (defined('SALES_BOOTER_PRO_INSTALLED')) : 
-                     woocommerce_wp_select(
-                        array(
-                            'id'       => '_sale_booster_exit_popup',
-                            'label'    => __('Exit Popup', 'sale_booster'),
-                            'selected' => true,
-                            'options'  => self::getFluentFormsOptions()
-                        )
-                    );
                 ?>
+
+                <?php  if( !defined('FLUENTFORM') ) : ?>
+                        <p class="form-field _sale_booster_exit_popup_notice">
+                            <label for="_sale_booster_exit_popup_notice">Exit Popup</label>
+                            <span class="description">
+                                <?php echo self::sales_get_fluentFormInstallUrl(); ?>
+                            </span>
+                        </p>
+                <?php  
+                    else :
+                        woocommerce_wp_select(
+                            array(
+                                'id'       => '_sale_booster_exit_popup',
+                                'label'    => __('Exit Popup', 'sale_booster'),
+                                'selected' => true,
+                                'options'  => self::getFluentFormsOptions(),
+                            )
+                        );
+                    endif;
+                ?>
+
                     <div id="_sale_booster_exit_custom_html_text_box" style="display:none"> 
                         <?php
                             woocommerce_wp_textarea_input(
@@ -94,7 +105,8 @@ class ProductSettings
                             );
                         ?> 
                     </div>
-                <?php
+                
+                <?php if (defined('SALES_BOOTER_PRO_INSTALLED')) : 
                     woocommerce_wp_checkbox(
                         array(
                             'id'          => '_sale_booster_inquire_us',
@@ -165,14 +177,14 @@ class ProductSettings
                     </div>
                 <?php else: ?>
 
-                    <p class="form-field _sale_booster_exit_popup_pro">
+                    <!-- <p class="form-field _sale_booster_exit_popup_pro">
                         <label for="_sale_booster_exit_popup_pro">Exit Popup (Pro Only)</label>
                         <span class="description">This field is only available on Pro version. 
-                            <a target="_blank" rel="noopener nofollow" href="<?php echo SALES_BOOSTER_PRO_URL; ?>">
+                            <a target="_blank" rel="noopener nofollow" href="<?php// echo SALES_BOOSTER_PRO_URL; ?>">
                                 Purchase Sales Booster Pro
                             </a>
                         </span>
-                    </p>
+                    </p> -->
 
                     <p class="form-field _sale_booster_inquire_us_pro">
                         <label for="_sale_booster_inquire_us_pro">Inquire Us (Pro Only)</label>
