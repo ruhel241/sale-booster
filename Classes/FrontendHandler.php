@@ -18,7 +18,7 @@ class FrontendHandler
 
         $productId = get_the_ID();
         
-        if( defined('FLUENTFORM')){
+        if (defined('FLUENTFORM')) {
             self::singlePageExitPopup($productId); // single page Exit popup modal
         }
         
@@ -43,14 +43,14 @@ class FrontendHandler
         $showBottomBar = $timerConfig['position'] == 'both' || $timerConfig['position'] == 'bottom';
         $showFooterSticky = $timerConfig['position'] == 'footer_sticky';
 
-        if($showTopBar) {
+        if ($showTopBar) {
             add_action('wp_footer', array('\SaleBooster\Classes\FrontendHandler', 'discountTimerTop'));
         }
         if ($showBottomBar) {
             add_action('woocommerce_share', array('\SaleBooster\Classes\FrontendHandler', 'discountTimerBottom'));
         }
 
-        if($showFooterSticky) {
+        if ($showFooterSticky) {
             add_action('wp_footer', array('\SaleBooster\Classes\FrontendHandler', 'discountTimerFooter'));
         }
     }
@@ -58,12 +58,12 @@ class FrontendHandler
     public static function discountTimerBottom()
     {
         $config = self::$timerConfig;
-        if(!$config) {
+        if (!$config) {
             return;
         }
         ?>
             <div style="display: none" class="_sale_booster_countdown_wrap _sale-booster-countdown-bottom" style="margin-top:20px">
-               <?php if(defined('SALES_BOOTER_PRO_INSTALLED')): ?>
+               <?php if (defined('SALES_BOOTER_PRO_INSTALLED')): ?>
                     <p class="_sale-booster-hits"> <?php echo $config['title_before']; ?></p>
                <?php endif; ?>
                 <div class="_sale-booster-countdown"></div>
@@ -80,7 +80,7 @@ class FrontendHandler
         $className = '_sale-booster-countdown-top';
         $clockName = '_sale_top_clock';
         $config = self::$timerConfig;
-        if(!$config) {
+        if (!$config) {
             return;
         }
         ?>
@@ -101,7 +101,7 @@ class FrontendHandler
         $className = '_sale-booster-countdown-top _sale-booster-countdown-footer';
         $clockName = '_sale_footer_clock';
         $config = self::$timerConfig;
-        if(!$config) {
+        if (!$config) {
             return;
         }
         ?>
@@ -122,7 +122,7 @@ class FrontendHandler
     {   
         $inquireUsConfig = self::$inquireUsConfig;
       
-        if(!$inquireUsConfig){
+        if (!$inquireUsConfig){
             return;
         }
 
@@ -134,14 +134,13 @@ class FrontendHandler
         $below_description   = $inquire_us_button == "below_description";
         $next_to_cart_button = $inquire_us_button == "next_to_cart_button";
       
-        if($inquire_us != 'yes' || $inquire_us_button == ''){
+        if ($inquire_us != 'yes' || $inquire_us_button == ''){
             return;
         }
 
-        if($below_title){ // below title
+        if ($below_title){ // below title
             add_action('woocommerce_single_product_summary', array('\SaleBooster\Classes\FrontendHandler', 'addSingleCustomButton'), 15);
-        }  
-        else if($next_to_cart_button && $remove_cart_button != 'yes' ){  // next to cart button 
+        } else if ($next_to_cart_button && $remove_cart_button != 'yes' ){  // next to cart button 
             add_action('woocommerce_after_add_to_cart_button', array('\SaleBooster\Classes\FrontendHandler', 'addSingleCustomButton'));
         } else { //below_description or next_to_cart_button (when add to cart button remove)
             add_action('woocommerce_single_product_summary', array('\SaleBooster\Classes\FrontendHandler', 'addSingleCustomButton'), 30);
@@ -170,11 +169,13 @@ class FrontendHandler
         $productId = get_the_ID();
         
         $inquireUsConfig = self::$inquireUsConfig;
-        if(!$inquireUsConfig){
+        
+        if (!$inquireUsConfig) {
             return;
         }
+
         $inquire_us             = $inquireUsConfig['inquire_us'];
-        $cart_ButtonText        = $inquireUsConfig['cart_ButtonText'];
+        $cart_Button_text       = $inquireUsConfig['cart_Button_text'];
         $inquire_us_button      = $inquireUsConfig['inquire_us_button'];
         $inquire_us_form        = $inquireUsConfig['inquire_us_form'];
         $inquire_us_custom_html = $inquireUsConfig['inquire_us_custom_html'];
@@ -183,39 +184,39 @@ class FrontendHandler
         $below_description = $inquire_us_button   == "below_description";
         $next_to_cart_button = $inquire_us_button == "next_to_cart_button";
        
-        if($inquire_us == 'yes' && !defined('SALES_BOOTER_PRO_INSTALLED')) {
+        if ($inquire_us == 'yes' && !defined('SALES_BOOTER_PRO_INSTALLED')) {
             return;
         }
         // class add
-        if($below_title) {
+        if ($below_title) {
             $inquire_us_button_class = '_sale_booster_below_title';
         }   
-        if($below_description) {
+        if ($below_description) {
             $inquire_us_button_class = '_sale_booster_below_description';
         }
-        if($next_to_cart_button) {
+        if ($next_to_cart_button) {
             $inquire_us_button_class = '_sale_booster_next_to_cart_button';
         }
 
         if ($inquire_us == 'yes') {
-            echo "<button type='button' id='_sale_booster_inquire_us_btn' class='single_add_to_cart_button button alt ".$inquire_us_button_class."'>" . $cart_ButtonText . "</button>";
+            echo "<button type='button' id='_sale_booster_inquire_us_btn' class='single_add_to_cart_button button alt ".$inquire_us_button_class."'>" . $cart_Button_text . "</button>";
         }
 
         /**
          * Inquire us modal 
          */
-        if( !defined('FLUENTFORM')){
+        if ( !defined('FLUENTFORM')) {
             return;
         }
 
         $inquireShortCode = "";
-        if($inquire_us_form == 'custom_html'){
+        if ($inquire_us_form == 'custom_html'){
             $inquireShortCode =  $inquire_us_custom_html;
         } else {
             $inquireShortCode =  $inquire_us_form;
         }
 
-        if(!$inquireShortCode){
+        if (!$inquireShortCode){
             return;
         }
         self::inquireUsModal($inquireShortCode);
@@ -247,7 +248,7 @@ class FrontendHandler
     public static function removeShopCartButton($button, $product)
     {   
         if (is_shop() || is_product_category()) {
-            $productId = $product->id;
+            $productId = get_the_ID();
             $remove_cart_button = get_post_meta($productId, '_sale_booster_remove_cart_button', true);
             
             if ($remove_cart_button == 'yes') {
@@ -263,7 +264,7 @@ class FrontendHandler
     { 
         if ( is_shop() || is_product_category() ) {
             global $product;
-            $productId = $product->id;
+            $productId = get_the_ID();
             $customText = get_post_meta($productId, '_sale_booster_cart_button_text', true);
             if($customText){
                 $text = $customText;
@@ -281,9 +282,9 @@ class FrontendHandler
         if (!is_singular('product')) {
             return;
         }
-        $productId = $product->id;
+        $productId = get_the_ID();
         $customText = get_post_meta($productId, '_sale_booster_cart_button_text', true);
-        if($customText){
+        if ($customText){
             $text = $customText;
             return $text;
         } 
@@ -296,6 +297,7 @@ class FrontendHandler
     {
         $productId = get_the_ID();
         $hidePrice = get_post_meta($productId, '_sale_booster_hide_price', true);
+        
         if ($hidePrice == "yes") {
             remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
         }
@@ -305,19 +307,22 @@ class FrontendHandler
      */
     public static function hideShopPrice($price, $product)
     {
-        $productId = $product->id;
+        $productId = get_the_ID();
+        
         if (is_shop() || is_product_category()) {
             $hidePrice = get_post_meta($productId, '_sale_booster_hide_price', true);
             if ($hidePrice == 'yes') {
                 return '';
             }
         }
+
         return $price;
     }
 
     public static function hasCountDownTimerType($productId)
     {
         $type = get_post_meta($productId, '_sale_booster_discount_timer', true);
+        
         if (!$type || $type == 'none') {
             return false;
         }
@@ -340,22 +345,26 @@ class FrontendHandler
         if (!is_singular('product')) {
             return;
         }
+
         $exitPopup  = get_post_meta($productId, '_sale_booster_exit_popup', true);
         $customHTML = get_post_meta($productId, '_sale_booster_exit_custom_html', true);
 
         $exitShortCode = "";
-        if($exitPopup == 'custom_html'){
+        
+        if ($exitPopup == 'custom_html') {
             $exitShortCode =  $customHTML;
         } else {
             $exitShortCode =  $exitPopup;
         }
 
-        if(!$exitShortCode){
+        if (!$exitShortCode) {
             return;
         }
+
         $exitPopupVar = [ //localize data
             'productId' => $productId
         ];
+
         wp_enqueue_script("sale-booster-exit-popup-js", SALE_BOOSTER_PLUGIN_DIR_URL . "src/public/js/sale-booster-exit-popup.js", array('jquery'), SALE_BOOSTER_PLUGIN_DIR_VERSION, true);
         wp_localize_script("sale-booster-exit-popup-js", 'sale_booster_exit_popup_vars', $exitPopupVar);
     ?>
@@ -376,15 +385,17 @@ class FrontendHandler
         if (!is_singular('product')) {
             return;
         }
+
         if (!$productId) {
             $productId = get_the_ID();
         }
 
         $type = get_post_meta($productId, '_sale_booster_discount_timer', true);
         $timerSeconds = false;
+
         if ($type == 'user_based_time') {
 
-            if(!defined('SALES_BOOTER_PRO_INSTALLED')) {
+            if (!defined('SALES_BOOTER_PRO_INSTALLED')) {
                 return false;
             }
 
@@ -394,14 +405,15 @@ class FrontendHandler
             $dateTime = get_post_meta($productId, '_sale_booster_expire_date_time', true);
             $timerSeconds = strtotime($dateTime) - time();
         }
+
         if (!$timerSeconds || $timerSeconds <= 0) {
             return false;
         }
 
         $titleBefore = get_post_meta($productId, '_sale_booster_stock_quantity', true);
         $titleAfter = get_post_meta($productId, '_sale_booster_note', true);
-
-        if(strpos($titleBefore, '{stock}', $titleBefore.$titleAfter) !== false) {
+        
+        if (strpos($titleBefore.$titleAfter, "{stock}") !== false) {
             $product = new \WC_Product($productId);
             $stock  = $product->get_stock_quantity();
             $titleBefore = str_replace('{stock}', $stock, $titleBefore);
@@ -436,6 +448,7 @@ class FrontendHandler
         if (!is_singular('product')) {
             return;
         }
+
         if (!$productId) {
             $productId = get_the_ID();
         }
@@ -443,7 +456,7 @@ class FrontendHandler
         $inquire_us             = get_post_meta($productId, '_sale_booster_inquire_us', true);
         $inquire_us_button      = get_post_meta($productId, '_sale_booster_inquire_us_button', true);
         $remove_cart_button     = get_post_meta($productId, '_sale_booster_remove_cart_button', true);
-        $cart_ButtonText        = get_post_meta($productId, '_sale_booster_inquire_text', true);
+        $cart_Button_text       = get_post_meta($productId, '_sale_booster_inquire_text', true);
         $inquire_us_form        = get_post_meta($productId, '_sale_booster_inquire_us_form', true);
         $inquire_us_custom_html = get_post_meta($productId, '_sale_booster_inquire_us_custom_html', true);
         
@@ -451,7 +464,7 @@ class FrontendHandler
             'inquire_us'             => $inquire_us,
             'inquire_us_button'      => $inquire_us_button,
             'remove_cart_button'     => $remove_cart_button,
-            'cart_ButtonText'        => $cart_ButtonText,
+            'cart_Button_text'       => $cart_Button_text,
             'inquire_us_form'        => $inquire_us_form,
             'inquire_us_custom_html' => $inquire_us_custom_html,
         ];
@@ -465,7 +478,7 @@ class FrontendHandler
 
     public static function shopPageExitPopup()
     {      
-        if( !is_shop() || !defined('FLUENTFORM') ){
+        if ( !is_shop() || !defined('FLUENTFORM') ){
             return;
         }
         
@@ -473,13 +486,14 @@ class FrontendHandler
         $customHTML = get_option('home_page_exit_custom_popup');
 
         $exitShortCode = "";
-        if($exitPopup == 'custom_html'){
+        
+        if ($exitPopup == 'custom_html'){
             $exitShortCode = $customHTML;
         } else {
             $exitShortCode =  $exitPopup;
         }
 
-        if(!$exitShortCode){
+        if (!$exitShortCode){
             return;
         }
 
@@ -501,14 +515,17 @@ class FrontendHandler
     */
     public static function shopPageBannerTop()
     {
-        if(!is_shop()){
+        if (!is_shop()) {
             return;
         }
+
         $topBanner = get_option("home_page_banner_below");
         $topBannerLink = get_option("home_page_banner_below_link");
-        if(!$topBanner){
+        
+        if (!$topBanner) {
             return;
         }
+
         ?>
             <div class="sale_booster_banner_image_top" style="margin-bottom:10px;"> 
                 <a href="<?php echo $topBannerLink; ?>" target="_blank"> 
@@ -523,14 +540,17 @@ class FrontendHandler
     */
     public static function shopPageBannerBottom()
     {   
-        if(!is_shop()){
+        if (!is_shop()) {
             return;
         }
+
         $aboveFooter = get_option("home_page_banner_above_footer");
         $aboveFooterLink = get_option("home_page_banner_above_footer_link");
-        if(!$aboveFooter){
+        
+        if (!$aboveFooter) {
             return;
         }
+
         ?>
             <div class="sale_booster_banner_image_footer" style="margin-bottom:10px;"> 
                 <a href="<?php echo $aboveFooterLink; ?>" target="_blank"> 
@@ -548,16 +568,16 @@ class FrontendHandler
 
         $corner_page = get_option("corner_page_select");
 
-        if($corner_page == 'shop_page'){
-            if(!is_shop()){
+        if ($corner_page == 'shop_page') {
+            if (!is_shop()) {
                 return;
             }
         } else if($corner_page == 'single_page'){
-            if(!is_single()){
+            if (!is_single()) {
                 return;
             }
         } else {
-            if( !is_shop() && !is_single() ){
+            if ( !is_shop() && !is_single() ) {
                 return;
             }
         }
@@ -566,7 +586,7 @@ class FrontendHandler
         $cornerAdLink = get_option("home_page_corner_ad_link");
         $cornerAdClass = get_option("home_corner_ad_position");
        
-        if(!$cornerAd){
+        if (!$cornerAd) {
             return;
         }
 

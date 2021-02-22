@@ -5,14 +5,15 @@ namespace SaleBooster\Classes;
 class Customization {
 
     public static function saleBoosterAddSettings($settings) {
+       
         $settings[] = include_once 'SaleBoosterSettings.php';
         return $settings ;
     }
   
     public static function customStyle(){
 
-        if(!defined('SALES_BOOTER_PRO_INSTALLED')) {
-            return '';
+        if (!defined('SALES_BOOTER_PRO_INSTALLED')) {
+            return false;
         }
 
         $topbarPrimaryBgColor   = get_option('sale_booster_settings_primary_bg_color', '#7901ff');
@@ -25,27 +26,27 @@ class Customization {
         $bgGradientColor        = $topbarSecondaryBgColor ? 'linear-gradient(to right,'.$topbarPrimaryBgColor.', '.$topbarSecondaryBgColor.')' : $topbarPrimaryBgColor;
         ?>
         <style type='text/css'>
-            <?php if($bgGradientColor || $topbarTextColor) : ?>
+            <?php if ($bgGradientColor || $topbarTextColor): ?>
             ._sale-booster-countdown-top {
                 background: <?php echo $bgGradientColor; ?>;
                 color:  <?php echo $topbarTextColor; ?>;
             }
             <?php endif; ?>
 
-            <?php if($countdownBgColor || $countdownTimerColor) : ?>
+            <?php if ($countdownBgColor || $countdownTimerColor): ?>
             ._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer{
                 background: <?php echo $countdownBgColor; ?>;
                 color:  <?php echo $countdownTimerColor; ?>;
             }
             <?php endif; ?>
 
-            <?php if($countdownTextColor) : ?>
+            <?php if ($countdownTextColor): ?>
             ._sale-booster-countdown-bottom ._sale-booster-hits{
                 color:  <?php echo $countdownTextColor; ?>;
             }
             <?php endif; ?>
 
-            <?php if($stockColor) : ?>
+            <?php if ($stockColor): ?>
             ._sale-booster-countdown-bottom ._sale-booster-hits .sale_booster_stock{
                 color: <?php echo $stockColor; ?>;
             }

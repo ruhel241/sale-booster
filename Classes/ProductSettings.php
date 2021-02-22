@@ -4,7 +4,6 @@ namespace SaleBooster\Classes;
 
 class ProductSettings
 {
-
     // register Tab
     public static function registerProductDataTab($product_data_tabs)
     {
@@ -70,7 +69,7 @@ class ProductSettings
                 
                 ?>
 
-                <?php  if( !defined('FLUENTFORM') ) : ?>
+                <?php  if (!defined('FLUENTFORM')): ?>
                         <p class="form-field _sale_booster_exit_popup_notice">
                             <label for="_sale_booster_exit_popup_notice">Exit Popup</label>
                             <span class="description">
@@ -177,15 +176,6 @@ class ProductSettings
                     </div>
                 <?php else: ?>
 
-                    <!-- <p class="form-field _sale_booster_exit_popup_pro">
-                        <label for="_sale_booster_exit_popup_pro">Exit Popup (Pro Only)</label>
-                        <span class="description">This field is only available on Pro version. 
-                            <a target="_blank" rel="noopener nofollow" href="<?php// echo SALES_BOOSTER_PRO_URL; ?>">
-                                Purchase Sales Booster Pro
-                            </a>
-                        </span>
-                    </p> -->
-
                     <p class="form-field _sale_booster_inquire_us_pro">
                         <label for="_sale_booster_inquire_us_pro">Inquire Us (Pro Only)</label>
                         <span class="description">This field is only available on Pro version. 
@@ -243,7 +233,7 @@ class ProductSettings
                         );
                     else:
                         ?>
-                        <p class="form-field _sale_booster_stock_quantity_field ">
+                        <p class="form-field _sale_booster_stock_quantity_field">
                             <label for="_sale_booster_stock_quantity">Text Above Timer (Pro Only)</label>
                             <span class="description">This field is only available on Pro version. 
                                 <a target="_blank" rel="noopener nofollow" href="<?php echo SALES_BOOSTER_PRO_URL; ?>">
@@ -336,7 +326,10 @@ class ProductSettings
         } else {
             update_post_meta($post_id, '_sale_booster_remove_cart_button', 'no');
         }
-
+        //cart button text
+        if (isset($_REQUEST['_sale_booster_cart_button_text'])) {
+            update_post_meta($post_id, '_sale_booster_cart_button_text', sanitize_text_field($_REQUEST['_sale_booster_cart_button_text']));
+        }
         // exit popup
         if (isset($_REQUEST['_sale_booster_exit_popup'])) {
             update_post_meta($post_id, '_sale_booster_exit_popup', sanitize_text_field($_REQUEST['_sale_booster_exit_popup']));
@@ -346,50 +339,45 @@ class ProductSettings
             update_post_meta($post_id, '_sale_booster_exit_custom_html', $_REQUEST['_sale_booster_exit_custom_html']);
         }
 
-        //cart button text
-        if (isset($_REQUEST['_sale_booster_cart_button_text'])) {
-            update_post_meta($post_id, '_sale_booster_cart_button_text', sanitize_text_field($_REQUEST['_sale_booster_cart_button_text']));
+        if (defined('SALES_BOOTER_PRO_INSTALLED')) { 
+            //Inquire Us Enable
+            if (isset($_REQUEST['_sale_booster_inquire_us'])) {
+                update_post_meta($post_id, '_sale_booster_inquire_us', 'yes');
+            } else {
+                update_post_meta($post_id, '_sale_booster_inquire_us', 'no');
+            }
+            //inquire Text Field
+            if (!add_post_meta($post_id, '_sale_booster_inquire_text', 'Buy Now', true)) {
+                update_post_meta($post_id, '_sale_booster_inquire_text', sanitize_text_field($_REQUEST['_sale_booster_inquire_text']));
+            }
+            //inquire button
+            if (isset($_REQUEST['_sale_booster_inquire_us_button'])) {
+                update_post_meta($post_id, '_sale_booster_inquire_us_button', sanitize_text_field($_REQUEST['_sale_booster_inquire_us_button']));
+            }
+            //inquire us form 
+            if (isset($_REQUEST['_sale_booster_inquire_us_form'])) {
+                update_post_meta($post_id, '_sale_booster_inquire_us_form', sanitize_text_field($_REQUEST['_sale_booster_inquire_us_form']));
+            }
+            //inquire us custom HTML
+            if (isset($_REQUEST['_sale_booster_inquire_us_custom_html'])) {
+                update_post_meta($post_id, '_sale_booster_inquire_us_custom_html', $_REQUEST['_sale_booster_inquire_us_custom_html']);
+            }
+            // save User Based expire time
+            if (isset($_REQUEST['_sale_booster_user_based_expire_time'])) {
+                update_post_meta($post_id, '_sale_booster_user_based_expire_time', sanitize_text_field($_REQUEST['_sale_booster_user_based_expire_time']));
+            }
         }
-
-        // Inquire Us Enable
-        if (isset($_REQUEST['_sale_booster_inquire_us'])) {
-            update_post_meta($post_id, '_sale_booster_inquire_us', 'yes');
-        } else {
-            update_post_meta($post_id, '_sale_booster_inquire_us', 'no');
-        }
-
-        // inquire Text Field
-        if (!add_post_meta($post_id, '_sale_booster_inquire_text', 'Buy Now', true)) {
-            update_post_meta($post_id, '_sale_booster_inquire_text', sanitize_text_field($_REQUEST['_sale_booster_inquire_text']));
-        }
-
-        // inquire button
-        if (isset($_REQUEST['_sale_booster_inquire_us_button'])) {
-            update_post_meta($post_id, '_sale_booster_inquire_us_button', sanitize_text_field($_REQUEST['_sale_booster_inquire_us_button']));
-        }
-
-        // inquire us form 
-        if (isset($_REQUEST['_sale_booster_inquire_us_form'])) {
-            update_post_meta($post_id, '_sale_booster_inquire_us_form', sanitize_text_field($_REQUEST['_sale_booster_inquire_us_form']));
-        }
-
-        // inquire us custom HTML
-        if (isset($_REQUEST['_sale_booster_inquire_us_custom_html'])) {
-            update_post_meta($post_id, '_sale_booster_inquire_us_custom_html', $_REQUEST['_sale_booster_inquire_us_custom_html']);
-        }
-
+        
         // Save hide price
         if (isset($_REQUEST['_sale_booster_hide_price'])) {
             update_post_meta($post_id, '_sale_booster_hide_price', 'yes');
         } else {
             update_post_meta($post_id, '_sale_booster_hide_price', 'no');
         }
-
         // save discount Timer 
         if (isset($_REQUEST['_sale_booster_discount_timer'])) {
             update_post_meta($post_id, '_sale_booster_discount_timer', sanitize_text_field($_REQUEST['_sale_booster_discount_timer']));
         }
-
         // stock quantity status
         if (isset($_REQUEST['_sale_booster_stock_quantity'])) {
             update_post_meta($post_id, '_sale_booster_stock_quantity', wp_unslash($_REQUEST['_sale_booster_stock_quantity']));
@@ -398,15 +386,9 @@ class ProductSettings
         if (isset($_REQUEST['_sale_booster_note'])) {
             update_post_meta($post_id, '_sale_booster_note', wp_unslash($_REQUEST['_sale_booster_note']));
         }
-
         // Save expire date
         if (isset($_REQUEST['_sale_booster_expire_date_time'])) {
             update_post_meta($post_id, '_sale_booster_expire_date_time', sanitize_text_field($_REQUEST['_sale_booster_expire_date_time']));
-        }
-
-        // save User Based expire time
-        if (isset($_REQUEST['_sale_booster_user_based_expire_time'])) {
-            update_post_meta($post_id, '_sale_booster_user_based_expire_time', sanitize_text_field($_REQUEST['_sale_booster_user_based_expire_time']));
         }
         // save expire layout
         if (isset($_REQUEST['_sale_booster_expaire_date_layout'])) {
@@ -434,7 +416,7 @@ class ProductSettings
     */
     public static function getFluentFormsOptions()
     {
-        if( !defined('FLUENTFORM') ) {
+        if ( !defined('FLUENTFORM') ) {
             return [];
         }
        // get fluent form 
@@ -455,7 +437,12 @@ class ProductSettings
     */
     public static function sales_get_fluentFormInstallUrl()
     {
+        if ( ! function_exists( 'get_plugins' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/plugin.php';
+        }
+
         $allPlugins = get_plugins();
+         
         if (!isset($allPlugins['fluentform/fluentform.php'])) {
             $fluentFormLink = wp_nonce_url(
                 self_admin_url('update.php?action=install-plugin&plugin=fluentform'),
@@ -471,8 +458,5 @@ class ProductSettings
                      Activate fluent form 
                 </a>";
     }
-
-
-
 }
 

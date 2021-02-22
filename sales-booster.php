@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sales Booster for WooCommerce
 Description: The Best Sale Booster Plugin for Woocommerce.
-Version: 1.6.0
+Version: 1.8.0
 Author: Footnote.io
 Author URI: https://footnote.io
 Plugin URI: https://footnote.io/downloads/sales-booster-pro-for-woocommerce/
@@ -23,14 +23,13 @@ class WooSaleBoosterLite
 
     public static function instance()
     {
-        if(defined('SALES_BOOTER_PRO_INSTALLED')) {
+        if (defined('SALES_BOOTER_PRO_INSTALLED')) {
             return false;
         }
 
         if (!isset(self::$instance) && !(self::$instance instanceof WooSaleBoosterLite)) {
             self::$instance = new WooSaleBoosterLite;
             self::$instance->loadDependecies();
-            self::loadTextDomain();
             self::$instance->boot();
         }
 
@@ -103,6 +102,3 @@ add_action('plugins_loaded', function () {
         WooSaleBoosterLite::instance();
     }
 });
-
-
-

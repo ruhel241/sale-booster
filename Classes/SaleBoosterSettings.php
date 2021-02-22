@@ -1,5 +1,6 @@
 <?php
 
+
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( ! class_exists( 'SaleBoosterSettings' ) ) :
 
@@ -16,22 +17,21 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	 * @since  1.0
 	 */
 
-	public $getFluentFormsOptions;
-	public $getFluentFormInstallUrl;
+	public static $getFluentFormsOptions = [];
+	public static $getFluentFormInstallUrl = [];
 	
 	public function __construct() {
 	
 		$this->id    = 'sale_booster';
 		$this->label = __( 'Sale Booster', 'sale_booster' );
 		
-		$this->getFluentFormsOptions   = SaleBooster\Classes\ProductSettings::getFluentFormsOptions();
-		$this->getFluentFormInstallUrl = SaleBooster\Classes\ProductSettings::sales_get_fluentFormInstallUrl();
+		self::$getFluentFormsOptions   = SaleBooster\Classes\ProductSettings::getFluentFormsOptions();
+		self::$getFluentFormInstallUrl = SaleBooster\Classes\ProductSettings::sales_get_fluentFormInstallUrl();
 		
 		add_filter( 'woocommerce_settings_tabs_array',        array( $this, 'add_settings_page' ), 20 );
 		add_action( 'woocommerce_settings_' . $this->id,      array( $this, 'output' ) );
 		add_action( 'woocommerce_settings_save_' . $this->id, array( $this, 'save' ) );
 		add_action( 'woocommerce_sections_' . $this->id,      array( $this, 'output_sections' ) );
-
 	}
 	
 	
@@ -60,6 +60,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	 * @return array Array of settings
 	 */
 	public function get_settings( $current_section = '' ) {
+		// dd(self::$getFluentFormsOptions);
 		if ( 'home_ad_settings' == $current_section ) {
 			$settings = apply_filters('sale_booster_home_ad_settings_data', array(
 			
@@ -74,8 +75,8 @@ class SaleBoosterSettings extends WC_Settings_Page {
                     'name'     => __( 'Home Page Exit Popup', 'sale_booster' ),
                     'type'     => 'select',
                     'id'       => 'home_page_exit_popup',
-                    'options'  => $this->getFluentFormsOptions,
-                    'desc'     => !defined('FLUENTFORM') ? $this->getFluentFormInstallUrl : "",
+                    'options'  => self::$getFluentFormsOptions,
+                    'desc'     => !defined('FLUENTFORM') ? self::$getFluentFormInstallUrl : "",
 					'class'    => 'wc-enhanced-select',
 				),
 			
@@ -171,14 +172,14 @@ class SaleBoosterSettings extends WC_Settings_Page {
 		
 		} else {
 			$settings = apply_filters('sale_booster_lock_customization_settings_data', array(
-			
+
 				array(
 					'name'     => __( 'Sale Booster', 'sale_booster' ),
 					'type'     => 'title',
 					'desc'     => 'Customize the look and feel for Sales booster countdown time and bar colors',
 					'id'       => 'sale_booster_settings_title'
 				),
-				
+
 				array(
 					'name'     => __( 'Topbar Primary Background Color', 'sale_booster' ),
 					'type'     => 'color',
@@ -188,7 +189,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 					'css'      => 'width:80px;',
 					'default'  => '#7901ff',
 				),
-	
+
 				array(
 					'name'     => __( 'Topbar Secondary Background Color', 'sale_booster' ),
 					'type'     => 'color',
@@ -238,7 +239,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 					'css'      => 'width:80px',
 					'default'  => '#9a07d7',
 				),
-				
+
 				array(
 					'name'     => __( 'Stock Quantity Color', 'sale_booster' ),
 					'type'     => 'color',
@@ -253,21 +254,25 @@ class SaleBoosterSettings extends WC_Settings_Page {
 					'type'  => 'sectionend',
 					'id'    => 'sale_booster_settings_section_end'
 				)
-			) );	
+			));	
 			
 			/**
 			 * Pro Notice
 			*/
-
-			if(!defined('SALES_BOOTER_PRO_INSTALLED')) {
+			if (!defined('SALES_BOOTER_PRO_INSTALLED')) {
 				$settings['pro_notice'] = [
 					'name'     => __( 'This is a pro feature', 'sale_booster' ),
 					'type'     => 'title',
 					'desc' 	   => 'Please upgrade to pro to use this feature. The settings will not effect on frontend unless you install pro version',
-					'id'       => 'sale_booster_settings_title'
+					'id'       => 'sale_booster_settings_pro_notice_title'
 				];
+				$settings['pro_notice_end'] = array(
+					'type' => 'sectionend',
+					'id'   => 'sale_booster_pro_notice_title_end',
+				);
 			}
 		}
+
 		return apply_filters( 'woocommerce_get_settings_' . $this->id, $settings, $current_section );
 	}
 	

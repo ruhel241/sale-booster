@@ -38,3 +38,7 @@ fieldset.form-field._sale_booster_expaire_date_layout_field .wc-radios {
 ._sale_booster_inquire_us_button_field li {
     margin-right: 10px !important;
 }
+
+#sales_booster_user_time_promo {
+    margin-bottom: 30px;
+}
