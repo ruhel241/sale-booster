@@ -37,31 +37,41 @@
  * Media upload on setting page
 */ 
     var mediaUploader;
-    var  inputValue = "";
+    var inputValue = "";
+    
     $('.upload_image').click(function(e) {
-        if(e.target.id === 'upload_image_banner_below'){
-           inputValue = $("#upload_image_banner_below").closest("span").siblings('#home_page_banner_below');
+        
+        if (e.target.id === 'upload_image_banner_below') {
+           inputValue = $("#home_page_banner_below");
+        } 
+        
+        if (e.target.id === 'upload_image_above_footer') {
+            inputValue = $("#home_page_banner_above_footer");
+        } 
+       
+        if (e.target.id === 'upload_image_corner_ad') {
+            inputValue = $("#home_page_corner_ad");
         }
-        else if(e.target.id === 'upload_image_above_footer') {
-            inputValue = $("#upload_image_above_footer").closest("span").siblings('#home_page_banner_above_footer');
-        } 
-        else {
-           inputValue = $("#upload_image_corner_ad").closest("span").siblings('#home_page_corner_ad');
-        } 
+        
         e.preventDefault();
-            if (mediaUploader) {
+
+        if (mediaUploader) {
             mediaUploader.open();
             return;
         }
+        
         mediaUploader = wp.media.frames.file_frame = wp.media({
             title: 'Choose Image',
             button: {
             text: 'Choose Image'
         }, multiple: false });
+
         mediaUploader.on('select', function() {
             var attachment = mediaUploader.state().get('selection').first().toJSON();
             $(inputValue).val(attachment.url);
         });
+
         mediaUploader.open();
+    
     });
 })( jQuery );
