@@ -64,7 +64,7 @@
 }
 
 body._sale_top_clock_loaded {
-  padding-top: 50px;
+  padding-top: 70px;
 }
 
 body._sale_top_clock_loaded ._sale-booster-countdown-top {
@@ -73,7 +73,11 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 99999999999;
+  z-index: 9999;
+}
+
+.admin-bar._sale_top_clock_loaded ._sale-booster-countdown-top {
+  top: 30px;
 }
 
 ._sale_booster_countdown_wrap._sale-booster-countdown-top._sale-booster-countdown-footer {
@@ -266,4 +270,5 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   float: right;
   margin-bottom: 10px;
 }
+
 /*# sourceMappingURL=sale-booster.css.map */
