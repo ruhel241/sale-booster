@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sales Booster for WooCommerce
 Description: The Best Sale Booster Plugin for Woocommerce.
-Version: 1.8.0
+Version: 2.0.0
 Author: Footnote.io
 Author URI: https://footnote.io
 Plugin URI: https://footnote.io/downloads/sales-booster-pro-for-woocommerce/
