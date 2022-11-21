@@ -136,7 +136,7 @@ msgid "Footer Sticky"
 msgstr ""
 
 #. Author of the plugin
-msgid "Footnote.io"
+msgid "wpsalesbooster.org"
 msgstr ""
 
 #: Classes/ProductSettings.php:294
@@ -168,11 +168,11 @@ msgid "hours"
 msgstr ""
 
 #. Author URI of the plugin
-msgid "https://footnote.io"
+msgid "https://wpsalesbooster.org"
 msgstr ""
 
 #. URI of the plugin
-msgid "https://footnote.io/downloads/sales-booster-pro-for-woocommerce/"
+msgid "https://wpsalesbooster.org/downloads/sales-booster-pro-for-woocommerce/"
 msgstr ""
 
 #: Classes/ProductSettings.php:230

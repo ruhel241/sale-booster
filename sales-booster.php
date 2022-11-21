@@ -2,10 +2,10 @@
 /*
 Plugin Name: Sales Booster for WooCommerce
 Description: The Best Sale Booster Plugin for Woocommerce.
-Version: 2.0.0
-Author: Footnote.io
-Author URI: https://footnote.io
-Plugin URI: https://footnote.io/downloads/sales-booster-pro-for-woocommerce/
+Version: 2.0.1
+Author: wpsalesbooster.org
+Author URI: https://wpsalesbooster.org
+Plugin URI: https://wpsalesbooster.org/downloads/sales-booster-pro-for-woocommerce/
 License: GPLv2 or later
 Text Domain: sale_booster
 Domain Path: /languages
@@ -17,7 +17,7 @@ class WooSaleBoosterLite
 {
     /**
      * @var NINJASaleBoosterPro The only instance
-     * @since 1.0
+     * @since 2.0.1
      */
     private static $instance;
 
@@ -52,7 +52,7 @@ class WooSaleBoosterLite
         include_once 'Classes/FrontendHandler.php';
         define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
         define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
-        define("SALES_BOOSTER_PRO_URL", 'https://footnote.io/downloads/sales-booster-pro-for-woocommerce/');
+        define("SALES_BOOSTER_PRO_URL", 'https://wpsalesbooster.org/downloads/sales-booster-pro-for-woocommerce/');
         define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '1.5.0');
     }
 
