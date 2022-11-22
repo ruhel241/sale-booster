@@ -18,26 +18,32 @@ WP Sales Booster is  with most amazing salas increasing plugin with WooCommerce 
 
 ### How To Remove Add to Cart Button On Woocommerce 
 Sometimes Woocommerce website owner needs to remove the add to cart button for any specific product . This plugin allow this option to user .any one can easily remove add to cart button even without having any coding skills.
+
 [youtube https://youtu.be/Phhjm2BpP5U]
 
 ### How To Hide WooCommerce Price
 WooCommerce website owner a hide price for any specific product. This plugin allow users to hide price for any specific product.
+
 [youtube https://youtu.be/U3azkSPWvN4]
 
 ### How To Set Countdown Timer For WooCommerce Store
 Website owner can set  unique timer for individual user. This is the most advanced feature and it's a proven method of increasing sales. By this feature you can set special note to any customer for a specific timer for 0 to 120 minutes. If audience not grab the offer note or discountcount code. Note will be vanish for the user for the user for a specific minutes. This is really a great trigger to increase your sales. 
+
 [youtube https://youtu.be/GEbehZmSPpU]
 
 ### How To Set  Fixed Date Countdown Timer For WooCommerce Store
 WP Sales Booster allows clear deadline based countdown timer to your shoppers. So  a website owner can  create a campaign targeting a specific deadline .Any one can set a campaign with coupon or special note with this plugin for a special occasion. Such as Black friday, Critsmash, cyber monday. 
+
 [youtube https://youtu.be/hzNHDmNPt6U]
 
 ### How To Set Product Enquiry Button For Particular  WooCommerce Product 
 Website admin can set custom product enquiry forms for each product  . With auto massage system and also with custom email. 
+
 [youtube https://youtu.be/R_V8wxy2cR4]
 
 ### How To Set Custom Exit Popup Form Woocommerce Product Page
 Collect subscriber by showing custom exit pop up form or note for individual product . User can create custom form with drag drop features and also can show third party forms by mailchimp aweber getresponse etc . 
+
 [youtube https://youtu.be/YdFZuISKPQE]
 
 ### Sticky Header Note WooCommerce 
@@ -60,11 +66,14 @@ Web admin can set individual message for each form  . So user will get individua
 
 ### Change The Enquiry Button Text
 Webmaster can set the enquiry button text with his that he or she wants. 
+
 [youtube https://youtu.be/5LYEyvXeMvw] 
 
 ###  How To Set Banner and corner Ad For WooCommerce shop 
 Webmaster  can set banner and corner image for campaign setting and also for driving traffic to any specific product or landing page ! 
-[youtube https://youtu.be/-4kedkTZoIU] 
+
+[youtube https://youtu.be/-4kedkTZoIU]
+ 
 [youtube https://youtu.be/brYGwLbc8Ac]
 
 == Installation ==

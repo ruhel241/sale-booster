@@ -72,7 +72,7 @@ msgid "Discount Timer"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:81
-msgid "Enter the URL to Inquire Us button."
+msgid "Enter the URL to Enquiry Us button."
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:138
@@ -120,19 +120,19 @@ msgid "Hurry up! just {stock} items left in stock"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:69
-msgid "Inquire Us"
+msgid "Enquiry Us"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:78
-msgid "Inquire Us Link"
+msgid "Enquiry Us Link"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:68
-msgid "Inquire Us Text"
+msgid "Enquiry Us Text"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:71
-msgid "Inquire Us Text."
+msgid "Enquiry Us Text."
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:419
@@ -172,7 +172,7 @@ msgid "secs"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:56
-msgid "Show Inquire Us Button"
+msgid "Show Enquiry Us Button"
 msgstr ""
 
 #: Classes/SaleBoosterHandler.php:521 Classes/SaleBoosterHandler.php:523

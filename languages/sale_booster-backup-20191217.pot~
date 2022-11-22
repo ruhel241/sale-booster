@@ -175,23 +175,23 @@ msgid "Hurry up! just {stock} items left in stock"
 msgstr ""
 
 #: Classes/ProductSettings.php:101 Classes/ProductSettings.php:112
-msgid "Inquire Us"
+msgid "Enquiry Us"
 msgstr ""
 
 #: Classes/ProductSettings.php:120
-msgid "Inquire Us Button"
+msgid "Enquiry Us Button"
 msgstr ""
 
 #: Classes/ProductSettings.php:143
-msgid "Inquire Us Form"
+msgid "Enquiry Us Form"
 msgstr ""
 
 #: Classes/ProductSettings.php:111
-msgid "Inquire Us Text"
+msgid "Enquiry Us Text"
 msgstr ""
 
 #: Classes/ProductSettings.php:114
-msgid "Inquire Us Text."
+msgid "Enquiry Us Text."
 msgstr ""
 
 #: Classes/SaleBoosterSettings.php:48

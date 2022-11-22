@@ -109,7 +109,7 @@ class ProductSettings
                     woocommerce_wp_checkbox(
                         array(
                             'id'          => '_sale_booster_inquire_us',
-                            'label'       => __('Inquire Us', 'sale_booster'),
+                            'label'       => __('Enquiry Us', 'sale_booster'),
                             'description' => __('Enable', 'sale_booster')
                         )
                     );     
@@ -119,16 +119,16 @@ class ProductSettings
                             woocommerce_wp_text_input(
                                 array(
                                     'id'          => '_sale_booster_inquire_text',
-                                    'label'       => __('Inquire Us Text', 'sale_booster'),
-                                    'placeholder' => __('Inquire Us', 'sale_booster'),
+                                    'label'       => __('Enquiry Us Text', 'sale_booster'),
+                                    'placeholder' => __('Enquiry Us', 'sale_booster'),
                                     'desc_tip'    => 'true',
-                                    'description' => __('Inquire Us Text.', 'sale_booster')
+                                    'description' => __('Enquiry Us Text.', 'sale_booster')
                                 )
                             );
 
                             woocommerce_wp_radio(
                                 array(
-                                    'label'   => __('Inquire Us Button', 'sale_booster'),
+                                    'label'   => __('Enquiry Us Button', 'sale_booster'),
                                     'id'      => '_sale_booster_inquire_us_button',
                                     'options' => array(
                                         'below_title'           => __("Below Title", 'sale_booster'),
@@ -141,7 +141,7 @@ class ProductSettings
                         if( !defined('FLUENTFORM') ):
                         ?>
                             <p class="form-field _sale_booster_inquire_us_pro_form">
-                                <label for="_sale_booster_inquire_us_pro_form">Inquire Us Form</label>
+                                <label for="_sale_booster_inquire_us_pro_form">Enquiry Us Form</label>
                                 <span class="description">
                                  <?php echo self::sales_get_fluentFormInstallUrl(); ?>
                                 </span>
@@ -151,7 +151,7 @@ class ProductSettings
                             woocommerce_wp_select(
                                 array(
                                     'id'       => '_sale_booster_inquire_us_form',
-                                    'label'    => __('Inquire Us Form', 'sale_booster'),
+                                    'label'    => __('Enquiry Us Form', 'sale_booster'),
                                     'selected' => true,
                                     'options'  => self::getFluentFormsOptions()
                                 )
@@ -177,7 +177,7 @@ class ProductSettings
                 <?php else: ?>
 
                     <p class="form-field _sale_booster_inquire_us_pro">
-                        <label for="_sale_booster_inquire_us_pro">Inquire Us (Pro Only)</label>
+                        <label for="_sale_booster_inquire_us_pro">Enquiry Us (Pro Only)</label>
                         <span class="description">This field is only available on Pro version. 
                             <a target="_blank" rel="noopener nofollow" href="<?php echo SALES_BOOSTER_PRO_URL; ?>">
                                 Purchase Sales Booster Pro
@@ -340,7 +340,7 @@ class ProductSettings
         }
 
         if (defined('SALES_BOOTER_PRO_INSTALLED')) { 
-            //Inquire Us Enable
+            //Enquiry Us Enable
             if (isset($_REQUEST['_sale_booster_inquire_us'])) {
                 update_post_meta($post_id, '_sale_booster_inquire_us', 'yes');
             } else {

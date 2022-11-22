@@ -24,7 +24,7 @@ class FrontendHandler
         
         //Pro feature 
         if (defined('SALES_BOOTER_PRO_INSTALLED')) {
-            $inquireUsConfig =  self::getInquireUsSettings($productId);  // inquire us
+            $inquireUsConfig =  self::getEnquiryUsSettings($productId);  // inquire us
             self::$inquireUsConfig = $inquireUsConfig;
             self::inquireUsButtonPostion(); // inquire us button position set
         }
@@ -203,7 +203,7 @@ class FrontendHandler
         }
 
         /**
-         * Inquire us modal 
+         * Enquiry us modal 
          */
         if ( !defined('FLUENTFORM')) {
             return;
@@ -226,7 +226,7 @@ class FrontendHandler
     }
 
     /**
-     * Inquire us modal 
+     * Enquiry us modal 
      */
 
      public static function inquireUsModal($inquireShortCode)
@@ -441,9 +441,9 @@ class FrontendHandler
     }
 
     /**
-     * get Inquire Us Settings
+     * get Enquiry Us Settings
     */ 
-    public static function getInquireUsSettings($productId = false){
+    public static function getEnquiryUsSettings($productId = false){
        
         if (!is_singular('product')) {
             return;

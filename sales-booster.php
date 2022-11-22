@@ -52,7 +52,7 @@ class WooSaleBoosterLite
         include_once 'Classes/FrontendHandler.php';
         define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
         define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
-        define("SALES_BOOSTER_PRO_URL", 'https://wpsalesbooster.org/downloads/sales-booster-pro-for-woocommerce/');
+        define("SALES_BOOSTER_PRO_URL", ' https://wpsalesbooster.org');
         define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '1.5.0');
     }
 

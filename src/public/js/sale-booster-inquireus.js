@@ -1,6 +1,6 @@
 (function($){
 
-    var boostInquireUsApp = {
+    var boostEnquiryUsApp = {
 
         //inquire us modal 
         inquireUsButtonModal: function() {
@@ -27,6 +27,6 @@
             this.inquireUsButtonModal();
         }
     } 
-    boostInquireUsApp.init();
+    boostEnquiryUsApp.init();
 
 })(jQuery)

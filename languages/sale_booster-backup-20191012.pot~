@@ -80,11 +80,11 @@ msgid "Sales Booster Pro"
 msgstr ""
 
 #: Classes/ProductSettings.php:54
-msgid "Show Inquire Us Button"
+msgid "Show Enquiry Us Button"
 msgstr ""
 
 #: Classes/ProductSettings.php:56
-msgid "Show Inquire Us Button (Pro Only)"
+msgid "Show Enquiry Us Button (Pro Only)"
 msgstr ""
 
 #: Classes/ProductSettings.php:61 svn/trunk/Classes/SaleBoosterHandler.php:47
@@ -103,23 +103,23 @@ msgid "Remove Add to Cart Button"
 msgstr ""
 
 #: Classes/ProductSettings.php:79
-msgid "Inquire Us Text"
+msgid "Enquiry Us Text"
 msgstr ""
 
 #: Classes/ProductSettings.php:80
-msgid "Inquire Us"
+msgid "Enquiry Us"
 msgstr ""
 
 #: Classes/ProductSettings.php:82
-msgid "Inquire Us Text."
+msgid "Enquiry Us Text."
 msgstr ""
 
 #: Classes/ProductSettings.php:89
-msgid "Inquire Us Link"
+msgid "Enquiry Us Link"
 msgstr ""
 
 #: Classes/ProductSettings.php:92
-msgid "Enter the URL to Inquire Us button."
+msgid "Enter the URL to Enquiry Us button."
 msgstr ""
 
 #: Classes/ProductSettings.php:112 svn/trunk/Classes/SaleBoosterHandler.php:59
