@@ -4,6 +4,7 @@ namespace SaleBooster\Classes;
 
 class ProductSettings
 {
+    
     // register Tab
     public static function registerProductDataTab($product_data_tabs)
     {

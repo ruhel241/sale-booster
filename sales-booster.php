@@ -12,13 +12,11 @@ Domain Path: /languages
 */
 
 defined("ABSPATH") or die;
+define('SALES_BOOTER_LITE_INSTALLED', true);
 
 class WooSaleBoosterLite
 {
-    /**
-     * @var NINJASaleBoosterPro The only instance
-     * @since 2.0.1
-     */
+   
     private static $instance;
 
     public static function instance()
@@ -26,7 +24,7 @@ class WooSaleBoosterLite
         if (defined('SALES_BOOTER_PRO_INSTALLED')) {
             return false;
         }
-
+        
         if (!isset(self::$instance) && !(self::$instance instanceof WooSaleBoosterLite)) {
             self::$instance = new WooSaleBoosterLite;
             self::$instance->loadDependecies();
@@ -47,9 +45,8 @@ class WooSaleBoosterLite
 
     private function loadDependecies()
     {
-        include_once 'Classes/ProductSettings.php';
-        include_once 'Classes/Customization.php';
-        include_once 'Classes/FrontendHandler.php';
+        include_once 'load.php';
+      
         define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
         define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
         define("SALES_BOOSTER_PRO_URL", ' https://wpsalesbooster.org');
@@ -64,6 +61,7 @@ class WooSaleBoosterLite
         add_filter( 'woocommerce_get_settings_pages', array('SaleBooster\Classes\Customization', 'saleBoosterAddSettings'), 15, 1 );
     }
 
+ 
     public function publicHooks()
     {
         // Remove add to cart button on shop page 
@@ -98,7 +96,6 @@ class WooSaleBoosterLite
 }
 
 add_action('plugins_loaded', function () {
-    if(!defined('SALES_BOOTER_PRO_INSTALLED')) {
-        WooSaleBoosterLite::instance();
-    }
+    WooSaleBoosterLite::instance();
 });
+

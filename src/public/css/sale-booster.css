@@ -1,10 +1,7 @@
 /* countdown top */
 ._sale-booster-countdown-top {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   width: 100%;
-  background: -webkit-gradient(linear, left top, right top, from(#7901ff), to(#ff185f));
   background: linear-gradient(to right, #7901ff, #ff185f);
   color: #fff;
   font-weight: normal;
@@ -12,19 +9,12 @@
 
 ._sale-booster-countdown-top > ._sale-booster-countdown-row {
   width: 1140px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  justify-content: space-between;
   margin-left: auto;
   margin-right: auto;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -ms-flex-flow: wrap;
-      flex-flow: wrap;
+  align-items: center;
+  flex-flow: wrap;
 }
 
 ._sale-booster-countdown-top ._sale-booster-countdown-row > .countdown-top-title {
@@ -34,8 +24,6 @@
 }
 
 ._sale-booster-countdown-top ._sale-booster-countdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
 }
 
@@ -64,20 +52,15 @@
 }
 
 body._sale_top_clock_loaded {
-  padding-top: 70px;
+  padding-top: 50px;
 }
-
 body._sale_top_clock_loaded ._sale-booster-countdown-top {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   width: 100%;
-  z-index: 9999;
-}
-
-.admin-bar._sale_top_clock_loaded ._sale-booster-countdown-top {
-  top: 30px;
+  z-index: 99999999999;
 }
 
 ._sale_booster_countdown_wrap._sale-booster-countdown-top._sale-booster-countdown-footer {
@@ -88,62 +71,39 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 
 @media (max-width: 1024px) {
   ._sale-booster-countdown-top > ._sale-booster-countdown-row {
-    -webkit-box-pack: justify;
-        -ms-flex-pack: justify;
-            justify-content: space-between;
+    justify-content: space-between;
     margin-left: 20px;
     margin-right: 20px;
   }
 }
-
 @media (max-width: 767px) {
   ._sale-booster-countdown-top > ._sale-booster-countdown-row {
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    justify-content: center;
     margin: 0;
     text-align: center;
   }
 }
-
 /* countdown bottom */
 ._sale-booster-countdown-bottom {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 ._sale-booster-countdown-bottom ._sale-booster-countdown {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: nowrap;
-      flex-wrap: nowrap;
+  flex-wrap: nowrap;
   margin-top: 10px;
   margin-bottom: 10px;
 }
 
 ._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer {
   background: #9B4DCA;
-  color: #ffff;
+  color: white;
   margin-right: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   padding: 10px 15px 5px 15px;
   /* min-width: 61px; */
   font-family: Open Sans;
@@ -190,7 +150,6 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 ._sale_booster_next_to_cart_button {
   margin-left: 10px !important;
 }
-
 ._sale_booster_next_to_cart_button:nth-of-type(1) {
   margin-left: 0 !important;
   margin-bottom: 20px !important;
@@ -207,7 +166,7 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   background-color: rgba(0, 0, 0, 0.4);
 }
 
@@ -235,8 +194,7 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
 }
 
 * {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 ._sale_booster_popup__wrapper {
@@ -270,5 +228,3 @@ body._sale_top_clock_loaded ._sale-booster-countdown-top {
   float: right;
   margin-bottom: 10px;
 }
-
-/*# sourceMappingURL=sale-booster.css.map */

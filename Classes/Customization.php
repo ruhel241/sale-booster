@@ -5,11 +5,10 @@ namespace SaleBooster\Classes;
 class Customization {
 
     public static function saleBoosterAddSettings($settings) {
-       
         $settings[] = include_once 'SaleBoosterSettings.php';
         return $settings ;
     }
-  
+
     public static function customStyle(){
 
         if (!defined('SALES_BOOTER_PRO_INSTALLED')) {

@@ -32,8 +32,14 @@ class SaleBoosterSettings extends WC_Settings_Page {
 		add_action( 'woocommerce_settings_' . $this->id,      array( $this, 'output' ) );
 		add_action( 'woocommerce_settings_save_' . $this->id, array( $this, 'save' ) );
 		add_action( 'woocommerce_sections_' . $this->id,      array( $this, 'output_sections' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'adminEnqueueScripts' ), 20 );
 	}
 	
+	public function adminEnqueueScripts() {
+		wp_enqueue_media();
+		wp_enqueue_script("sale_booster_settings_js", SALE_BOOSTER_PLUGIN_DIR_URL . "src/admin/js/sale_booster_settings.js", array('jquery'), SALE_BOOSTER_PLUGIN_DIR_VERSION, true);
+	}
+
 	
 	/**
 	 * Get sections
@@ -41,9 +47,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	 * @return array
 	 */
 	public function get_sections() {
-		
-		wp_enqueue_script("sale_booster_settings_js", SALE_BOOSTER_PLUGIN_DIR_URL . "src/admin/js/sale_booster_settings.js", array('jquery'), SALE_BOOSTER_PLUGIN_DIR_VERSION, true);
-		
+
 		$sections = array(
 			'' => __( 'Look Customizations', 'sale_booster' ),
 			'home_ad_settings'   => __( 'Home And Ad Settings', 'sale_booster')
@@ -51,7 +55,8 @@ class SaleBoosterSettings extends WC_Settings_Page {
 		
 		return apply_filters( 'woocommerce_get_sections_' . $this->id, $sections );
 	}
-	
+
+    
 	/**
 	 * Get settings array
 	 *
@@ -60,7 +65,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	 * @return array Array of settings
 	 */
 	public function get_settings( $current_section = '' ) {
-		// dd(self::$getFluentFormsOptions);
+		
 		if ( 'home_ad_settings' == $current_section ) {
 			$settings = apply_filters('sale_booster_home_ad_settings_data', array(
 			

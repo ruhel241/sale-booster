@@ -1,49 +1,44 @@
 #woocommerce-product-data ul.wc-tabs li._sale_booster_options a::before {
-  font-family: Dashicons;
-  content: "\f488";
+    font-family: Dashicons;
+    content: '\f488';
 }
-
 input#_sale_booster_expire_date_time {
-  width: 200px;
+    width: 200px;
 }
 
 input#_sale_booster_user_based_expire_time {
-  width: 200px;
+    width: 200px; 
 }
-
 ._sale_booster_discount_timer_field > ul {
-  display: flex !important;
-  width: 100% !important;
-  flex-flow: wrap !important;
+    display: flex !important;
+    width: 100% !important;
+    flex-flow: wrap !important;
 }
-
 ._sale_booster_discount_timer_field li {
-  margin-right: 10px !important;
+    margin-right: 10px !important;
 }
 
 ._sale_booster_expaire_date_layout_field > ul {
-  display: flex !important;
+    display: flex !important;
 }
-
 ._sale_booster_expaire_date_layout_field li {
-  margin-right: 10px !important;
+    margin-right: 10px !important;
 }
 
 fieldset.form-field._sale_booster_expaire_date_layout_field .wc-radios {
-  width: 100%;
+    width: 100%;
 }
 
 /* Enquiry Us Button */
 ._sale_booster_inquire_us_button_field > ul {
-  display: flex !important;
-  width: 100% !important;
-  flex-flow: wrap !important;
+    display: flex !important;
+    width: 100% !important;
+    flex-flow: wrap !important;
 }
-
 ._sale_booster_inquire_us_button_field li {
-  margin-right: 10px !important;
+    margin-right: 10px !important;
 }
 
 #sales_booster_user_time_promo {
-  margin-bottom: 30px;
+    margin-bottom: 30px;
 }
