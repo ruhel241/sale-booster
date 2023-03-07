@@ -1,4 +1,4 @@
-=== WooCommerce Countdown Timer,Enquiry Form , Exit Popup – WP Sales Booster ===
+=== WooCommerce Product Offer Countdown Timer ===
 Contributors: footnoteio, ruhel241, rupok98,
 Tags:  Remove add to cart button woocommerce, woocommerce disable cart and checkout, woocommerce hide price, countdown timer
 Requires at least: 5.0
