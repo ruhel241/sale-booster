@@ -1,1 +1,230 @@
-._sale-booster-countdown-top{background:linear-gradient(90deg,#7901ff,#ff185f);color:#fff;display:flex;font-weight:400;width:100%}._sale-booster-countdown-top>._sale-booster-countdown-row{align-items:center;display:flex;flex-flow:wrap;justify-content:space-between;margin-left:auto;margin-right:auto;width:1140px}._sale-booster-countdown-top ._sale-booster-countdown-row>.countdown-top-title{font-family:Open Sans;font-size:18px;margin:10px 0}._sale-booster-countdown-top ._sale-booster-countdown{display:flex}._sale-booster-countdown-top ._sale-discount-countdown-timer{background:hsla(0,0%,100%,.2);margin-right:3px;padding:12px}._sale-booster-countdown-top ._sale-discount-time{font-family:Open Sans;font-size:20px}._sale-booster-countdown-top ._sale-discount-units{font-family:Open Sans;font-size:18px;text-transform:lowercase}._sale-booster-countdown-top.fixed{position:fixed;top:0;width:100%;z-index:999999999}body._sale_top_clock_loaded{padding-top:50px}body._sale_top_clock_loaded ._sale-booster-countdown-top{left:0;position:fixed;right:0;top:0;width:100%;z-index:99999999999}._sale_booster_countdown_wrap._sale-booster-countdown-top._sale-booster-countdown-footer{bottom:0;position:fixed;z-index:99999999999}@media (max-width:1024px){._sale-booster-countdown-top>._sale-booster-countdown-row{justify-content:space-between;margin-left:20px;margin-right:20px}}@media (max-width:767px){._sale-booster-countdown-top>._sale-booster-countdown-row{justify-content:center;margin:0;text-align:center}}._sale-booster-countdown-bottom{display:flex;flex-direction:column}._sale-booster-countdown-bottom ._sale-booster-countdown{display:flex;flex-wrap:nowrap;margin-bottom:10px;margin-top:10px}._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer{align-items:center;background:#9b4dca;color:#fff;display:flex;flex-direction:column;font-family:Open Sans;justify-content:center;margin-right:10px;padding:10px 15px 5px}._sale-booster-countdown-bottom ._sale-discount-time{display:block;font-family:Open Sans;font-size:25px;font-weight:600;line-height:1}._sale-booster-countdown-bottom ._sale-discount-units{font-family:Open Sans;margin-top:-3px;text-transform:lowercase}._sale-booster-countdown-bottom ._sale-booster-hits{color:#9a07d7;font-family:Open Sans;font-size:16px;font-weight:600;margin:0}._sale-booster-countdown-bottom ._sale-booster-hits .sale_booster_stock{color:#ff0400}._sale_booster_below_title{margin-bottom:20px!important;margin-top:20px!important}._sale_booster_below_description{margin-bottom:30px;margin-left:0;margin-top:10px}._sale_booster_next_to_cart_button{margin-left:10px!important}._sale_booster_next_to_cart_button:first-of-type{margin-bottom:20px!important;margin-left:0!important}#_sale_booster_inquire_us_modal{background-color:#000;background-color:rgba(0,0,0,.4);display:none;height:100%;left:0;overflow:auto;padding-top:100px;position:fixed;top:0;width:100%;z-index:9999999}._sale_booster_inquire_us_modal_content{border-radius:10px;margin:auto;padding:20px;width:30%}._sale_booster_inquire_us_close{color:#aaa;float:right;font-size:28px;font-weight:700}._sale_booster_inquire_us_close:focus,._sale_booster_inquire_us_close:hover{color:#000;cursor:pointer;text-decoration:none}*{box-sizing:border-box}._sale_booster_popup__wrapper{background:rgba(0,0,0,.75);bottom:0;left:0;position:fixed;right:0;top:0;z-index:99999999999}._sale_booster_popup__container{font-family:Helvetica,Arial,sans-serif;font-size:18px;margin:100px auto;max-width:100%;padding:20px;position:relative;width:500px}._sale_booster_popup__title{font-size:26px;margin-bottom:15px}#_sale_booster_popup_close{cursor:pointer;float:right;font-size:30px;margin-bottom:10px}
+/* countdown top */
+._sale-booster-countdown-top {
+  display: flex;
+  width: 100%;
+  background: linear-gradient(to right, #7901ff, #ff185f);
+  color: #fff;
+  font-weight: normal;
+}
+
+._sale-booster-countdown-top > ._sale-booster-countdown-row {
+  width: 1140px;
+  display: flex;
+  justify-content: space-between;
+  margin-left: auto;
+  margin-right: auto;
+  align-items: center;
+  flex-flow: wrap;
+}
+
+._sale-booster-countdown-top ._sale-booster-countdown-row > .countdown-top-title {
+  font-size: 18px;
+  margin: 10px 0 10px 0;
+  font-family: Open Sans;
+}
+
+._sale-booster-countdown-top ._sale-booster-countdown {
+  display: flex;
+}
+
+._sale-booster-countdown-top ._sale-discount-countdown-timer {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 12px;
+  margin-right: 3px;
+}
+
+._sale-booster-countdown-top ._sale-discount-time {
+  font-size: 20px;
+  font-family: Open Sans;
+}
+
+._sale-booster-countdown-top ._sale-discount-units {
+  font-size: 18px;
+  font-family: Open Sans;
+  text-transform: lowercase;
+}
+
+._sale-booster-countdown-top.fixed {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999999999;
+}
+
+body._sale_top_clock_loaded {
+  padding-top: 50px;
+}
+body._sale_top_clock_loaded ._sale-booster-countdown-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 99999999999;
+}
+
+._sale_booster_countdown_wrap._sale-booster-countdown-top._sale-booster-countdown-footer {
+  position: fixed;
+  bottom: 0;
+  z-index: 99999999999;
+}
+
+@media (max-width: 1024px) {
+  ._sale-booster-countdown-top > ._sale-booster-countdown-row {
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+}
+@media (max-width: 767px) {
+  ._sale-booster-countdown-top > ._sale-booster-countdown-row {
+    justify-content: center;
+    margin: 0;
+    text-align: center;
+  }
+}
+/* countdown bottom */
+._sale-booster-countdown-bottom {
+  display: flex;
+  flex-direction: column;
+}
+
+._sale-booster-countdown-bottom ._sale-booster-countdown {
+  display: flex;
+  flex-wrap: nowrap;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer {
+  background: #9B4DCA;
+  color: white;
+  margin-right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px 5px 15px;
+  /* min-width: 61px; */
+  font-family: Open Sans;
+}
+
+._sale-booster-countdown-bottom ._sale-discount-time {
+  font-size: 25px;
+  font-family: Open Sans;
+  display: block;
+  line-height: 1;
+  font-weight: 600;
+}
+
+._sale-booster-countdown-bottom ._sale-discount-units {
+  margin-top: -3px;
+  font-family: Open Sans;
+  text-transform: lowercase;
+}
+
+._sale-booster-countdown-bottom ._sale-booster-hits {
+  color: #9a07d7;
+  font-weight: 600;
+  margin-top: 4px;
+  font-size: 16px;
+  margin: 0;
+  font-family: Open Sans;
+}
+
+._sale-booster-countdown-bottom ._sale-booster-hits .sale_booster_stock {
+  color: #ff0400;
+}
+
+._sale_booster_below_title {
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
+}
+
+._sale_booster_below_description {
+  margin-left: 0px;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+._sale_booster_next_to_cart_button {
+  margin-left: 10px !important;
+}
+._sale_booster_next_to_cart_button:nth-of-type(1) {
+  margin-left: 0 !important;
+  margin-bottom: 20px !important;
+}
+
+/* The Modal (background) */
+#_sale_booster_inquire_us_modal {
+  display: none;
+  position: fixed;
+  z-index: 9999999;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+/* Modal Content */
+._sale_booster_inquire_us_modal_content {
+  margin: auto;
+  padding: 20px;
+  width: 30%;
+  border-radius: 10px;
+}
+
+/* The Close Button */
+._sale_booster_inquire_us_close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+._sale_booster_inquire_us_close:hover,
+._sale_booster_inquire_us_close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+._sale_booster_popup__wrapper {
+  background: rgba(0, 0, 0, 0.75);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99999999999;
+}
+
+._sale_booster_popup__container {
+  font-family: Helvetica, Arial, sans-serif;
+  font-size: 18px;
+  margin: 100px auto;
+  max-width: 100%;
+  padding: 20px;
+  width: 500px;
+  position: relative;
+}
+
+._sale_booster_popup__title {
+  font-size: 26px;
+  margin-bottom: 15px;
+}
+
+#_sale_booster_popup_close {
+  font-size: 30px;
+  cursor: pointer;
+  float: right;
+  margin-bottom: 10px;
+}

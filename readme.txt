@@ -1,10 +1,10 @@
-=== WooCommerce Product Offer Countdown Timer ===
+=== Sale Booster Product Offer Countdown Timer ===
 Contributors: footnoteio, ruhel241, rupok98,
 Tags:  Remove add to cart button woocommerce, woocommerce disable cart and checkout, woocommerce hide price, countdown timer
 Requires at least: 5.0
 Requires PHP: 5.4 or greater
 Tested up to: 6.1.1
-Stable tag: 2.0.2 
+Stable tag: 2.0.3 
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Supercharge your WordPress WooCommerce site with showing countdown timer for dis
 
 == Description ==
 
-WP Sales Booster is  with most amazing salas increasing plugin with WooCommerce Countdown Timer [Which creates scarcity to visitor and influence to purchase] .Exit Popup [ WooCommerce  administrator can collect potential customer leads [email address and phone number] and also can re-target the customer using auto responder  [different email marketing tools]. Another great feature is Enquiry Form [Webmaster can set custom Enquiry Form for each product  to make instant email communication with potential customer] . This plugin is focused on WooCommerce and we are a team of people added many proven  features to boost your WooCommerce sales and conversion with this plugin.
+WP Sales Booster is with most amazing salas increasing plugin with WooCommerce Countdown Timer [Which creates scarcity to visitor and influence to purchase] .Exit Popup [ WooCommerce  administrator can collect potential customer leads [email address and phone number] and also can re-target the customer using auto responder  [different email marketing tools]. Another great feature is Enquiry Form [Webmaster can set custom Enquiry Form for each product  to make instant email communication with potential customer] . This plugin is focused on WooCommerce and we are a team of people added many proven  features to boost your WooCommerce sales and conversion with this plugin.
 
 [youtube https://youtu.be/z5LngNnhGLA]
 
@@ -140,13 +140,16 @@ Yes, you can change woocommerce button text with this plugin
 
 
 == Screenshots ==
-1. Woo Sales Booster Settings
+1. Sales Booster Settings
 2. Show timer on frontend
 3. Hide Price Option on Frontend
 4. Enquire Us Modal View
 
 
 == Changelog ==
+
+= 2.0.3 =
+* Update read me file
 
 = 2.0.2 =
 * Code Refactor & Added Pro License key
