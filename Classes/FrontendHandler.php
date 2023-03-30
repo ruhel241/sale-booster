@@ -64,7 +64,7 @@ class FrontendHandler
         ?>
             <div style="display: none" class="_sale_booster_countdown_wrap _sale-booster-countdown-bottom" style="margin-top:20px">
                <?php if (defined('SALES_BOOTER_PRO_INSTALLED')): ?>
-                    <p class="_sale-booster-hits"> <?php echo $config['title_before']; ?></p>
+                    <p class="_sale-booster-hits"> <?php echo wp_kses_post($config['title_before']); ?></p>
                <?php endif; ?>
                 <div class="_sale-booster-countdown"></div>
                 <p class="_sale-booster-hits"> <?php echo wp_kses_post($config['title_after']); ?> </p>
@@ -84,10 +84,10 @@ class FrontendHandler
             return;
         }
         ?>
-        <div style="display: none" class="_sale_booster_countdown_wrap <?php echo $className; ?>">
+        <div style="display: none" class="_sale_booster_countdown_wrap <?php echo esc_attr($className); ?>">
             <div class="_sale-booster-countdown-row">
                 <p class="countdown-top-title"> <?php echo wp_kses_post($config['title_after']); ?> </p>
-                <div class="_sale-booster-countdown <?php echo $clockName ?>"></div>
+                <div class="_sale-booster-countdown <?php echo esc_html($clockName); ?>"></div>
             </div>
         </div>
         <?php
@@ -105,10 +105,10 @@ class FrontendHandler
             return;
         }
         ?>
-        <div style="display: none" class="_sale_booster_countdown_wrap <?php echo $className; ?>">
+        <div style="display: none" class="_sale_booster_countdown_wrap <?php echo esc_attr($className); ?>">
             <div class="_sale-booster-countdown-row">
                 <p class="countdown-top-title"> <?php echo wp_kses_post($config['title_after']); ?> </p>
-                <div class="_sale-booster-countdown <?php echo $clockName ?>"></div>
+                <div class="_sale-booster-countdown <?php echo esc_html($clockName) ?>"></div>
             </div>
         </div>
         <?php
@@ -199,7 +199,7 @@ class FrontendHandler
         }
 
         if ($inquire_us == 'yes') {
-            echo "<button type='button' id='_sale_booster_inquire_us_btn' class='single_add_to_cart_button button alt ".$inquire_us_button_class."'>" . $cart_Button_text . "</button>";
+            echo wp_kses_post("<button type='button' id='_sale_booster_inquire_us_btn' class='single_add_to_cart_button button alt ".$inquire_us_button_class."'>" . $cart_Button_text . "</button>");
         }
 
         /**
@@ -266,7 +266,7 @@ class FrontendHandler
             global $product;
             $productId = get_the_ID();
             $customText = get_post_meta($productId, '_sale_booster_cart_button_text', true);
-            if($customText){
+            if ($customText){
                 $text = $customText;
                 return $text;
             } 
@@ -528,8 +528,8 @@ class FrontendHandler
 
         ?>
             <div class="sale_booster_banner_image_top" style="margin-bottom:10px;"> 
-                <a href="<?php echo $topBannerLink; ?>" target="_blank"> 
-                    <img src="<?php echo $topBanner; ?>"/> 
+                <a href="<?php echo esc_url($topBannerLink); ?>" target="_blank"> 
+                    <img src="<?php echo esc_url($topBanner); ?>"/> 
                 </a>
             </div>
         <?php
@@ -553,8 +553,8 @@ class FrontendHandler
 
         ?>
             <div class="sale_booster_banner_image_footer" style="margin-bottom:10px;"> 
-                <a href="<?php echo $aboveFooterLink; ?>" target="_blank"> 
-                    <img src="<?php echo $aboveFooter; ?>"/> 
+                <a href="<?php echo esc_url($aboveFooterLink); ?>" target="_blank"> 
+                    <img src="<?php echo esc_url($aboveFooter); ?>"/> 
                 </a>
             </div>
         <?php
@@ -591,9 +591,9 @@ class FrontendHandler
         }
 
         ?>
-            <div class="sale_booster_corner_ad_<?php echo $cornerAdClass;?>"> 
-                <a href="<?php echo $cornerAdLink; ?>" target="_blank"> 
-                    <img src="<?php echo $cornerAd; ?>"/> 
+            <div class="sale_booster_corner_ad_<?php echo esc_attr($cornerAdClass);?>"> 
+                <a href="<?php echo esc_url($cornerAdLink); ?>" target="_blank"> 
+                    <img src="<?php echo esc_url($cornerAd); ?>"/> 
                 </a>
             </div>
             

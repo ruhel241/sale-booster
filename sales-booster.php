@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sales Booster for WooCommerce
 Description: The Best Sale Booster Plugin for Woocommerce.
-Version: 2.0.3
+Version: 2.0.4
 Author: wpsalesbooster.org
 Author URI: https://wpsalesbooster.org
 Plugin URI: https://wpsalesbooster.org/downloads/sales-booster-pro-for-woocommerce/
@@ -50,7 +50,7 @@ class WooSaleBoosterLite
         define("SALE_BOOSTER_PLUGIN_DIR_URL", plugin_dir_url(__FILE__));
         define("SALE_BOOSTER_PLUGIN_DIR_PATH", plugin_dir_path(__FILE__));
         define("SALES_BOOSTER_PRO_URL", ' https://wpsalesbooster.org');
-        define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '2.0.3');
+        define("SALE_BOOSTER_PLUGIN_DIR_VERSION", '2.0.4');
     }
 
     public function adminHooks()

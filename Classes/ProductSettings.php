@@ -139,7 +139,7 @@ class ProductSettings
                                 )
                             );
                             
-                        if( !defined('FLUENTFORM') ):
+                        if ( !defined('FLUENTFORM') ) :
                         ?>
                             <p class="form-field _sale_booster_inquire_us_pro_form">
                                 <label for="_sale_booster_inquire_us_pro_form">Enquiry Us Form</label>
@@ -147,8 +147,7 @@ class ProductSettings
                                  <?php echo self::sales_get_fluentFormInstallUrl(); ?>
                                 </span>
                             </p>
-                        <?php
-                            else : 
+                        <?php else : 
                             woocommerce_wp_select(
                                 array(
                                     'id'       => '_sale_booster_inquire_us_form',
@@ -337,7 +336,7 @@ class ProductSettings
         }
         // exit custom HTML
         if (isset($_REQUEST['_sale_booster_exit_custom_html'])) {
-            update_post_meta($post_id, '_sale_booster_exit_custom_html', $_REQUEST['_sale_booster_exit_custom_html']);
+            update_post_meta($post_id, '_sale_booster_exit_custom_html', wp_kses_post($_REQUEST['_sale_booster_exit_custom_html']));
         }
 
         if (defined('SALES_BOOTER_PRO_INSTALLED')) { 
@@ -361,7 +360,7 @@ class ProductSettings
             }
             //inquire us custom HTML
             if (isset($_REQUEST['_sale_booster_inquire_us_custom_html'])) {
-                update_post_meta($post_id, '_sale_booster_inquire_us_custom_html', $_REQUEST['_sale_booster_inquire_us_custom_html']);
+                update_post_meta($post_id, '_sale_booster_inquire_us_custom_html', wp_kses_post($_REQUEST['_sale_booster_inquire_us_custom_html']));
             }
             // save User Based expire time
             if (isset($_REQUEST['_sale_booster_user_based_expire_time'])) {
@@ -381,11 +380,11 @@ class ProductSettings
         }
         // stock quantity status
         if (isset($_REQUEST['_sale_booster_stock_quantity'])) {
-            update_post_meta($post_id, '_sale_booster_stock_quantity', wp_unslash($_REQUEST['_sale_booster_stock_quantity']));
+            update_post_meta($post_id, '_sale_booster_stock_quantity', wp_kses_post($_REQUEST['_sale_booster_stock_quantity']));
         }
         //   note
         if (isset($_REQUEST['_sale_booster_note'])) {
-            update_post_meta($post_id, '_sale_booster_note', wp_unslash($_REQUEST['_sale_booster_note']));
+            update_post_meta($post_id, '_sale_booster_note', wp_kses_post($_REQUEST['_sale_booster_note']));
         }
         // Save expire date
         if (isset($_REQUEST['_sale_booster_expire_date_time'])) {
@@ -424,11 +423,11 @@ class ProductSettings
        $fluentForms = self::sales_get_fluentforms();
        
        //select dynamic options 
-       $options = array( '' => __("Choose Fluent Form"));
+       $options = array( '' => __("Choose Fluent Form", 'sale_booster'));
        foreach($fluentForms as $fluentForm ){
            $options[ '[fluentform id="'.$fluentForm->id.'"]' ] = $fluentForm->title;
        }
-       $options['custom_html'] = __("Custom HTML");
+       $options['custom_html'] = __("Custom HTML", 'sale_booster');
 
        return $options;
     }
