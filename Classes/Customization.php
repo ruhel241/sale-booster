@@ -27,27 +27,27 @@ class Customization {
         <style type='text/css'>
             <?php if ($bgGradientColor || $topbarTextColor): ?>
             ._sale-booster-countdown-top {
-                background: <?php echo $bgGradientColor; ?>;
-                color:  <?php echo $topbarTextColor; ?>;
+                background: <?php echo esc_html($bgGradientColor); ?>;
+                color:  <?php echo esc_html($topbarTextColor); ?>;
             }
             <?php endif; ?>
 
             <?php if ($countdownBgColor || $countdownTimerColor): ?>
             ._sale-booster-countdown-bottom ._sale-booster-countdown ._sale-discount-countdown-timer{
-                background: <?php echo $countdownBgColor; ?>;
-                color:  <?php echo $countdownTimerColor; ?>;
+                background: <?php echo esc_html($countdownBgColor); ?>;
+                color:  <?php echo esc_html($countdownTimerColor); ?>;
             }
             <?php endif; ?>
 
             <?php if ($countdownTextColor): ?>
             ._sale-booster-countdown-bottom ._sale-booster-hits{
-                color:  <?php echo $countdownTextColor; ?>;
+                color:  <?php echo esc_html($countdownTextColor); ?>;
             }
             <?php endif; ?>
 
             <?php if ($stockColor): ?>
             ._sale-booster-countdown-bottom ._sale-booster-hits .sale_booster_stock{
-                color: <?php echo $stockColor; ?>;
+                color: <?php echo esc_html($stockColor); ?>;
             }
             <?php endif; ?>
         </style>
