@@ -4,7 +4,7 @@ Tags:  Remove add to cart button woocommerce, woocommerce disable cart and check
 Requires at least: 5.0
 Requires PHP: 5.4 or greater
 Tested up to: 6.2
-Stable tag: 2.0.4
+Stable tag: 2.0.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,6 +147,9 @@ Yes, you can change woocommerce button text with this plugin
 
 
 == Changelog ==
+
+= 2.0.5 =
+* Added new features.
 
 = 2.0.4 =
 * Added code sanitization.
