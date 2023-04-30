@@ -19,7 +19,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 
 	public static $getFluentFormsOptions = [];
 	public static $getFluentFormInstallUrl = [];
-	
+
 	public function __construct() {
 	
 		$this->id    = 'sale_booster';
@@ -64,7 +64,11 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	 * @param string $current_section Optional. Defaults to empty string.
 	 * @return array Array of settings
 	 */
+
+		
 	public function get_settings( $current_section = '' ) {
+
+		$upgradeToPro = '[ To use this features upgrade to pro ]';
 		
 		if ( 'home_ad_settings' == $current_section ) {
 			$settings = apply_filters('sale_booster_home_ad_settings_data', array(
@@ -93,12 +97,26 @@ class SaleBoosterSettings extends WC_Settings_Page {
                 ),
 				
 				array(
-                    'name'     => __('Home Page Banner Below Menu', 'sale_booster' ),
+                    'title'    => "Home Page Banner Below Menu",
+                    'id'       => 'home_page_banner_below_select',
+                    'default'  => '',
+                    'type'     => 'radio',
+                    'class' => '_sale_booster_list_options',
+					'options'  => array(
+                        'none'    	    => __( 'None', 'sale-booster' ),
+						'shop_page'     => __( 'Shop Page', 'sale-booster' ),
+						'category_pages'=> __( 'Category pages', 'sale-booster' ),
+						'all_pages'     => __("All pages ".$upgradeToPro, 'sale_booster')
+                    ),
+				),
+				array(
+                    'name'     => '',
                     'type'     => 'url',
                     'id'       => 'home_page_banner_below',
 					'placeholder' => 'Paste your image url here',
-					'desc'     =>  __('<button id="upload_image_banner_below" class="button-primary upload_image">Upload Image</button>', 'sale_booster'),
+					'desc'     =>  __('<button id="upload_image_banner_below" class="button-primary upload_image">Upload Image</button>', 'sale-booster'),
 				),
+
 				array(
                     'name'     => "",
                     'type'     => 'url',
@@ -108,8 +126,22 @@ class SaleBoosterSettings extends WC_Settings_Page {
 					'css'	   => 'display:flex; margin-bottom:20px',
                     'desc' => '<img src="'.get_option('home_page_banner_below').'" style="height:180px;">' 
 				),
+
 				array(
-					'name'     => __('Home Page Banner Above Footer', 'sale_booster' ),
+                    'title'    => "Home Page Banner Above Footer",
+                    'id'       => 'home_page_banner_above_footer_select',
+                    'default'  => '',
+                    'type'     => 'radio',
+                    'class' => '_sale_booster_list_options',
+					'options'  => array(
+						'none'    	    => __( 'None', 'sale-booster' ),
+                        'shop_page'     => __( 'Shop Page', 'sale-booster' ),
+						'category_pages'=> __( 'Category pages', 'sale-booster' ),
+						'all_pages'     => __("All pages ".$upgradeToPro, 'sale_booster')
+                    ),
+				),
+				array(
+					'name'     => __('', 'sale_booster' ),
                     'type'     => 'url',
                     'id'       => 'home_page_banner_above_footer',
 					'placeholder' => 'Paste your image url here',
@@ -130,7 +162,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
                     'id'       => 'home_corner_ad_position',
                     'default'  => 'no',
                     'type'     => 'radio',
-                    'class' => '_sale_booster_corner_ad_position',
+                    'class' => '_sale_booster_list_options',
                     'options'  => array(
                         'top_right'    => __( 'Top Right', 'sale_booster' ),
                         'top_left'     => __( 'Top Left', 'sale_booster' ),
@@ -142,14 +174,15 @@ class SaleBoosterSettings extends WC_Settings_Page {
 				array(
                     'title'    => "",
                     'id'       => 'corner_page_select',
-                    'default'  => 'both_page',
+                    'default'  => '',
                     'type'     => 'radio',
-                    'class' => '_sale_booster_corner_ad_position',
+                    'class' => '_sale_booster_list_options',
                     'options'  => array(
+						'none'    	    => __( 'None', 'sale-booster' ),
                         'shop_page'    => __( 'Shop Page', 'sale_booster' ),
-						'single_page'  => __( 'Single page', 'sale_booster' ),
-						'both_page'    => __( 'Both page', 'sale_booster' ),
-                    ),
+						'category_pages' => __( 'Category pages', 'sale_booster' ),
+						'all_pages'    => __("All pages ".$upgradeToPro, 'sale_booster')
+					),
 				),
 				
 				array(

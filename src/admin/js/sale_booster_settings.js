@@ -4,7 +4,7 @@
 
         homeAdSettings: function() {
             // corner ad position inline
-            $("._sale_booster_corner_ad_position").parents("li").css({"display": "inline-block", "margin-right": "10px"});
+            $("._sale_booster_list_options").parents("li").css({"display": "inline-block", "margin-right": "10px"});
         
             /**
              * Added class into custom box

@@ -47,3 +47,20 @@ fieldset.form-field._sale_booster_expaire_date_layout_field .wc-radios {
 #sales_booster_user_time_promo {
   margin-bottom: 30px;
 }
+
+._sale_booster_offer_pin_field > ul {
+  display: flex !important;
+}
+
+._sale_booster_offer_pin_field li {
+  margin-right: 10px !important;
+}
+
+fieldset.form-field._sale_booster_offer_pin_field .wc-radios {
+  width: 100%;
+}
+
+.sale-booster-pro-notice {
+  margin-left: 158px;
+  margin-bottom: 30px;
+}

@@ -515,7 +515,17 @@ class FrontendHandler
     */
     public static function shopPageBannerTop()
     {
-        if (!is_shop()) {
+        $homePageBanner = get_option("home_page_banner_below_select");
+
+        if ($homePageBanner == 'shop_page'){
+            if (!is_shop()){
+                return;
+            }
+        } else if ($homePageBanner == 'category_pages') {
+            if (!is_product_category()) {
+                return;
+            }
+        } else {
             return;
         }
 
@@ -527,21 +537,32 @@ class FrontendHandler
         }
 
         ?>
-            <div class="sale_booster_banner_image_top" style="margin-bottom:10px;"> 
-                <a href="<?php echo esc_url($topBannerLink); ?>" target="_blank"> 
-                    <img src="<?php echo esc_url($topBanner); ?>"/> 
-                </a>
-            </div>
-        <?php
+             <div class="sale_booster_banner_image_top" style="margin-bottom:10px;"> 
+                 <a href="<?php echo esc_url($topBannerLink); ?>" target="_blank"> 
+                     <img src="<?php echo esc_url($topBanner); ?>"/> 
+                 </a>
+             </div>
+         <?php
     }
+
 
     /**
      *  Bottom Banner in shop page
     */
     public static function shopPageBannerBottom()
     {   
-        if (!is_shop()) {
-            return;
+        $homePageBanner = get_option("home_page_banner_above_footer_select");
+
+        if ($homePageBanner == 'shop_page'){
+            if (!is_shop()){
+                return;
+            }
+        } else if($homePageBanner == 'category_pages') {
+            if (!is_product_category()) {
+                return;
+            }
+        } else {
+           return;
         }
 
         $aboveFooter = get_option("home_page_banner_above_footer");
@@ -559,29 +580,26 @@ class FrontendHandler
             </div>
         <?php
     }
-
+   
     /**
      * Corner Ad on shop page
     */
     public static function shopPageCornerAd()
     {    
-
         $corner_page = get_option("corner_page_select");
 
         if ($corner_page == 'shop_page') {
             if (!is_shop()) {
                 return;
             }
-        } else if($corner_page == 'single_page'){
-            if (!is_single()) {
+        } else if ($corner_page == 'category_pages') {
+            if (!is_product_category()) {
                 return;
             }
         } else {
-            if ( !is_shop() && !is_single() ) {
-                return;
-            }
+            return;
         }
-
+       
         $cornerAd = get_option("home_page_corner_ad");
         $cornerAdLink = get_option("home_page_corner_ad_link");
         $cornerAdClass = get_option("home_corner_ad_position");

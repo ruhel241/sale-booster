@@ -77,8 +77,7 @@ class ProductSettings
                                 <?php echo self::sales_get_fluentFormInstallUrl(); ?>
                             </span>
                         </p>
-                <?php  
-                    else :
+                <?php else :
                         woocommerce_wp_select(
                             array(
                                 'id'       => '_sale_booster_exit_popup',
@@ -230,8 +229,7 @@ class ProductSettings
                                 'placeholder' => __('Hurry up! just {stock} items left in stock', 'sale_booster'),
                                 'description' => __('Use {stock} placeholder to show current stock', 'sale_booster')
                             )
-                        );
-                    else:
+                        ); else:
                         ?>
                         <p class="form-field _sale_booster_stock_quantity_field">
                             <label for="_sale_booster_stock_quantity">Text Above Timer (Pro Only)</label>
@@ -295,7 +293,27 @@ class ProductSettings
                             ),
                         )
                     );
+
+                    woocommerce_wp_radio(
+                        array(
+                            'label'   => __('Pin This Offer', 'sale-booster'),
+                            'id'      => '_sale_booster_offer_pin',
+                            'options' => array(
+                                'none'                 => __("None", 'sale-booster'),
+                                'pin_on_shop_page'     => __("Pin On Shop Page ", 'sale-booster'),
+                                'pin_on_catagory_page' => __("Pin On Catagory Page", 'sale-booster'),
+                                'both'                 => __("Pin On All Pages", 'sale-booster'),
+                            )
+                        )
+                    );
                     ?>
+                    <div class="sale-booster-pro-notice">
+                        <span class="description">This field is only available on Pro version. 
+                            <a target="_blank" rel="noopener nofollow" href="<?php echo SALES_BOOSTER_PRO_URL; ?>">
+                                Purchase Sales Booster Pro
+                            </a>
+                        </span>
+                    </div>
                 </div>
                 <?php if (!defined('SALES_BOOTER_PRO_INSTALLED')) : ?>
                 <div style="padding: 0px 20px; display: none;" id="sales_booster_user_time_promo">
