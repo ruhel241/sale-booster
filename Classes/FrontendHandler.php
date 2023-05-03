@@ -538,9 +538,9 @@ class FrontendHandler
 
         ?>
              <div class="sale_booster_banner_image_top" style="margin-bottom:10px;"> 
-                 <a href="<?php echo esc_url($topBannerLink); ?>" target="_blank"> 
-                     <img src="<?php echo esc_url($topBanner); ?>"/> 
-                 </a>
+                <a href="<?php echo esc_url($topBannerLink); ?>" target="_blank"> 
+                    <img src="<?php echo esc_url($topBanner); ?>"/> 
+                </a>
              </div>
          <?php
     }
