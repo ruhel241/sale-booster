@@ -131,7 +131,7 @@ class ProductSettings
                                     'label'   => __('Enquiry Us Button', 'sale_booster'),
                                     'id'      => '_sale_booster_inquire_us_button',
                                     'options' => array(
-                                        'below_title'           => __("Below Title", 'sale_booster'),
+                                        'above_title'           => __("Below Title", 'sale_booster'),
                                         'below_description'     => __("Below Description", 'sale_booster'),
                                         'next_to_cart_button'   => __("Next To Cart Button", 'sale_booster'),
                                     ),

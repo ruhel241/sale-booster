@@ -123,15 +123,15 @@ body._sale_top_clock_loaded {
   color: #ff0400;
 }
 
-._sale_booster_below_title{
+._sale_booster_above_title{
   margin-top: 20px !important;
   margin-bottom: 20px !important;
 }
 
 ._sale_booster_below_description{
-  margin-left: 0px;
-  margin-top: 10px;
-  margin-bottom: 30px;
+  margin-top: 10px !important;
+  margin-bottom: 30px !important;
+  margin-left: 0px !important;
 }
 ._sale_booster_next_to_cart_button{
   margin-left: 10px !important;
@@ -140,6 +140,7 @@ body._sale_top_clock_loaded {
     margin-bottom: 20px !important;
   }
 }
+
 
 /* The Modal (background) */
 #_sale_booster_inquire_us_modal {

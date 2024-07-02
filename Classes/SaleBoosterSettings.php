@@ -7,14 +7,14 @@ if ( ! class_exists( 'SaleBoosterSettings' ) ) :
 	/**
 	 * Settings class
 	 *
-	 * @since 2.0.7
+	 * @since 3.0.0
 	 */
 class SaleBoosterSettings extends WC_Settings_Page {
 	
 	/**
 	 * Setup settings class
 	 *
-	 * @since  2.0.7
+	 * @since  3.0.0
 	 */
 
 	public static $getFluentFormsOptions = [];
@@ -60,7 +60,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	/**
 	 * Get settings array
 	 *
-	 * @since 2.0.7
+	 * @since 3.0.0
 	 * @param string $current_section Optional. Defaults to empty string.
 	 * @return array Array of settings
 	 */
@@ -318,7 +318,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	/**
 	 * Output the settings
 	 *
-	 * @since 2.0.7
+	 * @since 3.0.0
 	 */
 	public function output() {
 	
@@ -332,7 +332,7 @@ class SaleBoosterSettings extends WC_Settings_Page {
 	/**
 	 * Save settings
 		*
-		* @since 2.0.7
+		* @since 3.0.0
 		*/
 	public function save() {
 	

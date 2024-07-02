@@ -130,7 +130,7 @@ class FrontendHandler
         $inquire_us_button  = $inquireUsConfig['inquire_us_button'];
         $remove_cart_button = $inquireUsConfig['remove_cart_button'];
 
-        $below_title         = $inquire_us_button == "below_title";
+        $above_title         = $inquire_us_button == "above_title";
         $below_description   = $inquire_us_button == "below_description";
         $next_to_cart_button = $inquire_us_button == "next_to_cart_button";
       
@@ -138,7 +138,7 @@ class FrontendHandler
             return;
         }
 
-        if ($below_title){ // below title
+        if ($above_title){ // below title
             add_action('woocommerce_single_product_summary', array('\SaleBooster\Classes\FrontendHandler', 'addSingleCustomButton'), 15);
         } else if ($next_to_cart_button && $remove_cart_button != 'yes' ){  // next to cart button 
             add_action('woocommerce_after_add_to_cart_button', array('\SaleBooster\Classes\FrontendHandler', 'addSingleCustomButton'));
@@ -153,11 +153,19 @@ class FrontendHandler
     public static function removeSingleCartButton()
     {
         $productId = get_the_ID();
+
         $remove_cart_button = get_post_meta($productId, '_sale_booster_remove_cart_button', true);
         
         if ($remove_cart_button == 'yes' ) {
             if (is_product()) {
                 remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30);
+                ?>
+                <style>
+                    .single-product .summary form.cart {
+                        display: none;
+                    }
+                    </style>
+                <?php
             }
         }
     }
@@ -180,7 +188,7 @@ class FrontendHandler
         $inquire_us_form        = $inquireUsConfig['inquire_us_form'];
         $inquire_us_custom_html = $inquireUsConfig['inquire_us_custom_html'];
         
-        $below_title = $inquire_us_button         == "below_title";
+        $above_title = $inquire_us_button         == "above_title";
         $below_description = $inquire_us_button   == "below_description";
         $next_to_cart_button = $inquire_us_button == "next_to_cart_button";
        
@@ -188,8 +196,8 @@ class FrontendHandler
             return;
         }
         // class add
-        if ($below_title) {
-            $inquire_us_button_class = '_sale_booster_below_title';
+        if ($above_title) {
+            $inquire_us_button_class = '_sale_booster_above_title';
         }   
         if ($below_description) {
             $inquire_us_button_class = '_sale_booster_below_description';
@@ -300,6 +308,13 @@ class FrontendHandler
         
         if ($hidePrice == "yes") {
             remove_action('woocommerce_single_product_summary', 'woocommerce_template_single_price', 10);
+            ?>
+                <style>
+                    .single-product .summary .price {
+                        display: none;
+                    }
+                </style>
+            <?php
         }
     }
     /**
