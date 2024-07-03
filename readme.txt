@@ -12,9 +12,9 @@ Supercharge your WordPress WooCommerce site with showing countdown timer for dis
 
 == Description ==
 
-WP Sales Booster is with most amazing salas increasing plugin with WooCommerce Countdown Timer [Which creates scarcity to visitor and influence to purchase] .Exit Popup [ WooCommerce  administrator can collect potential customer leads [email address and phone number] and also can re-target the customer using auto responder  [different email marketing tools]. Another great feature is Enquiry Form [Webmaster can set custom Enquiry Form for each product  to make instant email communication with potential customer] . This plugin is focused on WooCommerce and we are a team of people added many proven  features to boost your WooCommerce sales and conversion with this plugin.
+WP Sales Booster is with most amazing salas increasing plugin with WooCommerce Countdown Timer Which creates scarcity to visitor and influence to purchase . With Exit Popup WooCommerce administrator can collect potential customer leads email address and phone number and also can re-target the customer using auto responder [different email marketing tools or by direct sales phone call ]. Another great feature is Enquiry Form [Webmaster can set custom Enquiry Form for each product to make instant email communication with potential customers] . This plugin is focused on WooCommerce and we are a team of people who added many proven features to boost your WooCommerce sales and conversion with this plugin without increasing your website traffic.
 
-[youtube https://youtu.be/z5LngNnhGLA]
+[youtube https://youtu.be/z5LngNnhGLA?si=fLxf7CgU3t8JpLgA] 
 
 ### How To Remove Add to Cart Button On Woocommerce 
 Sometimes Woocommerce website owner needs to remove the add to cart button for any specific product . This plugin allow this option to user .any one can easily remove add to cart button even without having any coding skills.
@@ -148,7 +148,7 @@ Yes, you can change woocommerce button text with this plugin
 
 == Changelog ==
 
-= 3.0.0 (DATE: July 02, 2024) =
+= 3.0.0 (DATE: July 03, 2024) =
 * Bug Fix And Version 3.0.0 Update
 
 = 2.0.7 (DATE: June 24, 2024) =
