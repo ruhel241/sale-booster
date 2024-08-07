@@ -3,8 +3,8 @@ Contributors: footnoteio, ruhel241, rupok98,
 Tags:  Remove add to cart button woocommerce, woocommerce disable cart and checkout, woocommerce hide price, countdown timer
 Requires at least: 5.0
 Requires PHP: 5.4 or greater
-Tested up to: 6.5.4
-Stable tag: 3.0.0
+Tested up to: 6.6.1
+Stable tag: 3.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -147,6 +147,9 @@ Yes, you can change woocommerce button text with this plugin
 
 
 == Changelog ==
+
+= 3.0.1 (DATE: August 07, 2024) =
+* WordPress Latest version 6.6.1 compatible 
 
 = 3.0.0 (DATE: July 03, 2024) =
 * Bug Fix And Version 3.0.0 Update
